@@ -22,19 +22,25 @@ public struct SettingsView: View {
     @AppStorage("autoRecalculate") private var autoRecalculate: Bool = true
     @AppStorage("decimalPrecision") private var decimalPrecision: Int = 4
 
+    private let l10n = LocalizationService.shared
+
+    private func loc(_ key: LocalizedKey) -> String {
+        l10n.string(for: key, languageCode: selectedLanguageCode)
+    }
+
     public init() {}
 
     public var body: some View {
         TabView(selection: $selectedTab) {
             generalTab
                 .tabItem {
-                    Label(SettingsTab.general.rawValue, systemImage: SettingsTab.general.icon)
+                    Label(loc(.settingsGeneral), systemImage: SettingsTab.general.icon)
                 }
                 .tag(SettingsTab.general)
 
             AppearanceSettings()
                 .tabItem {
-                    Label(SettingsTab.appearance.rawValue, systemImage: SettingsTab.appearance.icon)
+                    Label(loc(.settingsAppearance), systemImage: SettingsTab.appearance.icon)
                 }
                 .tag(SettingsTab.appearance)
         }
@@ -46,8 +52,8 @@ public struct SettingsView: View {
     @ViewBuilder
     private var generalTab: some View {
         Form {
-            Section("Sprachauswahl & Nationalflaggen") {
-                Picker("Sprache:", selection: $selectedLanguageCode) {
+            Section(loc(.settingsLanguageAndFlags)) {
+                Picker(loc(.settingsSelectLanguage), selection: $selectedLanguageCode) {
                     ForEach(LanguageRegistry.shared.languages) { lang in
                         Text("\(lang.flag)  \(lang.name) (\(lang.nativeName))")
                             .tag(lang.code)
@@ -56,24 +62,24 @@ public struct SettingsView: View {
                 .help("Wählen Sie aus den 130 meistgesprochenen Sprachen der Erde mit Nationalflaggen")
             }
 
-            Section("Berechnung & Einheiten") {
-                Picker("Standard-Einheitensystem:", selection: $defaultUnitSystem) {
+            Section(loc(.settingsCalcAndUnits)) {
+                Picker(loc(.settingsDefaultUnitSystem), selection: $defaultUnitSystem) {
                     Text("Internationales Einheitensystem (SI)").tag("SI")
                     Text("Technisch / Metrisch").tag("Metric")
                     Text("Angloamerikanisch (Imperial)").tag("Imperial")
                 }
                 .help("Bevorzugtes Einheitensystem für Formelparameter und Resultate")
 
-                Stepper("Dezimalstellen: \(decimalPrecision)", value: $decimalPrecision, in: 1...10)
+                Stepper("\(loc(.settingsDecimalPlaces)): \(decimalPrecision)", value: $decimalPrecision, in: 1...10)
                     .help("Anzahl der gerundeten Nachkommastellen für die numerische Anzeige")
 
-                Toggle("Automatisch bei Tastatureingabe neu berechnen", isOn: $autoRecalculate)
+                Toggle(loc(.settingsAutoRecalculate), isOn: $autoRecalculate)
                     .help("Formelergebnis unmittelbar während der Tastatureingabe im Hintergrund neu auswerten")
             }
 
-            Section("Über Formula ex Machina") {
-                LabeledContent("Version", value: "1.1.0 (SonnerStudio Build 2026.11)")
-                LabeledContent("Entwickler", value: "SonnerStudio – Jan Friske")
+            Section(loc(.settingsAbout)) {
+                LabeledContent(loc(.settingsVersion), value: "1.1.0 (SonnerStudio Build 2026.11)")
+                LabeledContent(loc(.settingsDeveloper), value: "SonnerStudio – Jan Friske")
             }
         }
     }

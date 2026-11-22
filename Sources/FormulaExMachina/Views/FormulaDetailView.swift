@@ -369,6 +369,14 @@ public struct FormulaDetailView: View {
                         .background(Palette.accent.opacity(0.15))
                         .foregroundStyle(Palette.accent)
                         .cornerRadius(3)
+
+                    Text("v1.1.0")
+                        .font(.system(size: 9, weight: .bold, design: .monospaced))
+                        .padding(.horizontal, 4)
+                        .padding(.vertical, 1.5)
+                        .background(Palette.accent.opacity(0.2))
+                        .foregroundStyle(Palette.accent)
+                        .cornerRadius(3)
                 }
 
                 Text(model.localized(.footerDevelopedBy))

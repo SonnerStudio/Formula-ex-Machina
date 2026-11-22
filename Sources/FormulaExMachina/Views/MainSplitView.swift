@@ -42,6 +42,16 @@ public struct MainSplitView: View {
                                     .fill(Palette.accent)
                             )
                             .foregroundStyle(Palette.onAccent)
+
+                        Text("v1.1.0")
+                            .font(.system(size: 10, weight: .bold, design: .monospaced))
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 2)
+                            .background(
+                                RoundedRectangle(cornerRadius: 4)
+                                    .fill(Color.primary.opacity(0.08))
+                            )
+                            .foregroundStyle(.primary)
                     }
                     .padding(.horizontal, 8)
                     .padding(.vertical, 4)
@@ -131,7 +141,7 @@ public struct MainSplitView: View {
             }
         }
         .listStyle(.sidebar)
-        .navigationTitle("Formula ex Machina")
+        .navigationTitle("Formula ex Machina v1.1.0")
     }
 
     // MARK: - Formula List
