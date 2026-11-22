@@ -1,39 +1,11 @@
-# 🇨🇳 Formula ex Machina – Min Nan (閩南語)
+<p align="center">
+  <img src="../../assets/hero.png" alt="Formula ex Machina – SonnerStudio" width="100%">
+</p>
 
-**Formula ex Machina** ist das universelle Formel- und Rechensystem von **SonnerStudio** (Jan Friske).
-Es vereint eine umfassende wissenschaftliche Formelsammlung für Universalgelehrte, symbolische algebraische Formelumstellung, automatische Einheitenumrechnung und 100 % lokale Offline-Berechnung auf macOS.
+### 🌍 Sprachauswahl / Language Selection (130 Sprachen / Languages)
 
----
-
-## 🌟 Hauptmerkmale (Min Nan)
-
-- **Wissenschaftliche Universal-Formelsammlung:** Umfassender Wissensbestand aus Physik, Mathematik, Elektrotechnik, Chemie, Maschinenbau, Astrophysik, Finanzmathematik und Informatik.
-- **Symbolische Formelumstellung:** Jede Formel lässt sich nach einer beliebigen Zielvariablen analytisch freistellen (z. B. $F = m \cdot a \implies m = \frac{F}{a}$).
-- **Interaktive Berechnungsmaske:** Live-Berechnung bei Werteeingabe mit automatischer Konvertierung in SI-Basiseinheiten.
-- **Lösungsweg & Didaktik:** Detaillierte Schritt-für-Schritt-Anzeige aller algebraischen Umformungsschritte.
-- **Sprachunterstützung:** Auswahl aus 130 Weltsprachen mit Nationalflaggen.
-- **Nahtlose Updatefähigkeit:** Integrierter SonnerStudio Update-Manager für automatische Git- und GitHub-Synchronisation.
-- **Open-Source & Datenschutz:** 100 % lokal, offline-fähig, keine Tracker, keine Cloud-Abhängigkeiten.
-
----
-
-## 🚀 Installation & Schnellstart
-
-```bash
-# Repository klonen
-git clone https://github.com/SonnerStudio/Formula-ex-Machina.git
-cd Formula-ex-Machina
-
-# Kompilieren und starten
-./build.sh --open
-
-# Nach Updates suchen und aktualisieren
-./update.sh
-```
-
----
-
-## 🌍 Alle Sprachen / All Languages (130)
+<details>
+<summary><b>▶ Alle 130 Sprachen mit Nationalflaggen anzeigen / View all 130 languages</b></summary>
 
 - [🇩🇪 Deutsch (Deutsch)](README_de.md)
 - [🇬🇧 Englisch (English)](README_en.md)
@@ -165,6 +137,43 @@ cd Formula-ex-Machina
 - [🇱🇺 Luxemburgisch (Lëtzebuergesch)](README_lb.md)
 - [🇲🇹 Maltesisch (Malti)](README_mt.md)
 - [🌐 Esperanto (Esperanto)](README_eo.md)
+
+</details>
+
+---
+
+# 🇨🇳 Formula ex Machina – Min Nan (閩南語)
+
+**Formula ex Machina** ist das universelle Formel- und Rechensystem von **SonnerStudio** (Jan Friske).
+Es vereint eine umfassende wissenschaftliche Formelsammlung für Universalgelehrte, symbolische algebraische Formelumstellung, automatische Einheitenumrechnung und 100 % lokale Offline-Berechnung auf macOS.
+
+---
+
+## 🌟 Hauptmerkmale (Min Nan)
+
+- **Wissenschaftliche Universal-Formelsammlung:** Umfassender Wissensbestand aus Physik, Mathematik, Elektrotechnik, Chemie, Maschinenbau, Astrophysik, Finanzmathematik und Informatik.
+- **Symbolische Formelumstellung:** Jede Formel lässt sich nach einer beliebigen Zielvariablen analytisch freistellen (z. B. $F = m \cdot a \implies m = \frac{F}{a}$).
+- **Interaktive Berechnungsmaske:** Live-Berechnung bei Werteeingabe mit automatischer Konvertierung in SI-Basiseinheiten.
+- **Lösungsweg & Didaktik:** Detaillierte Schritt-für-Schritt-Anzeige aller algebraischen Umformungsschritte.
+- **Sprachunterstützung:** Auswahl aus 130 Weltsprachen mit Nationalflaggen.
+- **Nahtlose Updatefähigkeit:** Integrierter SonnerStudio Update-Manager für automatische Git- und GitHub-Synchronisation.
+- **Open-Source & Datenschutz:** 100 % lokal, offline-fähig, keine Tracker, keine Cloud-Abhängigkeiten.
+
+---
+
+## 🚀 Installation & Schnellstart
+
+```bash
+# Repository klonen
+git clone https://github.com/SonnerStudio/Formula-ex-Machina.git
+cd Formula-ex-Machina
+
+# Kompilieren und starten
+./build.sh --open
+
+# Nach Updates suchen und aktualisieren
+./update.sh
+```
 
 ---
 
