@@ -56,12 +56,13 @@ public enum LocalizedKey: String, CaseIterable, Sendable {
     case settingsDeveloper = "settings_developer"
     case settingsAccentColor = "settings_accent_color"
 
-    // Fachgebiete / Kategorien
+    // Fachgebiete / Fakultäten
     case catPhysics = "cat_physics"
     case catMath = "cat_math"
     case catAstronomy = "cat_astronomy"
     case catElectrical = "cat_electrical"
     case catChemistry = "cat_chemistry"
+    case catBiology = "cat_biology"
     case catEngineering = "cat_engineering"
     case catFinance = "cat_finance"
     case catComputerScience = "cat_cs"
@@ -126,6 +127,7 @@ DICTS = {
         "catAstronomy": "Astronomie & Astrophysik",
         "catElectrical": "Elektrotechnik",
         "catChemistry": "Chemie",
+        "catBiology": "Biologie & Biophysik",
         "catEngineering": "Maschinenbau & Statik",
         "catFinance": "Finanzmathematik",
         "catComputerScience": "Informatik & Information"
@@ -178,6 +180,7 @@ DICTS = {
         "catAstronomy": "Astronomy & Astrophysics",
         "catElectrical": "Electrical Engineering",
         "catChemistry": "Chemistry",
+        "catBiology": "Biology & Biophysics",
         "catEngineering": "Mechanical Engineering & Statics",
         "catFinance": "Financial Mathematics",
         "catComputerScience": "Computer Science & Information"
@@ -230,6 +233,7 @@ DICTS = {
         "catAstronomy": "Astronomie & Astrophysique",
         "catElectrical": "Génie électrique",
         "catChemistry": "Chimie",
+        "catBiology": "Biologie & Biophysique",
         "catEngineering": "Génie mécanique & Statique",
         "catFinance": "Mathématiques financières",
         "catComputerScience": "Informatique & Information"
@@ -255,22 +259,22 @@ DICTS = {
         "update": "Actualizar",
         "checkingUpdates": "Buscando actualizaciones...",
         "upToDate": "¡Ya está actualizado!",
-        "updateFailed": "Error de actualización.",
+        "updateFailed": "Error al actualizar o sin conexión.",
         "liveCalculationHelp": "Ingrese valor numérico. Cálculo en vivo.",
         "step": "Paso",
-        "offlineBadge": "Desconectado",
+        "offlineBadge": "Sin conexión",
         "liquidGlassBadge": "Liquid Glass",
-        "footerDevelopedBy": "Desarrollado por SonnerStudio • Jan Friske",
-        "noAdditionalInputsNeeded": "No se requieren parámetros adicionales.",
+        "footerDevelopedBy": "Desarrollado por SonnerStudio • Jan Friske • 100% Offline",
+        "noAdditionalInputsNeeded": "No se requieren más parámetros de entrada.",
         "targetVariable": "Variable objetivo",
         "calculationMethod": "Método de cálculo",
-        "missingInputs": "Por favor ingrese números válidos.",
+        "missingInputs": "Complete los campos con números válidos.",
         "settingsGeneral": "General",
         "settingsAppearance": "Apariencia",
-        "settingsLanguageAndFlags": "Selección de idioma y Banderas",
+        "settingsLanguageAndFlags": "Selección de idioma y banderas",
         "settingsSelectLanguage": "Idioma:",
-        "settingsCalcAndUnits": "Cálculo y Unidades",
-        "settingsDefaultUnitSystem": "Sistema de unidades predeterminado:",
+        "settingsCalcAndUnits": "Cálculo y unidades",
+        "settingsDefaultUnitSystem": "Sistema de unidades por defecto:",
         "settingsDecimalPlaces": "Decimales",
         "settingsAutoRecalculate": "Recalcular automáticamente al escribir",
         "settingsAbout": "Acerca de Formula ex Machina",
@@ -282,6 +286,7 @@ DICTS = {
         "catAstronomy": "Astronomía y Astrofísica",
         "catElectrical": "Ingeniería Eléctrica",
         "catChemistry": "Química",
+        "catBiology": "Biología y Biofísica",
         "catEngineering": "Ingeniería Mecánica y Estática",
         "catFinance": "Matemáticas Financieras",
         "catComputerScience": "Informática e Información"
@@ -291,7 +296,7 @@ DICTS = {
         "searchPlaceholder": "Cerca formule, simboli, unità...",
         "formulas": "Formule",
         "noFormulaSelected": "Nessuna formula selezionata",
-        "noFormulaSelectedDesc": "Seleziona una formula dalla barra laterale o cerca un argomento.",
+        "noFormulaSelectedDesc": "Seleziona una formula o cerca un argomento.",
         "rearrangeFor": "Risolvi formula per:",
         "rearrangedFormula": "Formula riordinata:",
         "inputValues": "Valori di input",
@@ -299,7 +304,7 @@ DICTS = {
         "calculatedResult": "Risultato calcolato",
         "copy": "Copia",
         "copied": "Copiato!",
-        "solutionSteps": "Passaggi di soluzione & trasformazioni",
+        "solutionSteps": "Passaggi di risoluzione",
         "unit": "Unità:",
         "calculation": "Calcolo",
         "recalculate": "Ricalcola",
@@ -308,35 +313,36 @@ DICTS = {
         "checkingUpdates": "Controllo aggiornamenti...",
         "upToDate": "Già aggiornato!",
         "updateFailed": "Aggiornamento non riuscito.",
-        "liveCalculationHelp": "Inserisci numero. Calcolo in tempo reale.",
+        "liveCalculationHelp": "Calcolo in tempo reale.",
         "step": "Passo",
         "offlineBadge": "Offline",
         "liquidGlassBadge": "Liquid Glass",
         "footerDevelopedBy": "Sviluppato da SonnerStudio • Jan Friske",
-        "noAdditionalInputsNeeded": "Nessun parametro aggiuntivo necessario.",
-        "targetVariable": "Variabile target",
+        "noAdditionalInputsNeeded": "Nessun ulteriore parametro richiesto.",
+        "targetVariable": "Variabile obiettivo",
         "calculationMethod": "Metodo di calcolo",
-        "missingInputs": "Inserisci numeri validi.",
+        "missingInputs": "Compila tutti i valori richiesti.",
         "settingsGeneral": "Generale",
         "settingsAppearance": "Aspetto",
-        "settingsLanguageAndFlags": "Selezione lingua & Bandiere",
+        "settingsLanguageAndFlags": "Selezione lingua e bandiere",
         "settingsSelectLanguage": "Lingua:",
-        "settingsCalcAndUnits": "Calcolo & Unità",
+        "settingsCalcAndUnits": "Calcolo e unità",
         "settingsDefaultUnitSystem": "Sistema di unità predefinito:",
-        "settingsDecimalPlaces": "Decimali",
+        "settingsDecimalPlaces": "Cifre decimali",
         "settingsAutoRecalculate": "Ricalcola automaticamente durante la digitazione",
         "settingsAbout": "Informazioni su Formula ex Machina",
         "settingsVersion": "Versione",
         "settingsDeveloper": "Sviluppatore",
-        "settingsAccentColor": "Colore accento",
+        "settingsAccentColor": "Colore di accento",
         "catPhysics": "Fisica",
         "catMath": "Matematica",
-        "catAstronomy": "Astronomia & Astrofisica",
-        "catElectrical": "Elettrotecnica",
+        "catAstronomy": "Astronomia e Astrofisica",
+        "catElectrical": "Ingegneria Elettrica",
         "catChemistry": "Chimica",
-        "catEngineering": "Ingegneria Meccanica & Statica",
+        "catBiology": "Biologia e Biofisica",
+        "catEngineering": "Ingegneria Meccanica e Statica",
         "catFinance": "Matematica Finanziaria",
-        "catComputerScience": "Informatica & Informazione"
+        "catComputerScience": "Informatica e Informazione"
     },
     "pt": {
         "disciplines": "Disciplinas",
@@ -344,14 +350,14 @@ DICTS = {
         "formulas": "Fórmulas",
         "noFormulaSelected": "Nenhuma fórmula selecionada",
         "noFormulaSelectedDesc": "Selecione uma fórmula na barra lateral.",
-        "rearrangeFor": "Isolar fórmula para:",
+        "rearrangeFor": "Resolver fórmula para:",
         "rearrangedFormula": "Fórmula rearranjada:",
-        "inputValues": "Parâmetros de Entrada",
+        "inputValues": "Valores de entrada",
         "enterValue": "Inserir valor",
-        "calculatedResult": "Resultado Calculado",
+        "calculatedResult": "Resultado calculado",
         "copy": "Copiar",
         "copied": "Copiado!",
-        "solutionSteps": "Passos de resolução & transformações",
+        "solutionSteps": "Passos de resolução",
         "unit": "Unidade:",
         "calculation": "Cálculo",
         "recalculate": "Recalcular",
@@ -360,7 +366,7 @@ DICTS = {
         "checkingUpdates": "Verificando atualizações...",
         "upToDate": "Já atualizado!",
         "updateFailed": "Falha na atualização.",
-        "liveCalculationHelp": "Insira o número. Cálculo em tempo real.",
+        "liveCalculationHelp": "Cálculo ao vivo.",
         "step": "Passo",
         "offlineBadge": "Offline",
         "liquidGlassBadge": "Liquid Glass",
@@ -368,12 +374,12 @@ DICTS = {
         "noAdditionalInputsNeeded": "Nenhum parâmetro adicional necessário.",
         "targetVariable": "Variável alvo",
         "calculationMethod": "Método de cálculo",
-        "missingInputs": "Insira números válidos.",
+        "missingInputs": "Preencha todos os campos com números válidos.",
         "settingsGeneral": "Geral",
         "settingsAppearance": "Aparência",
-        "settingsLanguageAndFlags": "Seleção de Idioma & Bandeiras",
+        "settingsLanguageAndFlags": "Seleção de idioma e bandeiras",
         "settingsSelectLanguage": "Idioma:",
-        "settingsCalcAndUnits": "Cálculo & Unidades",
+        "settingsCalcAndUnits": "Cálculo e Unidades",
         "settingsDefaultUnitSystem": "Sistema de unidades padrão:",
         "settingsDecimalPlaces": "Casas decimais",
         "settingsAutoRecalculate": "Recalcular automaticamente ao digitar",
@@ -383,132 +389,135 @@ DICTS = {
         "settingsAccentColor": "Cor de destaque",
         "catPhysics": "Física",
         "catMath": "Matemática",
-        "catAstronomy": "Astronomia & Astrofísica",
+        "catAstronomy": "Astronomia e Astrofísica",
         "catElectrical": "Engenharia Elétrica",
         "catChemistry": "Química",
-        "catEngineering": "Engenharia Mecânica & Estática",
+        "catBiology": "Biologia e Biofísica",
+        "catEngineering": "Engenharia Mecânica e Estática",
         "catFinance": "Matemática Financeira",
-        "catComputerScience": "Ciência da Computação"
+        "catComputerScience": "Ciência da Computação e Informação"
     },
     "ru": {
         "disciplines": "Дисциплины",
         "searchPlaceholder": "Поиск формул, символов, единиц...",
         "formulas": "Формулы",
         "noFormulaSelected": "Формула не выбрана",
-        "noFormulaSelectedDesc": "Выберите формулу на боковой панели или выполните поиск.",
-        "rearrangeFor": "Преобразовать формулу для:",
+        "noFormulaSelectedDesc": "Выберите формулу на боковой панели или воспользуйтесь поиском.",
+        "rearrangeFor": "Выразить формулу относительно:",
         "rearrangedFormula": "Преобразованная формула:",
         "inputValues": "Входные параметры",
         "enterValue": "Введите значение",
-        "calculatedResult": "Вычисленный результат",
+        "calculatedResult": "Результат вычисления",
         "copy": "Копировать",
         "copied": "Скопировано!",
-        "solutionSteps": "Шаги решения и преобразования",
+        "solutionSteps": "Шаги аналитического решения",
         "unit": "Единица:",
         "calculation": "Вычисление",
         "recalculate": "Пересчитать",
         "copyResult": "Копировать результат",
-        "update": "Обновить",
+        "update": "Обновление",
         "checkingUpdates": "Проверка обновлений...",
-        "upToDate": "Уже последняя версия!",
-        "updateFailed": "Сбой обновления или нет связи.",
-        "liveCalculationHelp": "Введите число. Вычисление в реальном времени.",
+        "upToDate": "Установлена актуальная версия!",
+        "updateFailed": "Сбой обновления или нет соединения.",
+        "liveCalculationHelp": "Мгновенный расчет при вводе.",
         "step": "Шаг",
         "offlineBadge": "Офлайн",
         "liquidGlassBadge": "Liquid Glass",
-        "footerDevelopedBy": "Разработано SonnerStudio • Ян Фриске",
+        "footerDevelopedBy": "Разработано SonnerStudio • Ян Фриске • 100% Офлайн",
         "noAdditionalInputsNeeded": "Дополнительные параметры не требуются.",
         "targetVariable": "Целевая переменная",
         "calculationMethod": "Метод вычисления",
-        "missingInputs": "Пожалуйста, введите корректные числа.",
+        "missingInputs": "Заполните все требуемые поля корректными числами.",
         "settingsGeneral": "Общие",
-        "settingsAppearance": "Оформление",
+        "settingsAppearance": "Внешний вид",
         "settingsLanguageAndFlags": "Выбор языка и национальные флаги",
         "settingsSelectLanguage": "Язык:",
         "settingsCalcAndUnits": "Вычисления и единицы",
         "settingsDefaultUnitSystem": "Система единиц по умолчанию:",
         "settingsDecimalPlaces": "Знаков после запятой",
-        "settingsAutoRecalculate": "Автоматически пересчитывать при вводе",
+        "settingsAutoRecalculate": "Автоматический пересчет при вводе",
         "settingsAbout": "О программе Formula ex Machina",
         "settingsVersion": "Версия",
         "settingsDeveloper": "Разработчик",
-        "settingsAccentColor": "Цвет акцента",
+        "settingsAccentColor": "Акцентный цвет",
         "catPhysics": "Физика",
         "catMath": "Математика",
-        "catAstronomy": "Астрономия и Астрофизика",
+        "catAstronomy": "Астрономия и астрофизика",
         "catElectrical": "Электротехника",
         "catChemistry": "Химия",
-        "catEngineering": "Машиностроение и Статика",
+        "catBiology": "Биология и биофизика",
+        "catEngineering": "Машиностроение и статика",
         "catFinance": "Финансовая математика",
-        "catComputerScience": "Информатика"
+        "catComputerScience": "Информатика и теория информации"
     },
     "zh": {
         "disciplines": "学科门类",
-        "searchPlaceholder": "搜索公式、符号、单位...",
-        "formulas": "公式库",
-        "noFormulaSelected": "未选择公式",
-        "noFormulaSelectedDesc": "请从侧边栏选择公式或通过关键字搜索。",
-        "rearrangeFor": "求解方程目标变量：",
-        "rearrangedFormula": "移项变形公式：",
+        "searchPlaceholder": "搜索公式、物理量符号、计量单位...",
+        "formulas": "公式总览",
+        "noFormulaSelected": "未选择任何公式",
+        "noFormulaSelectedDesc": "请在左侧侧边栏中选择专业学科公式，或在搜索栏中输入关键词。",
+        "rearrangeFor": "代数恒等变形求解目标：",
+        "rearrangedFormula": "符号化推导变形公式：",
         "inputValues": "已知输入参数",
         "enterValue": "输入数值",
-        "calculatedResult": "计算结果",
-        "copy": "复制结果",
+        "calculatedResult": "高精度数值解析计算结果",
+        "copy": "复制",
         "copied": "已复制！",
-        "solutionSteps": "代数推导与移项步骤",
-        "unit": "量纲单位：",
-        "calculation": "计算分析",
+        "solutionSteps": "数学推导解题步骤与量纲代数化简",
+        "unit": "计量单位：",
+        "calculation": "计算功能",
         "recalculate": "重新计算",
-        "copyResult": "复制计算数值",
+        "copyResult": "复制运算结果",
         "update": "软件更新",
         "checkingUpdates": "正在检查版本更新...",
         "upToDate": "当前已是最新版本！",
-        "updateFailed": "更新失败或网络未连接。",
-        "liveCalculationHelp": "输入数值，支持实时后台重算。",
-        "step": "步骤",
-        "offlineBadge": "全离线支持",
-        "liquidGlassBadge": "Liquid Glass 原生设计",
-        "footerDevelopedBy": "由 SonnerStudio（Jan Friske）设计与开发 • 本地符号代数",
-        "noAdditionalInputsNeeded": "无需额外参数（恒定物理常量）。",
-        "targetVariable": "目标待求变量",
-        "calculationMethod": "求解方法",
-        "missingInputs": "请输入有效的数值参数。",
+        "updateFailed": "检查更新失败或无网络连接。",
+        "liveCalculationHelp": "键盘键入数值，后台引擎即时动态求解。",
+        "step": "推导步骤",
+        "offlineBadge": "离线运行",
+        "liquidGlassBadge": "液态拟真玻璃",
+        "footerDevelopedBy": "由 SonnerStudio 设计开发 • Jan Friske • 100% 离线隐私 • 本地符号计算机代数系统",
+        "noAdditionalInputsNeeded": "无需额外输入参数（物理常数或解析解）。",
+        "targetVariable": "待求解物理量",
+        "calculationMethod": "符号计算引擎",
+        "missingInputs": "请在所有输入框中键入合法的数值。",
         "settingsGeneral": "常规设置",
-        "settingsAppearance": "外观样式",
-        "settingsLanguageAndFlags": "多语言选择与国旗标识",
+        "settingsAppearance": "界面外观",
+        "settingsLanguageAndFlags": "语言与国家旗帜选择",
         "settingsSelectLanguage": "系统语言：",
-        "settingsCalcAndUnits": "计算与单位换算",
-        "settingsDefaultUnitSystem": "默认量纲单位制：",
-        "settingsDecimalPlaces": "数值保留小数位数",
-        "settingsAutoRecalculate": "键入时即时自动重算",
+        "settingsCalcAndUnits": "计算模型与度量衡",
+        "settingsDefaultUnitSystem": "首选度量单位制：",
+        "settingsDecimalPlaces": "保留有效小数位数",
+        "settingsAutoRecalculate": "键盘键入时自动重算",
         "settingsAbout": "关于 Formula ex Machina",
         "settingsVersion": "软件版本",
         "settingsDeveloper": "核心开发者",
-        "settingsAccentColor": "系统高亮色",
+        "settingsAccentColor": "主题强调色",
         "catPhysics": "物理学",
-        "catMath": "数学与几何",
-        "catAstronomy": "天文学与天体物理",
+        "catMath": "数学",
+        "catAstronomy": "天文学与天体物理学",
         "catElectrical": "电气与电子工程",
-        "catChemistry": "化学与热力学",
-        "catEngineering": "机械工程与材料力学",
-        "catFinance": "金融与经济数学",
+        "catChemistry": "化学与材料科学",
+        "catBiology": "生物学与生物物理学",
+        "catEngineering": "机械工程与工程力学",
+        "catFinance": "金融数学与计量经济学",
         "catComputerScience": "计算机科学与信息论"
     },
     "ja": {
         "disciplines": "学術分野",
-        "searchPlaceholder": "数式、記号、単位を検索...",
-        "formulas": "公式集",
-        "noFormulaSelected": "公式が選択されていません",
-        "noFormulaSelectedDesc": "サイドバーから公式を選択するか検索してください。",
-        "rearrangeFor": "対象変数について解く：",
-        "rearrangedFormula": "変形後の数式：",
+        "searchPlaceholder": "数式、物理記号、単位を検索...",
+        "formulas": "数式一覧",
+        "noFormulaSelected": "数式が選択されていません",
+        "noFormulaSelectedDesc": "サイドバーから数式を選択するかトピックを検索してください。",
+        "rearrangeFor": "対象変数について変形:",
+        "rearrangedFormula": "変形後の数式:",
         "inputValues": "入力パラメータ",
         "enterValue": "数値を入力",
         "calculatedResult": "計算結果",
         "copy": "コピー",
         "copied": "コピー完了！",
-        "solutionSteps": "導出・変形プロセス",
-        "unit": "単位：",
+        "solutionSteps": "数式導出ステップと変形",
+        "unit": "単位:",
         "calculation": "計算",
         "recalculate": "再計算",
         "copyResult": "結果をコピー",
@@ -516,23 +525,23 @@ DICTS = {
         "checkingUpdates": "更新を確認中...",
         "upToDate": "最新バージョンです！",
         "updateFailed": "更新に失敗しました。",
-        "liveCalculationHelp": "数値を入力するとリアルタイムで計算されます。",
+        "liveCalculationHelp": "キーボード入力時にリアルタイムで計算。",
         "step": "ステップ",
         "offlineBadge": "オフライン",
         "liquidGlassBadge": "Liquid Glass",
-        "footerDevelopedBy": "開発：SonnerStudio • Jan Friske",
-        "noAdditionalInputsNeeded": "追加パラメータは不要です。",
-        "targetVariable": "目的変数",
-        "calculationMethod": "計算手法",
-        "missingInputs": "有効な数値を入力してください。",
+        "footerDevelopedBy": "開発元: SonnerStudio • Jan Friske • 100% オフライン",
+        "noAdditionalInputsNeeded": "追加のパラメータは不要です。",
+        "targetVariable": "計算対象変数",
+        "calculationMethod": "数式処理エンジン",
+        "missingInputs": "すべての必須パラメータに有効な数値を入力してください。",
         "settingsGeneral": "一般",
         "settingsAppearance": "外観",
-        "settingsLanguageAndFlags": "言語選択と国旗",
-        "settingsSelectLanguage": "言語：",
-        "settingsCalcAndUnits": "計算と単位",
-        "settingsDefaultUnitSystem": "デフォルト単位系：",
-        "settingsDecimalPlaces": "小数点以下の桁数",
-        "settingsAutoRecalculate": "入力時に自動的に再計算する",
+        "settingsLanguageAndFlags": "言語と国旗の選択",
+        "settingsSelectLanguage": "言語:",
+        "settingsCalcAndUnits": "計算と単位系",
+        "settingsDefaultUnitSystem": "標準単位系:",
+        "settingsDecimalPlaces": "小数点以下の表示桁数",
+        "settingsAutoRecalculate": "タイピング中に自動で再計算",
         "settingsAbout": "Formula ex Machina について",
         "settingsVersion": "バージョン",
         "settingsDeveloper": "開発者",
@@ -542,29 +551,27 @@ DICTS = {
         "catAstronomy": "天文学・宇宙物理学",
         "catElectrical": "電気工学",
         "catChemistry": "化学",
+        "catBiology": "生物学・生物物理学",
         "catEngineering": "機械工学・構造力学",
-        "catFinance": "金融工学・数理経済",
-        "catComputerScience": "情報科学・計算機工学"
+        "catFinance": "数理ファイナンス",
+        "catComputerScience": "情報科学・計算理論"
     }
 }
 
 out = swift_header
 
-# Populate for each dictionary
-for lang, kvs in DICTS.items():
+for lang in all_codes:
+    d = DICTS.get(lang)
+    if not d:
+        d = DICTS["en"]
     out += f'        dict["{lang}"] = [\n'
-    for k, v in kvs.items():
-        v_escaped = v.replace('"', '\\"')
-        out += f'            .{k}: "{v_escaped}",\n'
+    for k, v in d.items():
+        case_name = k
+        val_esc = v.replace('"', '\\"')
+        out += f'            .{case_name}: "{val_esc}",\n'
     out += '        ]\n\n'
 
-# For all other of the 130 languages, populate with English fallback so that every single language code exists
-for code in all_codes:
-    if code not in DICTS:
-        out += f'        dict["{code}"] = dict["en"]\n'
-
-swift_footer = """
-        self.translations = dict
+swift_footer = """        self.translations = dict
     }
 
     public func string(for key: LocalizedKey, languageCode: String) -> String {
@@ -589,6 +596,8 @@ swift_footer = """
             return string(for: .catElectrical, languageCode: languageCode)
         case "Chemie", "Chemistry":
             return string(for: .catChemistry, languageCode: languageCode)
+        case "Biologie & Biophysik", "Biology & Biophysics":
+            return string(for: .catBiology, languageCode: languageCode)
         case "Maschinenbau & Statik", "Mechanical Engineering":
             return string(for: .catEngineering, languageCode: languageCode)
         case "Finanzmathematik", "Financial Mathematics":
@@ -614,83 +623,101 @@ swift_footer = """
             if languageCode == "zh" { return "二维几何（平面面积）" }
             return "2D Geometry (Areas)"
         case "Geometrie 3D (Körper)":
-            if languageCode == "zh" { return "三维立体几何" }
-            return "3D Geometry (Solids)"
+            if languageCode == "zh" { return "三维几何（立体与体积）" }
+            return "3D Geometry (Solids & Volumes)"
         case "Trigonometrie":
-            if languageCode == "zh" { return "三角学" }
+            if languageCode == "zh" { return "三角函数与角计算" }
             return "Trigonometry"
         case "Algebra & Analysis":
-            if languageCode == "zh" { return "代数与微积分" }
+            if languageCode == "zh" { return "代数学与微积分分析" }
             return "Algebra & Calculus"
         case "Statistik & Stochastik":
             if languageCode == "zh" { return "概率论与数理统计" }
             return "Statistics & Probability"
         case "Kinematik":
-            if languageCode == "zh" { return "运动学" }
+            if languageCode == "zh" { return "运动学（直线与曲线运动）" }
             return "Kinematics"
         case "Dynamik":
-            if languageCode == "zh" { return "动力学" }
+            if languageCode == "zh" { return "动力学（受力与牛顿定律）" }
             return "Dynamics"
         case "Arbeit & Energie":
-            if languageCode == "zh" { return "功与能量" }
+            if languageCode == "zh" { return "功、机械能与功率" }
             return "Work & Energy"
         case "Schwingungen & Wellen":
-            if languageCode == "zh" { return "振动与波动学" }
+            if languageCode == "zh" { return "机械振动与波动学" }
             return "Oscillations & Waves"
         case "Optik & Strahlung":
-            if languageCode == "zh" { return "光学与电磁辐射" }
+            if languageCode == "zh" { return "几何光学与电磁辐射" }
             return "Optics & Radiation"
+        case "Thermodynamik & Wärme":
+            if languageCode == "zh" { return "热力学与热能传递" }
+            return "Thermodynamics & Heat"
+        case "Elektromagnetismus & Felder":
+            if languageCode == "zh" { return "电磁学与场论" }
+            return "Electromagnetism & Fields"
         case "Relativität & Quantenphysik":
-            if languageCode == "zh" { return "相对论与量子力学" }
+            if languageCode == "zh" { return "相对论与量子物理" }
             return "Relativity & Quantum Physics"
         case "Gravitation & Bahnbewegung":
-            if languageCode == "zh" { return "万有引力与轨道力学" }
+            if languageCode == "zh" { return "天体引力与轨道力学" }
             return "Gravitation & Orbital Mechanics"
         case "Kosmologie & Sterne":
-            if languageCode == "zh" { return "宇宙学与恒星演化" }
+            if languageCode == "zh" { return "宇宙学与恒星物理" }
             return "Cosmology & Stars"
         case "Hochenergie-Astrophysik":
-            if languageCode == "zh" { return "高能天体物理（黑洞）" }
+            if languageCode == "zh" { return "高能天体物理与黑洞" }
             return "High-Energy Astrophysics"
+        case "Gase & Thermodynamik":
+            if languageCode == "zh" { return "气体动力学与化学热力学" }
+            return "Gases & Thermodynamics"
+        case "Stöchiometrie & Lösungen":
+            if languageCode == "zh" { return "化学计量学与溶液化学" }
+            return "Stoichiometry & Solutions"
+        case "Reaktionskinetik":
+            if languageCode == "zh" { return "化学反应动力学" }
+            return "Reaction Kinetics"
+        case "Elektrochemie & pH-Gleichgewichte":
+            if languageCode == "zh" { return "电化学与酸碱平衡" }
+            return "Electrochemistry & pH Equilibria"
+        case "Enzymkinetik & Membrantransport":
+            if languageCode == "zh" { return "酶促反应动力学与膜转运" }
+            return "Enzyme Kinetics & Membrane Transport"
+        case "Populationsgenetik & Evolution":
+            if languageCode == "zh" { return "群体遗传学与基因频率" }
+            return "Population Genetics & Evolution"
+        case "Ökologie & Allometrie":
+            if languageCode == "zh" { return "生态学与生物异速生长律" }
+            return "Ecology & Allometry"
         case "Gleichstrom & Netzwerke":
             if languageCode == "zh" { return "直流电路与基尔霍夫网络" }
             return "Direct Current & Networks"
         case "Wechselstrom & Blindwiderstände":
-            if languageCode == "zh" { return "交流电路与阻抗抗性" }
+            if languageCode == "zh" { return "交流电、电抗与谐振电路" }
             return "Alternating Current & Reactance"
-        case "Elektromagnetische Felder & Wellen":
-            if languageCode == "zh" { return "电磁场与电磁波" }
-            return "Electromagnetic Fields & Waves"
-        case "Gase & Thermodynamik":
-            if languageCode == "zh" { return "气体动力学与热力学" }
-            return "Gases & Thermodynamics"
-        case "Lösungen & Kinetik":
-            if languageCode == "zh" { return "溶液化学与反应动力学" }
-            return "Solutions & Kinetics"
-        case "Elektrochemie & pH-Gleichgewichte":
-            if languageCode == "zh" { return "电化学与酸碱平衡" }
-            return "Electrochemistry & pH Equilibria"
         case "Festigkeitslehre & Elastizität":
-            if languageCode == "zh" { return "材料力学与弹性理论" }
-            return "Mechanics of Materials"
+            if languageCode == "zh" { return "材料力学与弹性变形" }
+            return "Mechanics of Materials & Elasticity"
         case "Strömungsmechanik":
-            if languageCode == "zh" { return "流体力学（流体静/动力学）" }
-            return "Fluid Mechanics"
+            if languageCode == "zh" { return "流体力学与流变学" }
+            return "Fluid Dynamics"
         case "Statik & Antriebe":
             if languageCode == "zh" { return "工程静力学与传动机构" }
-            return "Statics & Drives"
+            return "Engineering Statics & Drives"
         case "Informationstheorie & Codierung":
-            if languageCode == "zh" { return "信息论与香农编码" }
+            if languageCode == "zh" { return "信息论、信道容量与编码" }
             return "Information Theory & Coding"
         case "Systemleistung & Skalierung":
-            if languageCode == "zh" { return "系统性能与并发加速比" }
+            if languageCode == "zh" { return "计算机系统结构与并行加速" }
             return "System Performance & Scaling"
         case "Zins & Zinseszins":
-            if languageCode == "zh" { return "利息与复利现值" }
-            return "Interest & Compounding"
+            if languageCode == "zh" { return "利息计算与复利模型" }
+            return "Interest & Compound Interest"
         case "Investitionsrechnung & Barwert":
-            if languageCode == "zh" { return "投资决策与贴现模型" }
-            return "Investment & Present Value"
+            if languageCode == "zh" { return "投资决策与现金流贴现" }
+            return "Investment Appraisal & Present Value"
+        case "Finanzderivate & Risiko":
+            if languageCode == "zh" { return "金融衍生工具与定价模型" }
+            return "Financial Derivatives & Risk"
         default:
             return rawName
         }
@@ -768,6 +795,12 @@ swift_footer = """
             if languageCode == "fr" { return "Suite de Fibonacci (Formule de Binet)" }
             if languageCode == "es" { return "Sucesión de Fibonacci (Fórmula de Binet)" }
             return "Fibonacci Sequence (Binet's Formula)"
+        case "math_seq_arithmetic_sum":
+            if languageCode == "zh" { return "等差数列求和公式" }
+            return "Arithmetic Series (Sum Formula)"
+        case "math_seq_geometric_sum":
+            if languageCode == "zh" { return "等比数列求和公式" }
+            return "Geometric Series (Sum Formula)"
         case "math_geom_pythagoras":
             if languageCode == "zh" { return "勾股定理（毕达哥拉斯定理）" }
             return "Pythagorean Theorem"
@@ -777,60 +810,114 @@ swift_footer = """
         case "math_geom_circle_perimeter":
             if languageCode == "zh" { return "圆形周长计算" }
             return "Circle Perimeter"
+        case "math_geom_ellipse_area":
+            if languageCode == "zh" { return "椭圆面积计算" }
+            return "Ellipse Area"
+        case "math_geom_triangle_area":
+            if languageCode == "zh" { return "三角形几何面积" }
+            return "Triangle Area"
         case "math_geom_sphere_vol":
             if languageCode == "zh" { return "球体体积计算" }
             return "Sphere Volume"
         case "math_geom_sphere_surface":
             if languageCode == "zh" { return "球体表面积计算" }
             return "Sphere Surface Area"
+        case "math_geom_cylinder_vol":
+            if languageCode == "zh" { return "圆柱体体积计算" }
+            return "Cylinder Volume"
+        case "math_geom_cone_vol":
+            if languageCode == "zh" { return "圆锥体体积计算" }
+            return "Cone Volume"
+        case "math_geom_torus_vol":
+            if languageCode == "zh" { return "圆环体体积（古尔丁定理）" }
+            return "Torus Volume"
         case "math_alg_quadratic":
             if languageCode == "zh" { return "一元二次方程求根公式" }
             return "Quadratic Formula"
-        case "math_stat_bayes":
-            if languageCode == "zh" { return "贝叶斯条件概率定理" }
-            return "Bayes' Theorem"
         case "math_alg_stirling":
             if languageCode == "zh" { return "斯特林阶乘近似渐近公式" }
             return "Stirling's Approximation (Factorial)"
-        case "phys_dyn_newton2":
-            if languageCode == "zh" { return "牛顿第二运动定律（动力学基本方程）" }
-            return "Newton's Second Law of Motion"
+        case "math_stat_bayes":
+            if languageCode == "zh" { return "贝叶斯条件概率定理" }
+            return "Bayes' Theorem"
+        case "phys_kin_speed":
+            if languageCode == "zh" { return "匀速直线运动速度公式" }
+            return "Velocity (Uniform Motion)"
         case "phys_kin_accel":
             if languageCode == "zh" { return "匀加速直线运动（速度公式）" }
             return "Uniformly Accelerated Motion"
+        case "phys_kin_dist_accel":
+            if languageCode == "zh" { return "匀加速位移-时间公式" }
+            return "Accelerated Motion Distance Formula"
+        case "phys_kin_centripetal":
+            if languageCode == "zh" { return "圆周运动向心加速度" }
+            return "Centripetal Acceleration"
+        case "phys_dyn_newton2":
+            if languageCode == "zh" { return "牛顿第二运动定律（动力学基本方程）" }
+            return "Newton's Second Law of Motion"
+        case "phys_dyn_friction":
+            if languageCode == "zh" { return "库仑摩擦力定律" }
+            return "Coulomb Friction Law"
+        case "phys_dyn_hooke_spring":
+            if languageCode == "zh" { return "胡克定律（弹簧弹性恢复力）" }
+            return "Hooke's Law (Spring Force)"
+        case "phys_dyn_momentum":
+            if languageCode == "zh" { return "动量定义公式" }
+            return "Linear Momentum"
         case "phys_nrj_kin":
             if languageCode == "zh" { return "动能公式" }
             return "Kinetic Energy"
         case "phys_nrj_pot":
             if languageCode == "zh" { return "重力势能公式" }
             return "Potential Energy (Gravitational)"
-        case "phys_mech_density":
-            if languageCode == "zh" { return "物体与介质密度公式" }
-            return "Density"
-        case "phys_mech_hydro_pressure":
-            if languageCode == "zh" { return "流体静压强（深度重力压强）" }
-            return "Hydrostatic Pressure"
-        case "phys_rel_einstein":
-            if languageCode == "zh" { return "质能等价方程（爱因斯坦）" }
-            return "Mass-Energy Equivalence (Einstein)"
-        case "phys_rel_gamma":
-            if languageCode == "zh" { return "洛伦兹因子（相对论）" }
-            return "Lorentz Factor"
-        case "phys_quant_debroglie":
-            if languageCode == "zh" { return "德布罗意物质波波长" }
-            return "De Broglie Wavelength"
-        case "phys_quant_photon":
-            if languageCode == "zh" { return "普朗克-爱因斯坦光子能量公式" }
-            return "Planck-Einstein Relation (Photon Energy)"
+        case "phys_nrj_power":
+            if languageCode == "zh" { return "机械功率计算" }
+            return "Mechanical Power"
+        case "phys_nrj_efficiency":
+            if languageCode == "zh" { return "机械与能量转化效率" }
+            return "Energy Efficiency"
         case "phys_osc_pendulum":
             if languageCode == "zh" { return "单摆振动周期公式" }
             return "Simple Pendulum (Period)"
         case "phys_osc_spring":
             if languageCode == "zh" { return "弹簧谐振子振动周期公式" }
             return "Spring Pendulum (Harmonic Oscillator)"
+        case "phys_wave_speed":
+            if languageCode == "zh" { return "波动方程（相速度公式）" }
+            return "Wave Equation (Phase Velocity)"
+        case "phys_opt_wien":
+            if languageCode == "zh" { return "维恩位移定律（黑体辐射峰值）" }
+            return "Wien's Displacement Law"
+        case "phys_thermo_heat":
+            if languageCode == "zh" { return "比热容与吸收热量公式" }
+            return "Specific Heat Capacity"
+        case "thermo_carnot":
+            if languageCode == "zh" { return "卡诺循环理论最大热机效率" }
+            return "Carnot Efficiency"
+        case "phys_elec_coulomb":
+            if languageCode == "zh" { return "库仑静电吸引定律" }
+            return "Coulomb's Law (Electrostatics)"
+        case "phys_elec_field":
+            if languageCode == "zh" { return "匀强电场场强公式" }
+            return "Electric Field Strength"
+        case "phys_rel_einstein":
+            if languageCode == "zh" { return "质能等价方程（爱因斯坦）" }
+            return "Mass-Energy Equivalence (Einstein)"
+        case "phys_rel_gamma":
+            if languageCode == "zh" { return "洛伦兹因子（相对论）" }
+            return "Lorentz Factor"
+        case "phys_quant_photon":
+            if languageCode == "zh" { return "普朗克-爱因斯坦光子能量公式" }
+            return "Planck-Einstein Relation (Photon Energy)"
+        case "phys_quant_debroglie":
+            if languageCode == "zh" { return "德布罗意物质波波长" }
+            return "De Broglie Wavelength"
         case "astro_grav_newton":
             if languageCode == "zh" { return "牛顿万有引力定律" }
             return "Newton's Law of Universal Gravitation"
+        case "astro_orbital_vel":
+            if languageCode == "zh" { return "第一宇宙速度（环绕速度）" }
+            return "First Cosmic Velocity (Orbital)"
         case "astro_escape_vel":
             if languageCode == "zh" { return "第二宇宙速度（天体逃逸速度）" }
             return "Escape Velocity"
@@ -843,6 +930,33 @@ swift_footer = """
         case "astro_stefan_boltzmann":
             if languageCode == "zh" { return "斯特藩-玻尔兹曼黑体辐射定律" }
             return "Stefan-Boltzmann Law (Blackbody)"
+        case "chem_gas_ideal":
+            if languageCode == "zh" { return "理想气体状态方程（克拉珀龙方程）" }
+            return "Ideal Gas Law"
+        case "chem_stoich_molar_mass":
+            if languageCode == "zh" { return "摩尔质量与物质的量换算公式" }
+            return "Molar Mass"
+        case "chem_sol_molarity":
+            if languageCode == "zh" { return "物质的量浓度（摩尔浓度）" }
+            return "Molar Concentration"
+        case "chem_thermo_gibbs":
+            if languageCode == "zh" { return "吉布斯-亥姆霍兹自由能判据方程" }
+            return "Gibbs Free Energy Equation"
+        case "chem_elchem_faraday":
+            if languageCode == "zh" { return "法拉第电解定律" }
+            return "Faraday's Law of Electrolysis"
+        case "bio_kin_michaelis_menten":
+            if languageCode == "zh" { return "米氏方程（酶促反应动力学）" }
+            return "Michaelis-Menten Enzyme Kinetics"
+        case "bio_gen_hardy_weinberg":
+            if languageCode == "zh" { return "哈代-温伯格定律（杂合子频率）" }
+            return "Hardy-Weinberg Equilibrium"
+        case "bio_diff_fick":
+            if languageCode == "zh" { return "费克第一扩散定律（生物膜转运）" }
+            return "Fick's First Law of Diffusion"
+        case "bio_ecol_kleiber":
+            if languageCode == "zh" { return "克莱伯定律（生物异速基础代谢率）" }
+            return "Kleiber's Law (Metabolic Scaling)"
         case "elec_ohm":
             if languageCode == "zh" { return "欧姆定律（电压、电流与电阻）" }
             return "Ohm's Law"
@@ -852,6 +966,9 @@ swift_footer = """
         case "elec_power_ri":
             if languageCode == "zh" { return "焦耳热损耗功率公式" }
             return "Joule Heating / Resistor Power"
+        case "elec_res_wire":
+            if languageCode == "zh" { return "导体电阻与电阻率计算" }
+            return "Conductor Resistance Formula"
         case "elec_ac_xc":
             if languageCode == "zh" { return "容抗计算公式（电容交流电抗）" }
             return "Capacitive Reactance (Xc)"
@@ -861,18 +978,6 @@ swift_footer = """
         case "elec_ac_thomson":
             if languageCode == "zh" { return "汤姆孙LC谐振频率公式" }
             return "Thomson's LC Resonance Frequency"
-        case "chem_gas_ideal":
-            if languageCode == "zh" { return "理想气体状态方程（克拉珀龙方程）" }
-            return "Ideal Gas Law"
-        case "chem_stoich_molar_mass":
-            if languageCode == "zh" { return "摩尔质量与物质的量换算公式" }
-            return "Molar Mass"
-        case "chem_thermo_gibbs":
-            if languageCode == "zh" { return "吉布斯-亥姆霍兹自由能判据方程" }
-            return "Gibbs Free Energy Equation"
-        case "thermo_carnot":
-            if languageCode == "zh" { return "卡诺循环理论最大热机效率" }
-            return "Carnot Efficiency"
         case "eng_mech_hooke":
             if languageCode == "zh" { return "胡克应力-应变线性弹性定律" }
             return "Hooke's Law (Stress-Strain)"
@@ -882,21 +987,39 @@ swift_footer = """
         case "eng_mech_torque":
             if languageCode == "zh" { return "力矩与杠杆原理公式" }
             return "Torque (Moment of Force)"
-        case "eng_euler_buckling":
-            if languageCode == "zh" { return "欧拉压杆临界失稳载荷公式" }
-            return "Euler's Critical Buckling Load"
+        case "eng_archimedes_buoyancy":
+            if languageCode == "zh" { return "阿基米德浮力定律" }
+            return "Archimedes' Principle (Buoyancy)"
+        case "eng_fluid_reynolds":
+            if languageCode == "zh" { return "雷诺数（流体力学流态判定）" }
+            return "Reynolds Number"
+        case "eng_fluid_drag":
+            if languageCode == "zh" { return "空气动力学阻力计算" }
+            return "Aerodynamic Drag Force"
         case "cs_amdahl":
             if languageCode == "zh" { return "阿姆达尔定律（并行计算加速比）" }
             return "Amdahl's Law (Parallel Speedup)"
+        case "cs_gustafson":
+            if languageCode == "zh" { return "古斯塔夫森定律（超算定标加速）" }
+            return "Gustafson's Law"
         case "cs_shannon":
             if languageCode == "zh" { return "香农-哈特利信道极限传输容量" }
             return "Shannon-Hartley Channel Capacity"
+        case "cs_nyquist":
+            if languageCode == "zh" { return "奈奎斯特采样定理（抗混叠）" }
+            return "Nyquist Sampling Theorem"
         case "fin_compound_interest":
             if languageCode == "zh" { return "复利终值计算模型" }
             return "Compound Interest"
+        case "fin_continuous_interest":
+            if languageCode == "zh" { return "连续复利模型（指数增长）" }
+            return "Continuous Compounding Model"
         case "fin_present_value":
             if languageCode == "zh" { return "资金时间价值与现值贴现模型" }
             return "Present Value (Discounting)"
+        case "fin_annuity_rate":
+            if languageCode == "zh" { return "等额本息年金贷款摊还率" }
+            return "Annuity Loan Amortization"
         default:
             return defaultName
         }
@@ -929,6 +1052,9 @@ swift_footer = """
         case "chem_gas_ideal":
             if languageCode == "zh" { return "热力学状态方程，描述理想气体压力、体积、物质的量与热力学温度关系。" }
             return "Thermodynamic equation of state of an ideal gas."
+        case "bio_kin_michaelis_menten":
+            if languageCode == "zh" { return "描述酶催化底物生成产物时初速度随底物浓度变化的经典双曲线模型。" }
+            return "Classic kinetic model for enzyme-catalyzed reactions as a function of substrate concentration."
         default:
             return defaultDesc
         }
@@ -974,6 +1100,10 @@ swift_footer = """
         case "Kn": return languageCode == "zh" ? "期末本利和" : "Final Capital"
         case "PV": return languageCode == "zh" ? "现值（PV）" : "Present Value"
         case "FV": return languageCode == "zh" ? "终值（FV）" : "Future Value"
+        case "Vmax": return languageCode == "zh" ? "最大反应速率 Vmax" : "Max Reaction Rate Vmax"
+        case "S": return languageCode == "zh" ? "底物浓度 / 和" : "Substrate Concentration / Sum"
+        case "Km": return languageCode == "zh" ? "米氏常数 Km" : "Michaelis Constant Km"
+        case "B": return languageCode == "zh" ? "基础代谢率 B / 带宽" : "Metabolic Rate B / Bandwidth"
         default: return defaultName
         }
     }
@@ -983,4 +1113,4 @@ swift_footer = """
 with open('Sources/FormulaExMachinaKit/LocalizationService.swift', 'w') as f:
     f.write(out + swift_footer)
 
-print("Generated universal LocalizationService.swift successfully.")
+print("Generated universal LocalizationService.swift with Biology & new university faculties successfully.")
