@@ -40,8 +40,9 @@ echo "       Aktueller Revisionsstand: $current_rev"
 echo "[3/5] Führe Verifikations- und Unit-Tests aus..."
 swift test --scratch-path /tmp/FormulaExMachina-build
 
-# 4. App neu kompilieren und installieren
-echo "[4/5] Kompiliere Release-Build und installiere nach ~/Applications/..."
+# 4. Versionsnummer automatisch anpassen & Release-Build kompilieren
+echo "[4/5] Inkrementiere Versionsnummer automatisch und erstelle Release-Build..."
+"$here/tools/bump_version.sh" --bump
 ./build.sh
 
 # 5. App-Neustart bei Bedarf

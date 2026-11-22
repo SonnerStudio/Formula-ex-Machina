@@ -43,7 +43,7 @@ public struct MainSplitView: View {
                             )
                             .foregroundStyle(Palette.sonnerStudioGold) // Gelb
 
-                        Text("v1.1.0")
+                        Text(AppVersion.displayString)
                             .font(.system(size: 10, weight: .bold, design: .monospaced))
                             .padding(.horizontal, 6)
                             .padding(.vertical, 2)
@@ -125,7 +125,7 @@ public struct MainSplitView: View {
 
                 Spacer()
 
-                Text("v1.1.0")
+                Text(AppVersion.displayString)
                     .font(.system(size: 10, weight: .bold, design: .monospaced))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
@@ -168,7 +168,7 @@ public struct MainSplitView: View {
             }
             .listStyle(.sidebar)
         }
-        .navigationTitle("Formula ex Machina v1.1.0")
+        .navigationTitle("Formula ex Machina \(AppVersion.displayString)")
     }
 
     // MARK: - Formula List

@@ -23,6 +23,14 @@ fi
 
 build_log=$(mktemp)
 build_ok=1
+
+# Versionsnummer synchronisieren
+if [[ " $* " == *" --bump "* ]]; then
+  "$here/tools/bump_version.sh" --bump
+else
+  "$here/tools/bump_version.sh" --sync
+fi
+
 swift build -c "$config" --package-path "$here" --scratch-path "$scratch" > "$build_log" 2>&1 || build_ok=0
 grep -E "error|warning|Build complete" "$build_log" | grep -v "^\[" || true
 rm -f "$build_log"
@@ -42,7 +50,9 @@ mkdir -p "$HOME/Applications"
 rm -rf "$app"
 mkdir -p "$app/Contents/MacOS" "$app/Contents/Resources"
 cp "$bin" "$app/Contents/MacOS/$name"
-sed -e "s/__BUILD__/$(date +%Y%m%d%H%M)/" "$here/Info.plist.in" > "$app/Contents/Info.plist"
+ver=$(cat "$here/VERSION" 2>/dev/null | tr -d '[:space:]' || echo "1.1.1")
+build_id=$(date +%Y%m%d%H%M)
+sed -e "s/__VERSION__/$ver/g" -e "s/__BUILD__/$build_id/g" "$here/Info.plist.in" > "$app/Contents/Info.plist"
 # The icon: Icon/AppIcon.icon -> Resources/Assets.car + AppIcon.icns, rebuilt when it changed.
 if [[ -d "$here/Icon/AppIcon.icon" ]]; then
   car="$here/Resources/Assets.car"

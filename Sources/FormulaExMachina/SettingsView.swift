@@ -78,7 +78,7 @@ public struct SettingsView: View {
             }
 
             Section(loc(.settingsAbout)) {
-                LabeledContent(loc(.settingsVersion), value: "1.1.0 (SonnerStudio Build 2026.11)")
+                LabeledContent(loc(.settingsVersion), value: AppVersion.fullDescription)
                 LabeledContent(loc(.settingsDeveloper), value: "SonnerStudio – Jan Friske")
             }
         }

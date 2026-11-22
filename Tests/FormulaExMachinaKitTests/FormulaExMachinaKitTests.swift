@@ -139,4 +139,12 @@ struct FormulaExMachinaKitTests {
         // 10-te Fibonacci Zahl ist genau 55
         #expect(abs(outFib.resultValue - 55.0) < 1e-3)
     }
+
+    @Test("S-206: Automatische Versionsverwaltung (AppVersion)")
+    func testAppVersion() {
+        #expect(!AppVersion.version.isEmpty)
+        #expect(AppVersion.displayString.hasPrefix("v"))
+        #expect(!AppVersion.build.isEmpty)
+        #expect(AppVersion.fullDescription.contains(AppVersion.version))
+    }
 }

@@ -375,7 +375,7 @@ public struct FormulaDetailView: View {
                         .foregroundStyle(Palette.sonnerStudioGold) // Gelb
                         .cornerRadius(3)
 
-                    Text("v1.1.0")
+                    Text(AppVersion.displayString)
                         .font(.system(size: 9, weight: .bold, design: .monospaced))
                         .padding(.horizontal, 4)
                         .padding(.vertical, 1.5)
