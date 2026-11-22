@@ -14,7 +14,7 @@ Acceptance:
 - [unit] AST evaluates basic operations (+, -, *, /, ^, sqrt, sin, cos, ln) with high precision (Decimal/Double).
 - [unit] Division by zero is detected and throws a typed `MathError.divisionByZero`.
 - [self] Selftest runs 50 algebraic benchmark expressions with expected numerical outputs.
-Status: todo
+Status: done
 
 ### S-102 Symbolischer Gleichungslöser (Symbolic Isolator)
 As the user, I can isolate any variable in an equation (e.g. from $E = m \cdot c^2$ solve for $m$ or $c$, from $v = v_0 + a \cdot t$ solve for $a$ or $t$).
@@ -25,7 +25,7 @@ Acceptance:
 - [unit] Equation $E_{kin} = \frac{1}{2} m v^2$ solves for $v \implies v = \sqrt{\frac{2 E_{kin}}{m}}$.
 - [unit] Equation $p \cdot V = n \cdot R \cdot T$ solves for all 5 variables.
 - [unit] Returns transformation steps explaining each algebraic equivalence step.
-Status: todo
+Status: done
 UX:
 - Dropdown or segmented control "Nach Variable umstellen: [X]".
 - Clear mathematical notation showing the rearranged equation immediately.
@@ -38,7 +38,7 @@ Acceptance:
 - [snap] Formula is rendered with LaTeX-style crisp typography.
 - [snap] Input fields are vertically aligned with symbol labels and unit badges.
 - [self] Typing numbers into all required inputs immediately updates the target output field without lag (< 16 ms).
-Status: todo
+Status: done
 UX:
 - Number fields with macOS-native stepper and keyboard navigation (`Tab` / `Shift-Tab`).
 - Clear visual indicator for the calculated target variable (highlighted background, badge "Ergebnis").
@@ -51,7 +51,7 @@ Acceptance:
 - [unit] $v = 100 \text{ km/h}$, $t = 2 \text{ h}$ calculates distance $s = 200 \text{ km}$ or $200000 \text{ m}$.
 - [unit] Incompatible unit dimensions are rejected at compile/run time.
 - [snap] Unit picker displays SI prefix and common technical units.
-Status: todo
+Status: done
 
 ### S-105 Persistente Speicherung der letzten Berechnungen
 As the user, my entered values and calculation results are saved locally so they are restored after restarting the app.
