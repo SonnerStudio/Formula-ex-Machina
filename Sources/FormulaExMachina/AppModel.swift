@@ -9,6 +9,14 @@ public final class AppModel {
     public let catalog = FormulaCatalog.shared
     public let service = CalculationService.shared
     public let converter = UnitConverter.shared
+    public let languages = LanguageRegistry.shared
+
+    // Lokalisierung & Sprache (130 Sprachen)
+    public var selectedLanguageCode: String = "de" {
+        didSet {
+            UserDefaults.standard.set(selectedLanguageCode, forKey: "appLanguage")
+        }
+    }
 
     // Navigation
     public var selectedCategory: String? = "Physik"
@@ -26,10 +34,49 @@ public final class AppModel {
     public var currentOutput: CalculationOutput?
     public var errorMessage: String?
     public var copiedFeedback: Bool = false
+    public var isUpdating: Bool = false
+    public var updateStatusText: String?
 
     public init() {
+        if let savedLang = UserDefaults.standard.string(forKey: "appLanguage") {
+            self.selectedLanguageCode = savedLang
+        }
         // Initiale Berechnung ausführen
         selectFormula(id: "phys_dyn_newton2")
+    }
+
+    public var currentLanguage: LanguageItem {
+        languages.find(code: selectedLanguageCode) ?? languages.languages[0]
+    }
+
+    public func checkForUpdates() {
+        isUpdating = true
+        updateStatusText = "Prüfe auf Updates..."
+
+        Task.detached {
+            let proc = Process()
+            proc.executableURL = URL(fileURLWithPath: "/bin/zsh")
+            proc.arguments = ["/Volumes/sonnerstudiomacstudiomax36gb/Projekte/Formula ex Machina/tools/update.sh"]
+
+            try? proc.run()
+            proc.waitUntilExit()
+
+            await MainActor.run {
+                self.isUpdating = false
+                if proc.terminationStatus == 0 {
+                    self.updateStatusText = "Bereits auf dem neuesten Stand!"
+                } else {
+                    self.updateStatusText = "Update fehlgeschlagen oder keine Verbindung."
+                }
+
+                Task {
+                    try? await Task.sleep(nanoseconds: 3_000_000_000)
+                    await MainActor.run {
+                        self.updateStatusText = nil
+                    }
+                }
+            }
+        }
     }
 
     public var selectedFormula: FormulaItem? {

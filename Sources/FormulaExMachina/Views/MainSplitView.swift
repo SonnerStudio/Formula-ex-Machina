@@ -18,7 +18,101 @@ public struct MainSplitView: View {
             FormulaDetailView(model: model)
         }
         .navigationSplitViewStyle(.balanced)
-        .frame(minWidth: 960, minHeight: 640)
+        .frame(minWidth: 1040, minHeight: 680)
+        .toolbar {
+            ToolbarItem(placement: .navigation) {
+                HStack(spacing: Space.sm) {
+                    // SonnerStudio Branding Badge
+                    HStack(spacing: 6) {
+                        Image(systemName: "atom")
+                            .font(.system(size: 14, weight: .bold))
+                            .foregroundStyle(Palette.accent)
+
+                        Text("SONNERSTUDIO")
+                            .font(.system(size: 11, weight: .black, design: .rounded))
+                            .tracking(1.2)
+                            .foregroundStyle(.primary)
+
+                        Text("PRO")
+                            .font(.system(size: 9, weight: .heavy))
+                            .padding(.horizontal, 5)
+                            .padding(.vertical, 2)
+                            .background(
+                                Capsule()
+                                    .fill(Palette.accent)
+                            )
+                            .foregroundStyle(Palette.onAccent)
+                    }
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(
+                        Capsule()
+                            .fill(Color.primary.opacity(0.04))
+                            .overlay(
+                                Capsule()
+                                    .stroke(Palette.accent.opacity(0.2), lineWidth: 1)
+                            )
+                    )
+                    .help("SonnerStudio Formula ex Machina – Universalwissenschaftliches Formelsystem")
+                }
+            }
+
+            ToolbarItemGroup(placement: .automatic) {
+                // Sprachauswahl-Dropdownmenü mit 130 Weltsprachen & Flaggen
+                Menu {
+                    ForEach(model.languages.languages) { lang in
+                        Button {
+                            model.selectedLanguageCode = lang.code
+                        } label: {
+                            HStack {
+                                Text(lang.displayName)
+                                if model.selectedLanguageCode == lang.code {
+                                    Spacer()
+                                    Image(systemName: "checkmark")
+                                }
+                            }
+                        }
+                    }
+                } label: {
+                    HStack(spacing: 5) {
+                        Text(model.currentLanguage.flag)
+                            .font(.system(size: 14))
+                        Text(model.currentLanguage.name)
+                            .font(.system(size: 12, weight: .medium))
+                    }
+                    .padding(.horizontal, 6)
+                    .padding(.vertical, 3)
+                    .background(
+                        RoundedRectangle(cornerRadius: 6)
+                            .fill(Color(nsColor: .controlBackgroundColor))
+                    )
+                }
+                .help("Sprachauswahl: Wählen Sie aus den 130 meistgesprochenen Sprachen der Erde")
+
+                // Update-Button (SternenMeister / Zeitmeister Methode)
+                Button {
+                    model.checkForUpdates()
+                } label: {
+                    HStack(spacing: 4) {
+                        if model.isUpdating {
+                            ProgressView()
+                                .controlSize(.small)
+                        } else {
+                            Image(systemName: "arrow.triangle.2.circlepath")
+                        }
+                        if let status = model.updateStatusText {
+                            Text(status)
+                                .font(.caption2)
+                        } else {
+                            Text("Update")
+                                .font(.caption)
+                        }
+                    }
+                }
+                .disabled(model.isUpdating)
+                .help("SonnerStudio Update-Manager: Synchronisiert mit GitHub und lokalem Git-Zentralarchiv")
+            }
+        }
     }
 
     // MARK: - Sidebar

@@ -32,6 +32,9 @@ public struct FormulaDetailView: View {
                     if let steps = model.currentOutput?.steps, steps.count > 1 {
                         stepsSection(steps: steps)
                     }
+
+                    // 7. SonnerStudio Branding & System-Status Footer
+                    sonnerStudioFooterView
                 }
                 .padding(Space.xl)
             }
@@ -343,6 +346,58 @@ public struct FormulaDetailView: View {
                 .fill(Color.primary.opacity(0.03))
         )
         .help("Klappt den vollständigen didaktischen Umformungsweg der Gleichung auf")
+    }
+
+    @ViewBuilder
+    private var sonnerStudioFooterView: some View {
+        HStack(spacing: Space.md) {
+            Image(systemName: "atom")
+                .font(.system(size: 20))
+                .foregroundStyle(Palette.accent)
+
+            VStack(alignment: .leading, spacing: 2) {
+                HStack(spacing: Space.xs) {
+                    Text("SONNERSTUDIO FORMULA EX MACHINA")
+                        .font(.system(size: 11, weight: .black, design: .rounded))
+                        .tracking(1.0)
+                        .foregroundStyle(.primary)
+
+                    Text("UNIVERSAL SCIENCE EDITION")
+                        .font(.system(size: 9, weight: .bold))
+                        .padding(.horizontal, 4)
+                        .padding(.vertical, 1.5)
+                        .background(Palette.accent.opacity(0.15))
+                        .foregroundStyle(Palette.accent)
+                        .cornerRadius(3)
+                }
+
+                Text("Entwickelt von SonnerStudio • Jan Friske • 100% Offline • Lokale symbolische Algebra • 130 Sprachen")
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+            }
+
+            Spacer()
+
+            HStack(spacing: Space.sm) {
+                Label("Offline", systemImage: "bolt.horizontal.circle.fill")
+                    .font(.caption2)
+                    .foregroundStyle(.green)
+
+                Label("Liquid Glass", systemImage: "sparkles")
+                    .font(.caption2)
+                    .foregroundStyle(Palette.accent)
+            }
+        }
+        .padding(Space.md)
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.primary.opacity(0.02))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.primary.opacity(0.06), lineWidth: 1)
+                )
+        )
+        .padding(.top, Space.lg)
     }
 
     private func formattedValue(_ val: Double) -> String {
