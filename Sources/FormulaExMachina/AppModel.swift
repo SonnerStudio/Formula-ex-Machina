@@ -27,6 +27,26 @@ public final class AppModel {
         l10n.localizedCategory(name, languageCode: selectedLanguageCode)
     }
 
+    public func localizedSubcategory(_ name: String) -> String {
+        l10n.localizedSubcategory(name, languageCode: selectedLanguageCode)
+    }
+
+    public func localizedFormulaName(_ formula: FormulaItem) -> String {
+        l10n.localizedFormulaName(id: formula.id, defaultName: formula.name, languageCode: selectedLanguageCode)
+    }
+
+    public func localizedFormulaDesc(_ formula: FormulaItem) -> String {
+        l10n.localizedFormulaDesc(id: formula.id, defaultDesc: formula.description, languageCode: selectedLanguageCode)
+    }
+
+    public func localizedVariableName(symbol: String, defaultName: String) -> String {
+        l10n.localizedVariableName(symbol: symbol, defaultName: defaultName, languageCode: selectedLanguageCode)
+    }
+
+    public func localizedUnitCategory(_ category: UnitCategory) -> String {
+        l10n.localizedUnitCategory(category, languageCode: selectedLanguageCode)
+    }
+
     // Navigation
     public var selectedCategory: String? = "Physik"
     public var selectedSubcategory: String? = "Dynamik"

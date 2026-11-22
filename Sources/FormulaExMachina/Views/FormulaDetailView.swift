@@ -52,59 +52,30 @@ public struct FormulaDetailView: View {
 
     @ViewBuilder
     private func headerView(formula: FormulaItem) -> some View {
-        HStack(alignment: .top) {
-            VStack(alignment: .leading, spacing: Space.xs) {
-                HStack(spacing: Space.sm) {
-                    Text(formula.category.uppercased())
-                        .font(.caption)
-                        .fontWeight(.bold)
-                        .foregroundStyle(.secondary)
-
-                    Image(systemName: "chevron.right")
-                        .font(.caption2)
-                        .foregroundStyle(.tertiary)
-
-                    Text(formula.subcategory)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-
-                Text(formula.name)
-                    .font(.system(size: 26, weight: .bold, design: .rounded))
-                    .foregroundStyle(.primary)
-
-                Text(formula.description)
-                    .font(.body)
+        VStack(alignment: .leading, spacing: Space.xs) {
+            HStack(spacing: Space.sm) {
+                Text(model.localizedCategory(formula.category).uppercased())
+                    .font(.caption)
+                    .fontWeight(.bold)
                     .foregroundStyle(.secondary)
-                    .lineLimit(3)
+
+                Image(systemName: "chevron.right")
+                    .font(.caption2)
+                    .foregroundStyle(.tertiary)
+
+                Text(model.localizedSubcategory(formula.subcategory))
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
             }
 
-            Spacer()
+            Text(model.localizedFormulaName(formula))
+                .font(.system(size: 26, weight: .bold, design: .rounded))
+                .foregroundStyle(.primary)
 
-            // Prominente Nationalflaggen- & Sprachanzeige
-            HStack(spacing: 8) {
-                Text(model.currentLanguage.flag)
-                    .font(.system(size: 28))
-                VStack(alignment: .trailing, spacing: 2) {
-                    Text(model.currentLanguage.name)
-                        .font(.system(size: 13, weight: .bold))
-                        .foregroundStyle(.primary)
-                    Text(model.currentLanguage.nativeName)
-                        .font(.system(size: 11))
-                        .foregroundStyle(.secondary)
-                }
-            }
-            .padding(.horizontal, 10)
-            .padding(.vertical, 6)
-            .background(
-                RoundedRectangle(cornerRadius: 8)
-                    .fill(Color(nsColor: .controlBackgroundColor))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.primary.opacity(0.12), lineWidth: 1)
-                    )
-            )
-            .help("Aktive Sprache: \(model.currentLanguage.name) (\(model.currentLanguage.nativeName))")
+            Text(model.localizedFormulaDesc(formula))
+                .font(.body)
+                .foregroundStyle(.secondary)
+                .lineLimit(3)
         }
     }
 
@@ -143,7 +114,7 @@ public struct FormulaDetailView: View {
                     set: { model.setTargetVariable($0) }
                 )) {
                     ForEach(formula.variables) { v in
-                        Text("\(v.symbol) – \(v.name)").tag(v.symbol)
+                        Text("\(v.symbol) – \(model.localizedVariableName(symbol: v.symbol, defaultName: v.name))").tag(v.symbol)
                     }
                 }
                 .pickerStyle(.menu)
@@ -202,15 +173,15 @@ public struct FormulaDetailView: View {
 
             // Variablenname
             VStack(alignment: .leading, spacing: 2) {
-                Text(variable.name)
+                Text(model.localizedVariableName(symbol: variable.symbol, defaultName: variable.name))
                     .font(.subheadline)
                     .fontWeight(.medium)
-                Text(variable.unitCategory.rawValue)
+                Text(model.localizedUnitCategory(variable.unitCategory))
                     .font(.caption2)
                     .foregroundStyle(.secondary)
             }
             .frame(width: 140, alignment: .leading)
-            .help("\(variable.name) – Physikalische Kategorie: \(variable.unitCategory.rawValue)")
+            .help("\(model.localizedVariableName(symbol: variable.symbol, defaultName: variable.name)) – \(model.localizedUnitCategory(variable.unitCategory))")
 
             // Eingabefeld
             TextField(
@@ -270,7 +241,7 @@ public struct FormulaDetailView: View {
 
                     VStack(alignment: .leading, spacing: 2) {
                         let varName = formula.variables.first { $0.symbol == out.targetVariable }?.name ?? ""
-                        Text(varName)
+                        Text(model.localizedVariableName(symbol: out.targetVariable, defaultName: varName))
                             .font(.caption)
                             .foregroundStyle(.secondary)
 

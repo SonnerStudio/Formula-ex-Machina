@@ -1,4 +1,5 @@
 import Foundation
+import FormulaEngine
 
 public enum LocalizedKey: String, CaseIterable, Sendable {
     case disciplines = "disciplines"
@@ -586,6 +587,8 @@ public struct LocalizationService: Sendable {
             return string(for: .catPhysics, languageCode: languageCode)
         case "Mathematik", "Mathematics":
             return string(for: .catMath, languageCode: languageCode)
+        case "Astronomie & Astrophysik", "Astronomy & Astrophysics":
+            return languageCode == "de" ? "Astronomie & Astrophysik" : "Astronomy & Astrophysics"
         case "Elektrotechnik", "Electrical Engineering":
             return string(for: .catElectrical, languageCode: languageCode)
         case "Chemie", "Chemistry":
@@ -598,6 +601,176 @@ public struct LocalizationService: Sendable {
             return string(for: .catComputerScience, languageCode: languageCode)
         default:
             return rawName
+        }
+    }
+
+    /// Übersetzt Unterkategorienamen
+    public func localizedSubcategory(_ rawName: String, languageCode: String) -> String {
+        guard languageCode != "de" else { return rawName }
+        switch rawName {
+        case "Goldener Schnitt & Folgen": return "Golden Ratio & Sequences"
+        case "Geometrie 2D (Flächen)": return "2D Geometry (Areas)"
+        case "Geometrie 3D (Körper)": return "3D Geometry (Solids)"
+        case "Trigonometrie": return "Trigonometry"
+        case "Algebra & Analysis": return "Algebra & Calculus"
+        case "Statistik & Stochastik": return "Statistics & Probability"
+        case "Kinematik": return "Kinematics"
+        case "Dynamik": return "Dynamics"
+        case "Arbeit & Energie": return "Work & Energy"
+        case "Schwingungen & Wellen": return "Oscillations & Waves"
+        case "Optik & Strahlung": return "Optics & Radiation"
+        case "Relativität & Quantenphysik": return "Relativity & Quantum Physics"
+        case "Gravitation & Bahnbewegung": return "Gravitation & Orbital Mechanics"
+        case "Kosmologie & Sterne": return "Cosmology & Stars"
+        case "Hochenergie-Astrophysik": return "High-Energy Astrophysics"
+        case "Gleichstrom & Netzwerke": return "Direct Current & Networks"
+        case "Wechselstrom & Blindwiderstände": return "Alternating Current & Reactance"
+        case "Elektromagnetische Felder & Wellen": return "Electromagnetic Fields & Waves"
+        case "Gase & Thermodynamik": return "Gases & Thermodynamics"
+        case "Lösungen & Kinetik": return "Solutions & Kinetics"
+        case "Elektrochemie & pH-Gleichgewichte": return "Electrochemistry & pH Equilibria"
+        case "Festigkeitslehre & Elastizität": return "Mechanics of Materials"
+        case "Strömungsmechanik": return "Fluid Mechanics"
+        case "Statik & Antriebe": return "Statics & Drives"
+        case "Informationstheorie & Codierung": return "Information Theory & Coding"
+        case "Systemleistung & Skalierung": return "System Performance & Scaling"
+        case "Zins & Zinseszins": return "Interest & Compounding"
+        case "Investitionsrechnung & Barwert": return "Investment & Present Value"
+        default: return rawName
+        }
+    }
+
+    /// Übersetzt physikalische Einheitenkategorien
+    public func localizedUnitCategory(_ category: UnitCategory, languageCode: String) -> String {
+        guard languageCode != "de" else { return category.rawValue }
+        switch category {
+        case .length: return "Length"
+        case .time: return "Time"
+        case .mass: return "Mass"
+        case .velocity: return "Velocity"
+        case .acceleration: return "Acceleration"
+        case .force: return "Force"
+        case .energy: return "Energy & Work"
+        case .power: return "Power"
+        case .pressure: return "Pressure"
+        case .electricVoltage: return "Electric Voltage"
+        case .electricCurrent: return "Electric Current"
+        case .electricResistance: return "Electric Resistance"
+        case .temperature: return "Temperature"
+        case .dimensionless: return "Dimensionless / Number"
+        }
+    }
+
+    /// Übersetzt Formelnamen ins Englische / Internationale
+    public func localizedFormulaName(id: String, defaultName: String, languageCode: String) -> String {
+        guard languageCode != "de" else { return defaultName }
+        switch id {
+        case "math_golden_ratio": return "Golden Ratio (Definition & Value)"
+        case "math_golden_ratio_prop": return "Golden Ratio (Proportion a : b)"
+        case "math_fibonacci_binet": return "Fibonacci Sequence (Binet's Formula)"
+        case "math_geom_pythagoras": return "Pythagorean Theorem"
+        case "math_geom_circle_area": return "Circle Area"
+        case "math_geom_circle_perimeter": return "Circle Perimeter"
+        case "math_geom_sphere_vol": return "Sphere Volume"
+        case "math_geom_sphere_surface": return "Sphere Surface Area"
+        case "math_alg_quadratic": return "Quadratic Formula"
+        case "math_stat_bayes": return "Bayes' Theorem"
+        case "math_alg_stirling": return "Stirling's Approximation (Factorial)"
+        case "phys_dyn_newton2": return "Newton's Second Law of Motion"
+        case "phys_nrj_kin": return "Kinetic Energy"
+        case "phys_nrj_pot": return "Potential Energy (Gravitational)"
+        case "phys_mech_density": return "Density"
+        case "phys_mech_hydro_pressure": return "Hydrostatic Pressure"
+        case "phys_rel_einstein": return "Mass-Energy Equivalence (Einstein)"
+        case "phys_rel_gamma": return "Lorentz Factor"
+        case "phys_quant_debroglie": return "De Broglie Wavelength"
+        case "phys_quant_photon": return "Planck-Einstein Relation (Photon Energy)"
+        case "phys_osc_pendulum": return "Simple Pendulum (Period)"
+        case "phys_osc_spring": return "Spring Pendulum (Harmonic Oscillator)"
+        case "astro_grav_newton": return "Newton's Law of Universal Gravitation"
+        case "astro_escape_vel": return "Escape Velocity"
+        case "astro_schwarzschild": return "Schwarzschild Radius (Event Horizon)"
+        case "astro_hubble": return "Hubble-Lemaître Law (Cosmic Expansion)"
+        case "astro_stefan_boltzmann": return "Stefan-Boltzmann Law (Blackbody)"
+        case "elec_ohm": return "Ohm's Law"
+        case "elec_power_ui": return "Electric Power (DC)"
+        case "elec_power_ri": return "Joule Heating / Resistor Power"
+        case "elec_ac_xc": return "Capacitive Reactance (Xc)"
+        case "elec_ac_xl": return "Inductive Reactance (Xl)"
+        case "elec_ac_thomson": return "Thomson's LC Resonance Frequency"
+        case "chem_gas_ideal": return "Ideal Gas Law"
+        case "chem_stoich_molar_mass": return "Molar Mass"
+        case "chem_thermo_gibbs": return "Gibbs Free Energy Equation"
+        case "thermo_carnot": return "Carnot Efficiency"
+        case "eng_mech_hooke": return "Hooke's Law (Stress-Strain)"
+        case "eng_mech_stress": return "Normal Mechanical Stress"
+        case "eng_mech_torque": return "Torque (Moment of Force)"
+        case "eng_euler_buckling": return "Euler's Critical Buckling Load"
+        case "cs_amdahl": return "Amdahl's Law (Parallel Speedup)"
+        case "cs_shannon": return "Shannon-Hartley Channel Capacity"
+        case "fin_compound_interest": return "Compound Interest"
+        case "fin_present_value": return "Present Value (Discounting)"
+        default: return defaultName
+        }
+    }
+
+    /// Übersetzt Formelbeschreibungen
+    public func localizedFormulaDesc(id: String, defaultDesc: String, languageCode: String) -> String {
+        guard languageCode != "de" else { return defaultDesc }
+        switch id {
+        case "math_golden_ratio": return "The divine proportion (Phi = (1 + sqrt(5)) / 2). Fundamental constant of harmony."
+        case "math_golden_ratio_prop": return "Calculates the major segment 'a' from minor segment 'b' using the Golden Ratio."
+        case "math_fibonacci_binet": return "Closed-form formula by J. P. M. Binet to calculate the n-th Fibonacci number directly."
+        case "math_geom_pythagoras": return "Calculates the hypotenuse c in a right triangle from legs a and b."
+        case "phys_dyn_newton2": return "Force equals mass times acceleration. Core axiom of classical mechanics."
+        case "phys_rel_einstein": return "Albert Einstein's mass-energy equivalence equation."
+        case "elec_ohm": return "Relationship between electric voltage U, resistance R, and current I."
+        case "chem_gas_ideal": return "Thermodynamic equation of state of an ideal gas."
+        default: return defaultDesc
+        }
+    }
+
+    /// Übersetzt Variablennamen
+    public func localizedVariableName(symbol: String, defaultName: String, languageCode: String) -> String {
+        guard languageCode != "de" else { return defaultName }
+        switch symbol {
+        case "Phi": return "Golden Ratio Phi"
+        case "Fn": return "n-th Fibonacci Number"
+        case "n": return "Index / Position n"
+        case "a": return "Major segment / Leg a"
+        case "b": return "Minor segment / Leg b"
+        case "c": return "Hypotenuse / Speed of light"
+        case "r": return "Radius"
+        case "A": return "Area / Surface area"
+        case "U": return "Perimeter / Voltage"
+        case "V": return "Volume"
+        case "F": return "Force"
+        case "m": return "Mass"
+        case "m1": return "Mass 1"
+        case "m2": return "Mass 2"
+        case "E": return "Energy"
+        case "v": return "Velocity"
+        case "g": return "Gravitational acceleration"
+        case "h": return "Height / Planck constant"
+        case "p": return "Pressure / Momentum"
+        case "P": return "Power / Probability"
+        case "T": return "Period / Temperature"
+        case "R": return "Resistance / Gas constant"
+        case "I": return "Current / Moment of inertia"
+        case "f": return "Frequency"
+        case "C": return "Capacitance / Channel capacity"
+        case "L": return "Inductance / Length"
+        case "rho": return "Density"
+        case "gamma": return "Lorentz Factor"
+        case "lambda": return "Wavelength"
+        case "sigma": return "Stress / Stefan-Boltzmann"
+        case "eps": return "Strain"
+        case "M": return "Torque / Molar mass"
+        case "K0": return "Initial Capital"
+        case "Kn": return "Final Capital"
+        case "PV": return "Present Value"
+        case "FV": return "Future Value"
+        default: return defaultName
         }
     }
 }

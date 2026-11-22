@@ -58,35 +58,19 @@ public struct MainSplitView: View {
             }
 
             ToolbarItemGroup(placement: .automatic) {
-                // Sprachauswahl-Dropdownmenü mit 130 Weltsprachen & Nationalflaggen
-                HStack(spacing: 6) {
-                    Text(model.currentLanguage.flag)
-                        .font(.system(size: 18))
-                        .help("Aktuelle Nationalflagge: \(model.currentLanguage.name)")
-
-                    Picker("", selection: Binding(
-                        get: { model.selectedLanguageCode },
-                        set: { model.selectedLanguageCode = $0 }
-                    )) {
-                        ForEach(model.languages.languages) { lang in
-                            Text("\(lang.flag)  \(lang.name) (\(lang.nativeName))")
-                                .tag(lang.code)
-                        }
+                // Sprachauswahl-Dropdownmenü mit 130 Weltsprachen & Nationalflaggen (Flagge genau 1x im Menü)
+                Picker("", selection: Binding(
+                    get: { model.selectedLanguageCode },
+                    set: { model.selectedLanguageCode = $0 }
+                )) {
+                    ForEach(model.languages.languages) { lang in
+                        Text("\(lang.flag)  \(lang.name) (\(lang.nativeName))")
+                            .tag(lang.code)
                     }
-                    .pickerStyle(.menu)
-                    .frame(minWidth: 190)
-                    .help("Sprachauswahl: Wählen Sie aus den 130 meistgesprochenen Sprachen der Erde mit Flaggen")
                 }
-                .padding(.horizontal, 6)
-                .padding(.vertical, 2)
-                .background(
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(Color(nsColor: .controlBackgroundColor))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.primary.opacity(0.1), lineWidth: 1)
-                        )
-                )
+                .pickerStyle(.menu)
+                .frame(minWidth: 200)
+                .help("Sprachauswahl: Wählen Sie aus den 130 meistgesprochenen Sprachen der Erde")
 
                 // Update-Button (SternenMeister / Zeitmeister Methode)
                 Button {
@@ -134,9 +118,9 @@ public struct MainSplitView: View {
                 ForEach(model.catalog.categories) { category in
                     DisclosureGroup {
                         ForEach(category.subcategories, id: \.self) { sub in
-                            Text(sub)
+                            Text(model.localizedSubcategory(sub))
                                 .tag(sub)
-                                .help("Thema '\(sub)' in \(model.localizedCategory(category.name)) anzeigen")
+                                .help("Thema '\(model.localizedSubcategory(sub))' in \(model.localizedCategory(category.name)) anzeigen")
                         }
                     } label: {
                         Label(model.localizedCategory(category.name), systemImage: category.iconName)
@@ -190,11 +174,11 @@ public struct MainSplitView: View {
                 ForEach(model.filteredFormulas) { item in
                     VStack(alignment: .leading, spacing: 2) {
                         HStack {
-                            Text(item.name)
+                            Text(model.localizedFormulaName(item))
                                 .font(.headline)
                                 .foregroundStyle(.primary)
                             Spacer()
-                            Text(item.subcategory)
+                            Text(model.localizedSubcategory(item.subcategory))
                                 .font(.caption2)
                                 .foregroundStyle(.secondary)
                         }
@@ -203,18 +187,18 @@ public struct MainSplitView: View {
                             .font(.system(size: 13, weight: .medium, design: .serif))
                             .foregroundStyle(Palette.accent)
 
-                        Text(item.description)
+                        Text(model.localizedFormulaDesc(item))
                             .font(.caption)
                             .foregroundStyle(.secondary)
                             .lineLimit(2)
                     }
                     .padding(.vertical, 2)
                     .tag(item.id)
-                    .help("Formel '\(item.name)' (\(item.rawEquation)) in der Maske öffnen")
+                    .help("Formel '\(model.localizedFormulaName(item))' (\(item.rawEquation)) in der Maske öffnen")
                 }
             }
             .listStyle(.inset)
         }
-        .navigationTitle(model.selectedSubcategory ?? "Formeln")
+        .navigationTitle(model.selectedSubcategory.map { model.localizedSubcategory($0) } ?? model.localized(.formulas))
     }
 }
