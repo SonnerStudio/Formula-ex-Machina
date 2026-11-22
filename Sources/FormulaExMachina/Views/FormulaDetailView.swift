@@ -91,6 +91,7 @@ public struct FormulaDetailView: View {
                                 .stroke(Color.primary.opacity(0.08), lineWidth: 1)
                         )
                 )
+                .help("Mathematische Formel in Standarddarstellung: \(formula.rawEquation)")
         }
     }
 
@@ -101,6 +102,7 @@ public struct FormulaDetailView: View {
                 Label("Formel umstellen nach:", systemImage: "arrow.triangle.swap")
                     .font(.headline)
                     .foregroundStyle(.primary)
+                    .help("Formelumstellung: Wähle die gesuchte Unbekannte, nach der die Formel symbolisch aufgelöst werden soll")
 
                 Spacer()
 
@@ -114,6 +116,7 @@ public struct FormulaDetailView: View {
                 }
                 .pickerStyle(.menu)
                 .frame(minWidth: 180)
+                .help("Zielvariable auswählen, nach der die Gleichung freigestellt wird")
             }
 
             if let out = model.currentOutput {
@@ -127,6 +130,7 @@ public struct FormulaDetailView: View {
                         .foregroundStyle(Palette.accent)
                 }
                 .padding(.top, Space.xs)
+                .help("Symbolisch isolierte Gleichung: \(out.isolatedFormulaLaTeX)")
             }
         }
         .padding(Space.md)
@@ -162,6 +166,7 @@ public struct FormulaDetailView: View {
                     RoundedRectangle(cornerRadius: 6)
                         .fill(Color.primary.opacity(0.06))
                 )
+                .help("Variablensymbol: \(variable.symbol)")
 
             // Variablenname
             VStack(alignment: .leading, spacing: 2) {
@@ -173,6 +178,7 @@ public struct FormulaDetailView: View {
                     .foregroundStyle(.secondary)
             }
             .frame(width: 140, alignment: .leading)
+            .help("\(variable.name) – Physikalische Kategorie: \(variable.unitCategory.rawValue)")
 
             // Eingabefeld
             TextField(
@@ -185,6 +191,7 @@ public struct FormulaDetailView: View {
             .textFieldStyle(.roundedBorder)
             .font(.system(size: 15, design: .monospaced))
             .frame(maxWidth: .infinity)
+            .help("Eingabewert für \(variable.name) (\(variable.symbol)). Berechnung erfolgt live.")
 
             // Einheiten-Auswahlmenü
             let compatibleUnits = model.converter.units(for: variable.unitCategory)
@@ -199,6 +206,7 @@ public struct FormulaDetailView: View {
                 }
                 .pickerStyle(.menu)
                 .frame(width: 90)
+                .help("Maßeinheit für \(variable.name) auswählen (wird automatisch in SI-Basiseinheiten umgerechnet)")
             }
         }
         .padding(Space.sm)
@@ -226,6 +234,7 @@ public struct FormulaDetailView: View {
                             Circle()
                                 .fill(Palette.accent)
                         )
+                        .help("Freigestellte Zielvariable: \(out.targetVariable)")
 
                     VStack(alignment: .leading, spacing: 2) {
                         let varName = formula.variables.first { $0.symbol == out.targetVariable }?.name ?? ""
@@ -237,6 +246,7 @@ public struct FormulaDetailView: View {
                             .font(.system(size: 32, weight: .bold, design: .rounded))
                             .foregroundStyle(.primary)
                     }
+                    .help("Berechneter Zahlenwert für \(out.targetVariable)")
 
                     Spacer()
 
@@ -253,6 +263,7 @@ public struct FormulaDetailView: View {
                         }
                         .pickerStyle(.menu)
                         .frame(width: 140)
+                        .help("Zieleinheit für das Ergebnis auswählen (z. B. \(targetVar.defaultUnit))")
                     }
 
                     // Kopieren-Button
@@ -267,6 +278,7 @@ public struct FormulaDetailView: View {
                         .padding(.vertical, Space.xs)
                     }
                     .buttonStyle(.borderedProminent)
+                    .help("Formelergebnis samt Einheit in die macOS-Zwischenablage kopieren (Kurzbefehl: ⇧⌘C)")
                 }
                 .padding(Space.lg)
                 .background(
@@ -291,6 +303,7 @@ public struct FormulaDetailView: View {
                     RoundedRectangle(cornerRadius: 8)
                         .fill(Color.orange.opacity(0.1))
                 )
+                .help("Hinweis zu fehlenden oder fehlerhaften Eingabewerten")
             }
         }
     }
@@ -305,6 +318,7 @@ public struct FormulaDetailView: View {
                             .font(.system(size: 14, weight: .bold, design: .monospaced))
                             .foregroundStyle(.secondary)
                             .frame(width: 24, alignment: .trailing)
+                            .help("Schritt \(step.stepNumber)")
 
                         VStack(alignment: .leading, spacing: 2) {
                             Text(step.explanation)
@@ -315,6 +329,7 @@ public struct FormulaDetailView: View {
                                 .font(.system(size: 15, weight: .medium, design: .serif))
                                 .foregroundStyle(Palette.accent)
                         }
+                        .help("Äquivalenzumformung: \(step.explanation)")
                     }
                     .padding(.vertical, 2)
                     Divider()
@@ -327,6 +342,7 @@ public struct FormulaDetailView: View {
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color.primary.opacity(0.03))
         )
+        .help("Klappt den vollständigen didaktischen Umformungsweg der Gleichung auf")
     }
 
     private func formattedValue(_ val: Double) -> String {

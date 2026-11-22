@@ -50,10 +50,13 @@ public struct SettingsView: View {
                     Text("Technisch / Metrisch").tag("Metric")
                     Text("Angloamerikanisch (Imperial)").tag("Imperial")
                 }
+                .help("Bevorzugtes Einheitensystem für Formelparameter und Resultate")
 
                 Stepper("Dezimalstellen: \(decimalPrecision)", value: $decimalPrecision, in: 1...10)
+                    .help("Anzahl der gerundeten Nachkommastellen für die numerische Anzeige")
 
                 Toggle("Automatisch bei Tastatureingabe neu berechnen", isOn: $autoRecalculate)
+                    .help("Formelergebnis unmittelbar während der Tastatureingabe im Hintergrund neu auswerten")
             }
 
             Section("Über Formula ex Machina") {

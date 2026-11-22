@@ -43,10 +43,12 @@ public struct MainSplitView: View {
                         ForEach(category.subcategories, id: \.self) { sub in
                             Text(sub)
                                 .tag(sub)
+                                .help("Thema '\(sub)' in \(category.name) anzeigen")
                         }
                     } label: {
                         Label(category.name, systemImage: category.iconName)
                             .font(.headline)
+                            .help("Fachbereich: \(category.name) (\(category.subcategories.count) Unterthemen)")
                     }
                 }
             }
@@ -66,6 +68,7 @@ public struct MainSplitView: View {
                     .foregroundStyle(.secondary)
                 TextField("Formeln, Symbole, Einheiten suchen...", text: $model.searchQuery)
                     .textFieldStyle(.plain)
+                    .help("Formelsuche: Suche nach Namen, Variablen (z. B. 'F', 'v', 'Ohm'), Formeln oder Einheiten")
                 if !model.searchQuery.isEmpty {
                     Button {
                         model.searchQuery = ""
@@ -74,6 +77,7 @@ public struct MainSplitView: View {
                             .foregroundStyle(.secondary)
                     }
                     .buttonStyle(.plain)
+                    .help("Suchbegriff zurücksetzen")
                 }
             }
             .padding(Space.sm)
@@ -113,6 +117,7 @@ public struct MainSplitView: View {
                     }
                     .padding(.vertical, 2)
                     .tag(item.id)
+                    .help("Formel '\(item.name)' (\(item.rawEquation)) in der Maske öffnen")
                 }
             }
             .listStyle(.inset)
