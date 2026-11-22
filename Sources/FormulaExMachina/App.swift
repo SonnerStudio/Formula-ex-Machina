@@ -7,7 +7,7 @@ struct FormulaExMachinaApp: App {
     @State private var model = AppModel()
 
     var body: some Scene {
-        Window("Formula ex Machina", id: "main") {
+        Window("Formula ex Machina v1.1.0", id: "main") {
             MainSplitView(model: model)
                 .noInitialFocus()
                 .tint(Palette.accent)

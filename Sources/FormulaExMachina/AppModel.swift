@@ -85,7 +85,7 @@ public final class AppModel {
         Task.detached {
             let proc = Process()
             proc.executableURL = URL(fileURLWithPath: "/bin/zsh")
-            proc.arguments = ["/Volumes/sonnerstudiomacstudiomax36gb/Projekte/Formula ex Machina/tools/update.sh"]
+            proc.arguments = ["/Volumes/sonnerstudiomacstudiomax36gb/Projekte/Formula ex Machina/tools/update.sh", "--restart"]
 
             try? proc.run()
             proc.waitUntilExit()

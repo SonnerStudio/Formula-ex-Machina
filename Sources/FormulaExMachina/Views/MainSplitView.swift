@@ -112,35 +112,62 @@ public struct MainSplitView: View {
 
     @ViewBuilder
     private var sidebarView: some View {
-        List(selection: Binding(
-            get: { model.selectedSubcategory },
-            set: { sub in
-                model.selectedSubcategory = sub
-                if let sub = sub {
-                    // Passende Hauptkategorie ermitteln
-                    if let cat = model.catalog.categories.first(where: { $0.subcategories.contains(sub) }) {
-                        model.selectedCategory = cat.name
-                    }
-                }
+        VStack(spacing: 0) {
+            // Sidebar Kopfzeile mit Versionsanzeige
+            HStack(spacing: Space.sm) {
+                Image(systemName: "atom")
+                    .font(.system(size: 14, weight: .bold))
+                    .foregroundStyle(Palette.accent)
+
+                Text("Formula ex Machina")
+                    .font(.system(size: 13, weight: .bold, design: .rounded))
+                    .foregroundStyle(.primary)
+
+                Spacer()
+
+                Text("v1.1.0")
+                    .font(.system(size: 10, weight: .bold, design: .monospaced))
+                    .padding(.horizontal, 6)
+                    .padding(.vertical, 2)
+                    .background(Palette.accent.opacity(0.18))
+                    .foregroundStyle(Palette.accent)
+                    .clipShape(Capsule())
             }
-        )) {
-            Section(model.localized(.disciplines)) {
-                ForEach(model.catalog.categories) { category in
-                    DisclosureGroup {
-                        ForEach(category.subcategories, id: \.self) { sub in
-                            Text(model.localizedSubcategory(sub))
-                                .tag(sub)
-                                .help("Thema '\(model.localizedSubcategory(sub))' in \(model.localizedCategory(category.name)) anzeigen")
+            .padding(.horizontal, Space.md)
+            .padding(.vertical, 10)
+
+            Divider()
+
+            List(selection: Binding(
+                get: { model.selectedSubcategory },
+                set: { sub in
+                    model.selectedSubcategory = sub
+                    if let sub = sub {
+                        // Passende Hauptkategorie ermitteln
+                        if let cat = model.catalog.categories.first(where: { $0.subcategories.contains(sub) }) {
+                            model.selectedCategory = cat.name
                         }
-                    } label: {
-                        Label(model.localizedCategory(category.name), systemImage: category.iconName)
-                            .font(.headline)
-                            .help("Fachbereich: \(model.localizedCategory(category.name)) (\(category.subcategories.count) Unterthemen)")
+                    }
+                }
+            )) {
+                Section(model.localized(.disciplines)) {
+                    ForEach(model.catalog.categories) { category in
+                        DisclosureGroup {
+                            ForEach(category.subcategories, id: \.self) { sub in
+                                Text(model.localizedSubcategory(sub))
+                                    .tag(sub)
+                                    .help("Thema '\(model.localizedSubcategory(sub))' in \(model.localizedCategory(category.name)) anzeigen")
+                            }
+                        } label: {
+                            Label(model.localizedCategory(category.name), systemImage: category.iconName)
+                                .font(.headline)
+                                .help("Fachbereich: \(model.localizedCategory(category.name)) (\(category.subcategories.count) Unterthemen)")
+                        }
                     }
                 }
             }
+            .listStyle(.sidebar)
         }
-        .listStyle(.sidebar)
         .navigationTitle("Formula ex Machina v1.1.0")
     }
 
