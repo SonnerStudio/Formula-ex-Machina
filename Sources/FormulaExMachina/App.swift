@@ -15,13 +15,13 @@ struct FormulaExMachinaApp: App {
         .commands {
             SidebarCommands()
 
-            CommandMenu("Berechnung") {
-                Button("Neu berechnen") {
+            CommandMenu(model.localized(.calculation)) {
+                Button(model.localized(.recalculate)) {
                     model.recalculate()
                 }
                 .keyboardShortcut("r", modifiers: [.command])
 
-                Button("Ergebnis kopieren") {
+                Button(model.localized(.copyResult)) {
                     model.copyResultToClipboard()
                 }
                 .keyboardShortcut("c", modifiers: [.command, .shift])

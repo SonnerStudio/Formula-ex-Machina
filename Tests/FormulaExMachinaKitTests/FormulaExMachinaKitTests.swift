@@ -72,4 +72,35 @@ struct FormulaExMachinaKitTests {
         let resultsVar = catalog.search(query: "Spannung")
         #expect(!resultsVar.isEmpty)
     }
+
+    @Test("S-204: Lokalisierung & Sprachumschaltung für 130 Sprachen")
+    func testLocalizationService() {
+        let l10n = LocalizationService.shared
+        let registry = LanguageRegistry.shared
+
+        #expect(registry.languages.count == 130)
+
+        // Deutsch
+        #expect(l10n.string(for: .disciplines, languageCode: "de") == "Fachgebiete")
+        #expect(l10n.string(for: .rearrangeFor, languageCode: "de") == "Formel umstellen nach:")
+
+        // Englisch
+        #expect(l10n.string(for: .disciplines, languageCode: "en") == "Disciplines")
+        #expect(l10n.string(for: .rearrangeFor, languageCode: "en") == "Solve formula for:")
+
+        // Spanisch
+        #expect(l10n.string(for: .disciplines, languageCode: "es") == "Disciplinas")
+
+        // Französisch
+        #expect(l10n.string(for: .disciplines, languageCode: "fr") == "Disciplines")
+
+        // Chinesisch
+        #expect(l10n.string(for: .disciplines, languageCode: "zh") == "学科门类")
+
+        // Fallback für jede der 130 Sprachen existiert sauber
+        for lang in registry.languages {
+            let val = l10n.string(for: .disciplines, languageCode: lang.code)
+            #expect(!val.isEmpty)
+        }
+    }
 }

@@ -10,12 +10,21 @@ public final class AppModel {
     public let service = CalculationService.shared
     public let converter = UnitConverter.shared
     public let languages = LanguageRegistry.shared
+    public let l10n = LocalizationService.shared
 
     // Lokalisierung & Sprache (130 Sprachen)
     public var selectedLanguageCode: String = "de" {
         didSet {
             UserDefaults.standard.set(selectedLanguageCode, forKey: "appLanguage")
         }
+    }
+
+    public func localized(_ key: LocalizedKey) -> String {
+        l10n.string(for: key, languageCode: selectedLanguageCode)
+    }
+
+    public func localizedCategory(_ name: String) -> String {
+        l10n.localizedCategory(name, languageCode: selectedLanguageCode)
     }
 
     // Navigation

@@ -41,9 +41,9 @@ public struct FormulaDetailView: View {
             .background(Color(nsColor: .windowBackgroundColor))
         } else {
             ContentUnavailableView(
-                "Keine Formel ausgewählt",
+                model.localized(.noFormulaSelected),
                 systemImage: "function",
-                description: Text("Wähle eine Formel aus der Seitenleiste oder suche nach einem Thema.")
+                description: Text(model.localized(.noFormulaSelectedDesc))
             )
         }
     }
@@ -102,7 +102,7 @@ public struct FormulaDetailView: View {
     private func rearrangeControlCard(formula: FormulaItem) -> some View {
         VStack(alignment: .leading, spacing: Space.sm) {
             HStack {
-                Label("Formel umstellen nach:", systemImage: "arrow.triangle.swap")
+                Label(model.localized(.rearrangeFor), systemImage: "arrow.triangle.swap")
                     .font(.headline)
                     .foregroundStyle(.primary)
                     .help("Formelumstellung: Wähle die gesuchte Unbekannte, nach der die Formel symbolisch aufgelöst werden soll")
@@ -124,7 +124,7 @@ public struct FormulaDetailView: View {
 
             if let out = model.currentOutput {
                 HStack(spacing: Space.sm) {
-                    Text("Umgestellte Formel:")
+                    Text(model.localized(.rearrangedFormula))
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
 
@@ -146,7 +146,7 @@ public struct FormulaDetailView: View {
     @ViewBuilder
     private func inputFieldsSection(formula: FormulaItem) -> some View {
         VStack(alignment: .leading, spacing: Space.md) {
-            Text("Eingabewerte")
+            Text(model.localized(.inputValues))
                 .font(.headline)
                 .foregroundStyle(.primary)
 
@@ -185,7 +185,7 @@ public struct FormulaDetailView: View {
 
             // Eingabefeld
             TextField(
-                "Wert eingeben",
+                model.localized(.enterValue),
                 text: Binding(
                     get: { model.inputValues[variable.symbol] ?? "" },
                     set: { model.setInputValue($0, for: variable.symbol) }
@@ -222,7 +222,7 @@ public struct FormulaDetailView: View {
     @ViewBuilder
     private func resultSection(formula: FormulaItem) -> some View {
         VStack(alignment: .leading, spacing: Space.sm) {
-            Text("Berechnetes Ergebnis")
+            Text(model.localized(.calculatedResult))
                 .font(.headline)
                 .foregroundStyle(.primary)
 
@@ -256,7 +256,7 @@ public struct FormulaDetailView: View {
                     // Zieleinheiten-Auswahl
                     if let targetVar = formula.variables.first(where: { $0.symbol == out.targetVariable }) {
                         let targetUnits = model.converter.units(for: targetVar.unitCategory)
-                        Picker("Einheit:", selection: Binding(
+                        Picker(model.localized(.unit), selection: Binding(
                             get: { model.targetUnit },
                             set: { model.setTargetUnit($0) }
                         )) {
@@ -275,7 +275,7 @@ public struct FormulaDetailView: View {
                     } label: {
                         HStack(spacing: Space.xs) {
                             Image(systemName: model.copiedFeedback ? "checkmark" : "doc.on.doc")
-                            Text(model.copiedFeedback ? "Kopiert!" : "Kopieren")
+                            Text(model.copiedFeedback ? model.localized(.copied) : model.localized(.copy))
                         }
                         .padding(.horizontal, Space.sm)
                         .padding(.vertical, Space.xs)
@@ -313,7 +313,7 @@ public struct FormulaDetailView: View {
 
     @ViewBuilder
     private func stepsSection(steps: [TransformationStep]) -> some View {
-        DisclosureGroup("Lösungsweg & Umformungsschritte anzeigen (\(steps.count) Schritte)") {
+        DisclosureGroup("\(model.localized(.solutionSteps)) (\(steps.count) \(model.localized(.step))s)") {
             VStack(alignment: .leading, spacing: Space.md) {
                 ForEach(steps, id: \.stepNumber) { step in
                     HStack(alignment: .top, spacing: Space.md) {
@@ -321,7 +321,7 @@ public struct FormulaDetailView: View {
                             .font(.system(size: 14, weight: .bold, design: .monospaced))
                             .foregroundStyle(.secondary)
                             .frame(width: 24, alignment: .trailing)
-                            .help("Schritt \(step.stepNumber)")
+                            .help("\(model.localized(.step)) \(step.stepNumber)")
 
                         VStack(alignment: .leading, spacing: 2) {
                             Text(step.explanation)

@@ -104,7 +104,7 @@ public struct MainSplitView: View {
                             Text(status)
                                 .font(.caption2)
                         } else {
-                            Text("Update")
+                            Text(model.localized(.update))
                                 .font(.caption)
                         }
                     }
@@ -131,18 +131,18 @@ public struct MainSplitView: View {
                 }
             }
         )) {
-            Section("Fachgebiete") {
+            Section(model.localized(.disciplines)) {
                 ForEach(model.catalog.categories) { category in
                     DisclosureGroup {
                         ForEach(category.subcategories, id: \.self) { sub in
                             Text(sub)
                                 .tag(sub)
-                                .help("Thema '\(sub)' in \(category.name) anzeigen")
+                                .help("Thema '\(sub)' in \(model.localizedCategory(category.name)) anzeigen")
                         }
                     } label: {
-                        Label(category.name, systemImage: category.iconName)
+                        Label(model.localizedCategory(category.name), systemImage: category.iconName)
                             .font(.headline)
-                            .help("Fachbereich: \(category.name) (\(category.subcategories.count) Unterthemen)")
+                            .help("Fachbereich: \(model.localizedCategory(category.name)) (\(category.subcategories.count) Unterthemen)")
                     }
                 }
             }
@@ -160,7 +160,7 @@ public struct MainSplitView: View {
             HStack {
                 Image(systemName: "magnifyingglass")
                     .foregroundStyle(.secondary)
-                TextField("Formeln, Symbole, Einheiten suchen...", text: $model.searchQuery)
+                TextField(model.localized(.searchPlaceholder), text: $model.searchQuery)
                     .textFieldStyle(.plain)
                     .help("Formelsuche: Suche nach Namen, Variablen (z. B. 'F', 'v', 'Ohm'), Formeln oder Einheiten")
                 if !model.searchQuery.isEmpty {
