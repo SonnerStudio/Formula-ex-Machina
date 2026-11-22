@@ -14,6 +14,7 @@ public enum UnitCategory: String, Sendable, CaseIterable {
     case electricCurrent = "Elektrische Stromstärke"
     case electricResistance = "Elektrischer Widerstand"
     case temperature = "Temperatur"
+    case dimensionless = "Dimensionslos / Zahl"
 }
 
 public struct UnitDefinition: Sendable, Equatable, Identifiable, Hashable {
@@ -117,6 +118,12 @@ public struct UnitConverter: Sendable {
         list.append(UnitDefinition(symbol: "K", name: "Kelvin", category: .temperature, factorToSI: 1.0, offsetToSI: 0.0))
         list.append(UnitDefinition(symbol: "°C", name: "Grad Celsius", category: .temperature, factorToSI: 1.0, offsetToSI: 273.15))
         list.append(UnitDefinition(symbol: "°F", name: "Grad Fahrenheit", category: .temperature, factorToSI: 5.0 / 9.0, offsetToSI: 273.15 - 32.0 * (5.0 / 9.0)))
+
+        // Dimensionslos / Reine Zahlen (SI: 1)
+        list.append(UnitDefinition(symbol: "1", name: "Einheitenlos", category: .dimensionless, factorToSI: 1.0))
+        list.append(UnitDefinition(symbol: "%", name: "Prozent", category: .dimensionless, factorToSI: 0.01))
+        list.append(UnitDefinition(symbol: "‰", name: "Promille", category: .dimensionless, factorToSI: 0.001))
+        list.append(UnitDefinition(symbol: "ppm", name: "Parts per million", category: .dimensionless, factorToSI: 1e-6))
 
         self.units = list
     }

@@ -10,6 +10,19 @@ public struct FormulaCatalog: Sendable {
     public init() {
         self.categories = [
             FormulaCategoryItem(
+                id: "mathematics",
+                name: "Mathematik",
+                iconName: "function",
+                subcategories: [
+                    "Goldener Schnitt & Folgen",
+                    "Geometrie 2D (Flächen)",
+                    "Geometrie 3D (Körper)",
+                    "Trigonometrie",
+                    "Algebra & Analysis",
+                    "Statistik & Stochastik"
+                ]
+            ),
+            FormulaCategoryItem(
                 id: "physics",
                 name: "Physik",
                 iconName: "atom",
@@ -17,25 +30,19 @@ public struct FormulaCatalog: Sendable {
                     "Kinematik",
                     "Dynamik",
                     "Arbeit & Energie",
-                    "Thermodynamik",
-                    "Strömungsmechanik",
                     "Schwingungen & Wellen",
                     "Optik & Strahlung",
-                    "Elektromagnetismus",
-                    "Relativität & Moderne Physik",
-                    "Astrophysik & Kosmologie"
+                    "Relativität & Quantenphysik"
                 ]
             ),
             FormulaCategoryItem(
-                id: "mathematics",
-                name: "Mathematik",
-                iconName: "function",
+                id: "astronomy",
+                name: "Astronomie & Astrophysik",
+                iconName: "sparkles",
                 subcategories: [
-                    "Geometrie 2D (Flächen)",
-                    "Geometrie 3D (Körper)",
-                    "Trigonometrie",
-                    "Algebra & Analysis",
-                    "Statistik & Wahrscheinlichkeit"
+                    "Gravitation & Bahnbewegung",
+                    "Kosmologie & Sterne",
+                    "Hochenergie-Astrophysik"
                 ]
             ),
             FormulaCategoryItem(
@@ -43,9 +50,9 @@ public struct FormulaCatalog: Sendable {
                 name: "Elektrotechnik",
                 iconName: "bolt.fill",
                 subcategories: [
-                    "Gleichstrom",
-                    "Wechselstrom & Scheinleistung",
-                    "Elektronik & Signale"
+                    "Gleichstrom & Netzwerke",
+                    "Wechselstrom & Blindwiderstände",
+                    "Elektromagnetische Felder & Wellen"
                 ]
             ),
             FormulaCategoryItem(
@@ -53,9 +60,9 @@ public struct FormulaCatalog: Sendable {
                 name: "Chemie",
                 iconName: "flask.fill",
                 subcategories: [
-                    "Stöchiometrie & Konzentration",
-                    "Thermochemie & Kinetik",
-                    "Elektrochemie & pH-Werte"
+                    "Gase & Thermodynamik",
+                    "Lösungen & Kinetik",
+                    "Elektrochemie & pH-Gleichgewichte"
                 ]
             ),
             FormulaCategoryItem(
@@ -64,24 +71,26 @@ public struct FormulaCatalog: Sendable {
                 iconName: "gearshape.2.fill",
                 subcategories: [
                     "Festigkeitslehre & Elastizität",
-                    "Antriebstechnik & Dynamik"
+                    "Strömungsmechanik",
+                    "Statik & Antriebe"
+                ]
+            ),
+            FormulaCategoryItem(
+                id: "cs",
+                name: "Informatik & Information",
+                iconName: "cpu.fill",
+                subcategories: [
+                    "Informationstheorie & Codierung",
+                    "Systemleistung & Skalierung"
                 ]
             ),
             FormulaCategoryItem(
                 id: "finance",
                 name: "Finanzmathematik",
-                iconName: "banknote",
+                iconName: "chart.line.uptrend.xyaxis",
                 subcategories: [
-                    "Zinsrechnung & Barwert",
-                    "Kredite & Annuitäten"
-                ]
-            ),
-            FormulaCategoryItem(
-                id: "computerscience",
-                name: "Informatik & Information",
-                iconName: "cpu",
-                subcategories: [
-                    "Informationstheorie & Codierung"
+                    "Zins & Zinseszins",
+                    "Investitionsrechnung & Barwert"
                 ]
             )
         ]
@@ -89,79 +98,191 @@ public struct FormulaCatalog: Sendable {
         var list: [FormulaItem] = []
 
         // ==========================================
-        // 1. PHYSIK
+        // 1. MATHEMATIK
         // ==========================================
 
-        // --- 1.1 Kinematik ---
+        // Goldener Schnitt - Definition
         list.append(FormulaItem(
-            id: "phys_kin_speed",
-            name: "Gleichförmige Bewegung",
-            category: "Physik",
-            subcategory: "Kinematik",
-            rawEquation: "s = v * t",
-            latex: "s = v \\cdot t",
-            description: "Zurückgelegte Wegstrecke bei konstanter Geschwindigkeit über die Zeit.",
+            id: "math_golden_ratio",
+            name: "Goldener Schnitt (Definition)",
+            category: "Mathematik",
+            subcategory: "Goldener Schnitt & Folgen",
+            rawEquation: "Phi = (1 + sqrt(5)) / 2",
+            latex: "\Phi = \frac{1 + \sqrt{5}}{2} \approx 1.6180339887",
+            description: "Die Zahl des Goldenen Schnitts (Divina Proportione). Mathematische Konstante der harmonischen Teilung.",
             variables: [
-                FormulaVariable(symbol: "s", name: "Wegstrecke", defaultUnit: "m", unitCategory: .length),
-                FormulaVariable(symbol: "v", name: "Geschwindigkeit", defaultUnit: "m/s", unitCategory: .velocity),
-                FormulaVariable(symbol: "t", name: "Zeit", defaultUnit: "s", unitCategory: .time)
+                FormulaVariable(symbol: "Phi", name: "Goldene Zahl Phi", defaultUnit: "1", unitCategory: .dimensionless)
             ]
         ))
 
+        // Goldener Schnitt - Streckenteilung
         list.append(FormulaItem(
-            id: "phys_kin_accel",
-            name: "Gleichmäßig beschleunigte Bewegung",
-            category: "Physik",
-            subcategory: "Kinematik",
-            rawEquation: "v = v0 + a * t",
-            latex: "v = v_0 + a \\cdot t",
-            description: "Momentangeschwindigkeit bei gleichmäßiger linearer Beschleunigung.",
+            id: "math_golden_ratio_prop",
+            name: "Goldener Schnitt (Proportion a : b)",
+            category: "Mathematik",
+            subcategory: "Goldener Schnitt & Folgen",
+            rawEquation: "a = b * 1.6180339887",
+            latex: "\frac{a + b}{a} = \frac{a}{b} = \Phi \approx 1.618034",
+            description: "Berechnet den Major-Abschnitt 'a' aus dem Minor-Abschnitt 'b' im Verhältnis des Goldenen Schnitts.",
             variables: [
-                FormulaVariable(symbol: "v", name: "Endgeschwindigkeit", defaultUnit: "m/s", unitCategory: .velocity),
-                FormulaVariable(symbol: "v0", name: "Anfangsgeschwindigkeit", defaultUnit: "m/s", unitCategory: .velocity),
-                FormulaVariable(symbol: "a", name: "Beschleunigung", defaultUnit: "m/s²", unitCategory: .acceleration),
-                FormulaVariable(symbol: "t", name: "Zeit", defaultUnit: "s", unitCategory: .time)
+                FormulaVariable(symbol: "a", name: "Major (großer Abschnitt)", defaultUnit: "m", unitCategory: .length),
+                FormulaVariable(symbol: "b", name: "Minor (kleiner Abschnitt)", defaultUnit: "m", unitCategory: .length)
             ]
         ))
 
+        // Fibonacci-Zahlenfolge (Formel von Binet)
         list.append(FormulaItem(
-            id: "phys_kin_zentripetal",
-            name: "Zentripetalbeschleunigung",
-            category: "Physik",
-            subcategory: "Kinematik",
-            rawEquation: "a = v^2 / r",
-            latex: "a_z = \\frac{v^2}{r}",
-            description: "Radialbeschleunigung zur Kreisbahnmitte bei Geschwindigkeit v und Bahnradius r.",
+            id: "math_fibonacci_binet",
+            name: "Fibonacci-Zahlenfolge (Binet-Formel)",
+            category: "Mathematik",
+            subcategory: "Goldener Schnitt & Folgen",
+            rawEquation: "Fn = (((1 + sqrt(5)) / 2)^n - ((1 - sqrt(5)) / 2)^n) / sqrt(5)",
+            latex: "F_n = \frac{1}{\sqrt{5}} \left[ \left(\frac{1+\sqrt{5}}{2}\right)^n - \left(\frac{1-\sqrt{5}}{2}\right)^n \right]",
+            description: "Geschlossene Formel von Jacques Philippe Marie Binet zur direkten exakten Berechnung der n-ten Fibonacci-Zahl ohne Rekursion.",
             variables: [
-                FormulaVariable(symbol: "a", name: "Zentripetalbeschleunigung", defaultUnit: "m/s²", unitCategory: .acceleration),
-                FormulaVariable(symbol: "v", name: "Bahngeschwindigkeit", defaultUnit: "m/s", unitCategory: .velocity),
-                FormulaVariable(symbol: "r", name: "Bahnradius", defaultUnit: "m", unitCategory: .length)
+                FormulaVariable(symbol: "Fn", name: "n-te Fibonacci-Zahl", defaultUnit: "1", unitCategory: .dimensionless),
+                FormulaVariable(symbol: "n", name: "Stellennummer (Index n)", defaultUnit: "1", unitCategory: .dimensionless)
             ]
         ))
 
+        // Satz des Pythagoras
         list.append(FormulaItem(
-            id: "phys_kin_omega",
-            name: "Winkelgeschwindigkeit & Frequenz",
-            category: "Physik",
-            subcategory: "Kinematik",
-            rawEquation: "w = 6.2831853 * f",
-            latex: "\\omega = 2 \\pi \\cdot f",
-            description: "Kreisfrequenz bzw. Winkelgeschwindigkeit in Abhängigkeit von der Drehfrequenz.",
+            id: "math_geom_pythagoras",
+            name: "Satz des Pythagoras",
+            category: "Mathematik",
+            subcategory: "Geometrie 2D (Flächen)",
+            rawEquation: "c = sqrt(a^2 + b^2)",
+            latex: "c = \sqrt{a^2 + b^2}",
+            description: "Berechnung der Hypotenuse c im rechtwinkligen Dreieck aus den Katheten a und b.",
             variables: [
-                FormulaVariable(symbol: "w", name: "Winkelgeschwindigkeit (ω)", defaultUnit: "1/s", unitCategory: .time),
-                FormulaVariable(symbol: "f", name: "Frequenz (f)", defaultUnit: "Hz", unitCategory: .time)
+                FormulaVariable(symbol: "c", name: "Hypotenuse c", defaultUnit: "m", unitCategory: .length),
+                FormulaVariable(symbol: "a", name: "Kathete a", defaultUnit: "m", unitCategory: .length),
+                FormulaVariable(symbol: "b", name: "Kathete b", defaultUnit: "m", unitCategory: .length)
             ]
         ))
 
-        // --- 1.2 Dynamik ---
+        // Kreisfläche
+        list.append(FormulaItem(
+            id: "math_geom_circle_area",
+            name: "Kreisfläche",
+            category: "Mathematik",
+            subcategory: "Geometrie 2D (Flächen)",
+            rawEquation: "A = 3.1415926535 * r^2",
+            latex: "A = \pi \cdot r^2",
+            description: "Flächeninhalt eines Kreises mit dem Radius r.",
+            variables: [
+                FormulaVariable(symbol: "A", name: "Kreisfläche", defaultUnit: "m", unitCategory: .length),
+                FormulaVariable(symbol: "r", name: "Radius", defaultUnit: "m", unitCategory: .length)
+            ]
+        ))
+
+        // Kreisumfang
+        list.append(FormulaItem(
+            id: "math_geom_circle_perimeter",
+            name: "Kreisumfang",
+            category: "Mathematik",
+            subcategory: "Geometrie 2D (Flächen)",
+            rawEquation: "U = 2 * 3.1415926535 * r",
+            latex: "U = 2\pi \cdot r",
+            description: "Umfang eines Kreises in Abhängigkeit vom Radius r.",
+            variables: [
+                FormulaVariable(symbol: "U", name: "Umfang", defaultUnit: "m", unitCategory: .length),
+                FormulaVariable(symbol: "r", name: "Radius", defaultUnit: "m", unitCategory: .length)
+            ]
+        ))
+
+        // Kugelvolumen
+        list.append(FormulaItem(
+            id: "math_geom_sphere_vol",
+            name: "Kugelvolumen",
+            category: "Mathematik",
+            subcategory: "Geometrie 3D (Körper)",
+            rawEquation: "V = (4 / 3) * 3.1415926535 * r^3",
+            latex: "V = \frac{4}{3}\pi \cdot r^3",
+            description: "Volumen einer dreidimensionalen Kugel mit Radius r.",
+            variables: [
+                FormulaVariable(symbol: "V", name: "Volumen", defaultUnit: "m", unitCategory: .length),
+                FormulaVariable(symbol: "r", name: "Kugelradius", defaultUnit: "m", unitCategory: .length)
+            ]
+        ))
+
+        // Kugeloberfläche
+        list.append(FormulaItem(
+            id: "math_geom_sphere_surface",
+            name: "Kugeloberfläche",
+            category: "Mathematik",
+            subcategory: "Geometrie 3D (Körper)",
+            rawEquation: "A = 4 * 3.1415926535 * r^2",
+            latex: "A = 4\pi \cdot r^2",
+            description: "Oberflächeninhalt einer perfekten Kugel.",
+            variables: [
+                FormulaVariable(symbol: "A", name: "Oberfläche", defaultUnit: "m", unitCategory: .length),
+                FormulaVariable(symbol: "r", name: "Radius", defaultUnit: "m", unitCategory: .length)
+            ]
+        ))
+
+        // Quadratische Lösungsformel
+        list.append(FormulaItem(
+            id: "math_alg_quadratic",
+            name: "Quadratische Lösungsformel (Mitternachtsformel)",
+            category: "Mathematik",
+            subcategory: "Algebra & Analysis",
+            rawEquation: "x = (-b + sqrt(b^2 - 4 * a * c)) / (2 * a)",
+            latex: "x_{1} = \frac{-b + \sqrt{b^2 - 4ac}}{2a}",
+            description: "Analytische Nullstelle einer quadratischen Gleichung ax² + bx + c = 0.",
+            variables: [
+                FormulaVariable(symbol: "x", name: "Nullstelle x", defaultUnit: "1", unitCategory: .dimensionless),
+                FormulaVariable(symbol: "a", name: "Koeffizient a", defaultUnit: "1", unitCategory: .dimensionless),
+                FormulaVariable(symbol: "b", name: "Koeffizient b", defaultUnit: "1", unitCategory: .dimensionless),
+                FormulaVariable(symbol: "c", name: "Konstante c", defaultUnit: "1", unitCategory: .dimensionless)
+            ]
+        ))
+
+        // Satz von Bayes
+        list.append(FormulaItem(
+            id: "math_stat_bayes",
+            name: "Satz von Bayes (Bedingte Wahrscheinlichkeit)",
+            category: "Mathematik",
+            subcategory: "Statistik & Stochastik",
+            rawEquation: "P_AB = (P_BA * P_A) / P_B",
+            latex: "P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}",
+            description: "Fundamentales Theorem der Wahrscheinlichkeitstheorie zur Berechnung von A-posteriori-Wahrscheinlichkeiten.",
+            variables: [
+                FormulaVariable(symbol: "P_AB", name: "P(A|B) A-posteriori", defaultUnit: "1", unitCategory: .dimensionless),
+                FormulaVariable(symbol: "P_BA", name: "P(B|A) Likelihood", defaultUnit: "1", unitCategory: .dimensionless),
+                FormulaVariable(symbol: "P_A", name: "P(A) A-priori", defaultUnit: "1", unitCategory: .dimensionless),
+                FormulaVariable(symbol: "P_B", name: "P(B) Evidenz", defaultUnit: "1", unitCategory: .dimensionless)
+            ]
+        ))
+
+        // Stirling-Formel
+        list.append(FormulaItem(
+            id: "math_alg_stirling",
+            name: "Stirling-Formel (Fakultäts-Approximation)",
+            category: "Mathematik",
+            subcategory: "Algebra & Analysis",
+            rawEquation: "n_fact = sqrt(2 * 3.14159265 * n) * (n / 2.7182818)^n",
+            latex: "n! \approx \sqrt{2\pi n} \left(\frac{n}{e}\right)^n",
+            description: "Asymptotische Entwicklung zur schnellen Auswertung sehr großer Fakultäten n!.",
+            variables: [
+                FormulaVariable(symbol: "n_fact", name: "Approximiertes n!", defaultUnit: "1", unitCategory: .dimensionless),
+                FormulaVariable(symbol: "n", name: "Zahl n", defaultUnit: "1", unitCategory: .dimensionless)
+            ]
+        ))
+
+        // ==========================================
+        // 2. PHYSIK
+        // ==========================================
+
+        // Newton II
         list.append(FormulaItem(
             id: "phys_dyn_newton2",
-            name: "2. Newtonsches Axiom (Grundgesetz)",
+            name: "Zweites Newtonsches Axiom (Grundgesetz der Dynamik)",
             category: "Physik",
             subcategory: "Dynamik",
             rawEquation: "F = m * a",
-            latex: "F = m \\cdot a",
-            description: "Grundgesetz der Mechanik: Kraft ist Masse mal Beschleunigung.",
+            latex: "F = m \cdot a",
+            description: "Kraft ist gleich Masse mal Beschleunigung. Fundamentales Gesetz der klassischen Mechanik.",
             variables: [
                 FormulaVariable(symbol: "F", name: "Kraft", defaultUnit: "N", unitCategory: .force),
                 FormulaVariable(symbol: "m", name: "Masse", defaultUnit: "kg", unitCategory: .mass),
@@ -169,105 +290,15 @@ public struct FormulaCatalog: Sendable {
             ]
         ))
 
+        // Kinetische Energie
         list.append(FormulaItem(
-            id: "phys_dyn_weight",
-            name: "Gewichtskraft",
-            category: "Physik",
-            subcategory: "Dynamik",
-            rawEquation: "F = m * g",
-            latex: "F_G = m \\cdot g",
-            description: "Schwerkraft auf eine Masse m im Schwerefeld der Erdbeschleunigung g.",
-            variables: [
-                FormulaVariable(symbol: "F", name: "Gewichtskraft", defaultUnit: "N", unitCategory: .force),
-                FormulaVariable(symbol: "m", name: "Masse", defaultUnit: "kg", unitCategory: .mass),
-                FormulaVariable(symbol: "g", name: "Erdbeschleunigung", defaultUnit: "m/s²", unitCategory: .acceleration)
-            ]
-        ))
-
-        list.append(FormulaItem(
-            id: "phys_dyn_hooke",
-            name: "Hookesches Federgesetz",
-            category: "Physik",
-            subcategory: "Dynamik",
-            rawEquation: "F = D * s",
-            latex: "F = D \\cdot s",
-            description: "Rückstellkraft einer linearen elastischen Feder bei Auslenkung s.",
-            variables: [
-                FormulaVariable(symbol: "F", name: "Federkraft", defaultUnit: "N", unitCategory: .force),
-                FormulaVariable(symbol: "D", name: "Federkonstante", defaultUnit: "N/m", unitCategory: .force),
-                FormulaVariable(symbol: "s", name: "Auslenkung / Weg", defaultUnit: "m", unitCategory: .length)
-            ]
-        ))
-
-        list.append(FormulaItem(
-            id: "phys_dyn_reibung",
-            name: "Reibungskraft (Gleitreibung)",
-            category: "Physik",
-            subcategory: "Dynamik",
-            rawEquation: "FR = mu * FN",
-            latex: "F_R = \\mu \\cdot F_N",
-            description: "Reibungskraft auf einen Körper bei Normalkraft FN und Reibbeiwert mu.",
-            variables: [
-                FormulaVariable(symbol: "FR", name: "Reibungskraft", defaultUnit: "N", unitCategory: .force),
-                FormulaVariable(symbol: "mu", name: "Reibungszahl (μ)", defaultUnit: "1", unitCategory: .mass),
-                FormulaVariable(symbol: "FN", name: "Normalkraft", defaultUnit: "N", unitCategory: .force)
-            ]
-        ))
-
-        list.append(FormulaItem(
-            id: "phys_dyn_impuls",
-            name: "Impuls",
-            category: "Physik",
-            subcategory: "Dynamik",
-            rawEquation: "p = m * v",
-            latex: "p = m \\cdot v",
-            description: "Linearer Bewegungsimpuls eines Körpers.",
-            variables: [
-                FormulaVariable(symbol: "p", name: "Impuls", defaultUnit: "kg·m/s", unitCategory: .force),
-                FormulaVariable(symbol: "m", name: "Masse", defaultUnit: "kg", unitCategory: .mass),
-                FormulaVariable(symbol: "v", name: "Geschwindigkeit", defaultUnit: "m/s", unitCategory: .velocity)
-            ]
-        ))
-
-        list.append(FormulaItem(
-            id: "phys_dyn_drehmoment",
-            name: "Drehmoment",
-            category: "Physik",
-            subcategory: "Dynamik",
-            rawEquation: "M = F * r",
-            latex: "M = F \\cdot r",
-            description: "Drehmoment einer senkrecht auf einen Hebelarm wirkenden Kraft.",
-            variables: [
-                FormulaVariable(symbol: "M", name: "Drehmoment", defaultUnit: "Nm", unitCategory: .energy),
-                FormulaVariable(symbol: "F", name: "Kraft", defaultUnit: "N", unitCategory: .force),
-                FormulaVariable(symbol: "r", name: "Hebelarm", defaultUnit: "m", unitCategory: .length)
-            ]
-        ))
-
-        // --- 1.3 Arbeit & Energie ---
-        list.append(FormulaItem(
-            id: "phys_energy_work",
-            name: "Mechanische Arbeit",
-            category: "Physik",
-            subcategory: "Arbeit & Energie",
-            rawEquation: "W = F * s",
-            latex: "W = F \\cdot s",
-            description: "Arbeit entlang eines Weges s bei konstanter paralleler Kraft F.",
-            variables: [
-                FormulaVariable(symbol: "W", name: "Arbeit", defaultUnit: "J", unitCategory: .energy),
-                FormulaVariable(symbol: "F", name: "Kraft", defaultUnit: "N", unitCategory: .force),
-                FormulaVariable(symbol: "s", name: "Weg", defaultUnit: "m", unitCategory: .length)
-            ]
-        ))
-
-        list.append(FormulaItem(
-            id: "phys_energy_kin",
+            id: "phys_nrj_kin",
             name: "Kinetische Energie (Bewegungsenergie)",
             category: "Physik",
             subcategory: "Arbeit & Energie",
-            rawEquation: "E = m * v^2 / 2",
-            latex: "E_{\\text{kin}} = \\frac{1}{2} m v^2",
-            description: "Bewegungsenergie eines Körpers der Masse m mit Geschwindigkeit v.",
+            rawEquation: "E = 0.5 * m * v^2",
+            latex: "E_{kin} = \frac{1}{2} m \cdot v^2",
+            description: "In der Bewegung eines Körpers mit Geschwindigkeit v gespeicherte kinetische Energie.",
             variables: [
                 FormulaVariable(symbol: "E", name: "Kinetische Energie", defaultUnit: "J", unitCategory: .energy),
                 FormulaVariable(symbol: "m", name: "Masse", defaultUnit: "kg", unitCategory: .mass),
@@ -275,443 +306,254 @@ public struct FormulaCatalog: Sendable {
             ]
         ))
 
+        // Potenzielle Energie
         list.append(FormulaItem(
-            id: "phys_energy_pot",
+            id: "phys_nrj_pot",
             name: "Potenzielle Energie (Lageenergie)",
             category: "Physik",
             subcategory: "Arbeit & Energie",
             rawEquation: "E = m * g * h",
-            latex: "E_{\\text{pot}} = m \\cdot g \\cdot h",
-            description: "Lageenergie eines Körpers der Masse m in der Höhe h im Schwerefeld g.",
+            latex: "E_{pot} = m \cdot g \cdot h",
+            description: "Höhenenergie im homogenen Gravitationsfeld der Erde (g = 9.81 m/s²).",
             variables: [
-                FormulaVariable(symbol: "E", name: "Potenzielle Energie", defaultUnit: "J", unitCategory: .energy),
+                FormulaVariable(symbol: "E", name: "Lageenergie", defaultUnit: "J", unitCategory: .energy),
                 FormulaVariable(symbol: "m", name: "Masse", defaultUnit: "kg", unitCategory: .mass),
-                FormulaVariable(symbol: "g", name: "Erdbeschleunigung", defaultUnit: "m/s²", unitCategory: .acceleration),
+                FormulaVariable(symbol: "g", name: "Fallbeschleunigung", defaultUnit: "m/s²", unitCategory: .acceleration),
                 FormulaVariable(symbol: "h", name: "Höhe", defaultUnit: "m", unitCategory: .length)
             ]
         ))
 
+        // Dichte
         list.append(FormulaItem(
-            id: "phys_energy_power",
-            name: "Mechanische Leistung",
+            id: "phys_mech_density",
+            name: "Dichte",
             category: "Physik",
-            subcategory: "Arbeit & Energie",
-            rawEquation: "P = W / t",
-            latex: "P = \\frac{W}{t}",
-            description: "Leistung als verrichtete Arbeit pro Zeitintervall.",
+            subcategory: "Dynamik",
+            rawEquation: "rho = m / V",
+            latex: "\rho = \frac{m}{V}",
+            description: "Verhältnis von Masse zu Volumen eines homogenen Körpers oder Mediums.",
             variables: [
-                FormulaVariable(symbol: "P", name: "Leistung", defaultUnit: "W", unitCategory: .power),
-                FormulaVariable(symbol: "W", name: "Arbeit", defaultUnit: "J", unitCategory: .energy),
-                FormulaVariable(symbol: "t", name: "Zeit", defaultUnit: "s", unitCategory: .time)
+                FormulaVariable(symbol: "rho", name: "Dichte", defaultUnit: "kg", unitCategory: .mass),
+                FormulaVariable(symbol: "m", name: "Masse", defaultUnit: "kg", unitCategory: .mass),
+                FormulaVariable(symbol: "V", name: "Volumen", defaultUnit: "m", unitCategory: .length)
             ]
         ))
 
+        // Hydrostatischer Druck
         list.append(FormulaItem(
-            id: "phys_energy_eta",
-            name: "Mechanischer Wirkungsgrad",
+            id: "phys_mech_hydro_pressure",
+            name: "Hydrostatischer Druck (Schweredruck)",
             category: "Physik",
-            subcategory: "Arbeit & Energie",
-            rawEquation: "eta = Pab / Pzu",
-            latex: "\\eta = \\frac{P_{\\text{ab}}}{P_{\\text{zu}}}",
-            description: "Verhältnis von abgegebener Nutzleistung zur zugeführten Gesamtleistung.",
-            variables: [
-                FormulaVariable(symbol: "eta", name: "Wirkungsgrad (η)", defaultUnit: "1", unitCategory: .mass),
-                FormulaVariable(symbol: "Pab", name: "Abgegebene Leistung", defaultUnit: "W", unitCategory: .power),
-                FormulaVariable(symbol: "Pzu", name: "Zugeführte Leistung", defaultUnit: "W", unitCategory: .power)
-            ]
-        ))
-
-        // --- 1.4 Thermodynamik ---
-        list.append(FormulaItem(
-            id: "phys_thermo_gas",
-            name: "Ideales Gasgesetz",
-            category: "Physik",
-            subcategory: "Thermodynamik",
-            rawEquation: "p * V = n * R * T",
-            latex: "p \\cdot V = n \\cdot R \\cdot T",
-            description: "Zustandsgleichung des idealen Gases mit Druck, Volumen, Stoffmenge und Temperatur.",
+            subcategory: "Dynamik",
+            rawEquation: "p = rho * g * h",
+            latex: "p = \rho \cdot g \cdot h",
+            description: "Druck in einer ruhenden Flüssigkeitssäule in der Tiefe h.",
             variables: [
                 FormulaVariable(symbol: "p", name: "Druck", defaultUnit: "Pa", unitCategory: .pressure),
-                FormulaVariable(symbol: "V", name: "Volumen", defaultUnit: "m³", unitCategory: .length),
-                FormulaVariable(symbol: "n", name: "Stoffmenge", defaultUnit: "mol", unitCategory: .mass),
-                FormulaVariable(symbol: "R", name: "Universelle Gaskonstante", defaultUnit: "J/(mol·K)", unitCategory: .energy),
-                FormulaVariable(symbol: "T", name: "Absolute Temperatur", defaultUnit: "K", unitCategory: .temperature)
-            ]
-        ))
-
-        list.append(FormulaItem(
-            id: "phys_thermo_heat",
-            name: "Spezifische Wärmemenge",
-            category: "Physik",
-            subcategory: "Thermodynamik",
-            rawEquation: "Q = m * c * dT",
-            latex: "Q = m \\cdot c \\cdot \\Delta T",
-            description: "Benötigte thermische Energie zur Erwärmung einer Masse m um Temperaturdifferenz ΔT.",
-            variables: [
-                FormulaVariable(symbol: "Q", name: "Wärmemenge", defaultUnit: "J", unitCategory: .energy),
-                FormulaVariable(symbol: "m", name: "Masse", defaultUnit: "kg", unitCategory: .mass),
-                FormulaVariable(symbol: "c", name: "Spezifische Wärmekapazität", defaultUnit: "J/(kg·K)", unitCategory: .energy),
-                FormulaVariable(symbol: "dT", name: "Temperaturdifferenz (ΔT)", defaultUnit: "K", unitCategory: .temperature)
-            ]
-        ))
-
-        list.append(FormulaItem(
-            id: "phys_thermo_carnot",
-            name: "Carnot-Wirkungsgrad",
-            category: "Physik",
-            subcategory: "Thermodynamik",
-            rawEquation: "eta = 1 - Tk / Tw",
-            latex: "\\eta_C = 1 - \\frac{T_{\\text{kalt}}}{T_{\\text{warm}}}",
-            description: "Theoretisch maximal möglicher thermodynamischer Wirkungsgrad einer Wärmekraftmaschine.",
-            variables: [
-                FormulaVariable(symbol: "eta", name: "Carnot-Wirkungsgrad (η)", defaultUnit: "1", unitCategory: .mass),
-                FormulaVariable(symbol: "Tk", name: "Temperatur Kaltes Reservoir", defaultUnit: "K", unitCategory: .temperature),
-                FormulaVariable(symbol: "Tw", name: "Temperatur Warmes Reservoir", defaultUnit: "K", unitCategory: .temperature)
-            ]
-        ))
-
-        list.append(FormulaItem(
-            id: "phys_thermo_stefan",
-            name: "Stefan-Boltzmann-Strahlungsgesetz",
-            category: "Physik",
-            subcategory: "Thermodynamik",
-            rawEquation: "P = 5.67e-8 * A * T^4",
-            latex: "P = \\sigma \\cdot A \\cdot T^4",
-            description: "Gesamte Strahlungsleistung eines schwarzen Körpers der Fläche A bei Temperatur T.",
-            variables: [
-                FormulaVariable(symbol: "P", name: "Strahlungsleistung", defaultUnit: "W", unitCategory: .power),
-                FormulaVariable(symbol: "A", name: "Oberfläche", defaultUnit: "m²", unitCategory: .length),
-                FormulaVariable(symbol: "T", name: "Temperatur", defaultUnit: "K", unitCategory: .temperature)
-            ]
-        ))
-
-        // --- 1.5 Strömungsmechanik ---
-        list.append(FormulaItem(
-            id: "phys_fluid_druck",
-            name: "Hydrostatischer Druck",
-            category: "Physik",
-            subcategory: "Strömungsmechanik",
-            rawEquation: "p = rho * g * h",
-            latex: "p = \\rho \\cdot g \\cdot h",
-            description: "Schweredruck in einer ruhenden Flüssigkeitssäule der Dichte ρ in Tiefe h.",
-            variables: [
-                FormulaVariable(symbol: "p", name: "Hydrostatischer Druck", defaultUnit: "Pa", unitCategory: .pressure),
-                FormulaVariable(symbol: "rho", name: "Dichte des Fluids", defaultUnit: "kg/m³", unitCategory: .mass),
+                FormulaVariable(symbol: "rho", name: "Flüssigkeitsdichte", defaultUnit: "kg", unitCategory: .mass),
                 FormulaVariable(symbol: "g", name: "Erdbeschleunigung", defaultUnit: "m/s²", unitCategory: .acceleration),
-                FormulaVariable(symbol: "h", name: "Eintauchtiefe", defaultUnit: "m", unitCategory: .length)
+                FormulaVariable(symbol: "h", name: "Tiefe", defaultUnit: "m", unitCategory: .length)
             ]
         ))
 
-        list.append(FormulaItem(
-            id: "phys_fluid_auftrieb",
-            name: "Statische Auftriebskraft (Archimedes)",
-            category: "Physik",
-            subcategory: "Strömungsmechanik",
-            rawEquation: "FA = rho * V * g",
-            latex: "F_A = \\rho \\cdot V \\cdot g",
-            description: "Auftriebskraft eines verdrängten Flüssigkeitsvolumens V der Dichte ρ.",
-            variables: [
-                FormulaVariable(symbol: "FA", name: "Auftriebskraft", defaultUnit: "N", unitCategory: .force),
-                FormulaVariable(symbol: "rho", name: "Dichte des Fluids", defaultUnit: "kg/m³", unitCategory: .mass),
-                FormulaVariable(symbol: "V", name: "Verdrängtes Volumen", defaultUnit: "m³", unitCategory: .length),
-                FormulaVariable(symbol: "g", name: "Erdbeschleunigung", defaultUnit: "m/s²", unitCategory: .acceleration)
-            ]
-        ))
-
-        list.append(FormulaItem(
-            id: "phys_fluid_kontinuitaet",
-            name: "Kontinuitätsgleichung (Inkompressibel)",
-            category: "Physik",
-            subcategory: "Strömungsmechanik",
-            rawEquation: "Q = A * v",
-            latex: "Q = A \\cdot v",
-            description: "Volumenstrom Q durch einen Querschnitt A bei Strömungsgeschwindigkeit v.",
-            variables: [
-                FormulaVariable(symbol: "Q", name: "Volumenstrom", defaultUnit: "m³/s", unitCategory: .velocity),
-                FormulaVariable(symbol: "A", name: "Rohrquerschnitt", defaultUnit: "m²", unitCategory: .length),
-                FormulaVariable(symbol: "v", name: "Strömungsgeschwindigkeit", defaultUnit: "m/s", unitCategory: .velocity)
-            ]
-        ))
-
-        // --- 1.6 Schwingungen & Wellen ---
-        list.append(FormulaItem(
-            id: "phys_wave_speed",
-            name: "Wellengeschwindigkeit",
-            category: "Physik",
-            subcategory: "Schwingungen & Wellen",
-            rawEquation: "c = lambda * f",
-            latex: "c = \\lambda \\cdot f",
-            description: "Ausbreitungsgeschwindigkeit einer Welle aus Wellenlänge λ und Frequenz f.",
-            variables: [
-                FormulaVariable(symbol: "c", name: "Phasengeschwindigkeit", defaultUnit: "m/s", unitCategory: .velocity),
-                FormulaVariable(symbol: "lambda", name: "Wellenlänge (λ)", defaultUnit: "m", unitCategory: .length),
-                FormulaVariable(symbol: "f", name: "Frequenz (f)", defaultUnit: "Hz", unitCategory: .time)
-            ]
-        ))
-
-        list.append(FormulaItem(
-            id: "phys_wave_pendel",
-            name: "Periodendauer des Fadenpendels",
-            category: "Physik",
-            subcategory: "Schwingungen & Wellen",
-            rawEquation: "T = 6.2831853 * sqrt(l / g)",
-            latex: "T = 2 \\pi \\sqrt{\\frac{l}{g}}",
-            description: "Schwingungsdauer eines idealen mathematischen Pendels der Länge l.",
-            variables: [
-                FormulaVariable(symbol: "T", name: "Periodendauer", defaultUnit: "s", unitCategory: .time),
-                FormulaVariable(symbol: "l", name: "Pendellänge", defaultUnit: "m", unitCategory: .length),
-                FormulaVariable(symbol: "g", name: "Erdbeschleunigung", defaultUnit: "m/s²", unitCategory: .acceleration)
-            ]
-        ))
-
-        // --- 1.7 Optik & Strahlung ---
-        list.append(FormulaItem(
-            id: "phys_opt_brechung",
-            name: "Brechungsindex & Phasengeschwindigkeit",
-            category: "Physik",
-            subcategory: "Optik & Strahlung",
-            rawEquation: "n = c0 / c",
-            latex: "n = \\frac{c_0}{c}",
-            description: "Optischer Brechungsindex als Verhältnis von Vakuumlichtgeschwindigkeit c0 zur Mediengeschwindigkeit c.",
-            variables: [
-                FormulaVariable(symbol: "n", name: "Brechungsindex", defaultUnit: "1", unitCategory: .mass),
-                FormulaVariable(symbol: "c0", name: "Vakuumlichtgeschwindigkeit", defaultUnit: "m/s", unitCategory: .velocity),
-                FormulaVariable(symbol: "c", name: "Lichtgeschwindigkeit im Medium", defaultUnit: "m/s", unitCategory: .velocity)
-            ]
-        ))
-
-        list.append(FormulaItem(
-            id: "phys_opt_linse",
-            name: "Linsengleichung",
-            category: "Physik",
-            subcategory: "Optik & Strahlung",
-            rawEquation: "1 / f = 1 / g + 1 / b",
-            latex: "\\frac{1}{f} = \\frac{1}{g} + \\frac{1}{b}",
-            description: "Beziehung zwischen Brennweite f, Gegenstandsweite g und Bildweite b.",
-            variables: [
-                FormulaVariable(symbol: "f", name: "Brennweite", defaultUnit: "m", unitCategory: .length),
-                FormulaVariable(symbol: "g", name: "Gegenstandsweite", defaultUnit: "m", unitCategory: .length),
-                FormulaVariable(symbol: "b", name: "Bildweite", defaultUnit: "m", unitCategory: .length)
-            ]
-        ))
-
-        // --- 1.8 Elektromagnetismus ---
-        list.append(FormulaItem(
-            id: "phys_em_lorentz",
-            name: "Lorentzkraft",
-            category: "Physik",
-            subcategory: "Elektromagnetismus",
-            rawEquation: "F = q * v * B",
-            latex: "F = q \\cdot v \\cdot B",
-            description: "Kraft auf eine bewegte Ladung q im Magnetfeld der Flussdichte B.",
-            variables: [
-                FormulaVariable(symbol: "F", name: "Lorentzkraft", defaultUnit: "N", unitCategory: .force),
-                FormulaVariable(symbol: "q", name: "Ladung", defaultUnit: "C", unitCategory: .electricCurrent),
-                FormulaVariable(symbol: "v", name: "Teilchengeschwindigkeit", defaultUnit: "m/s", unitCategory: .velocity),
-                FormulaVariable(symbol: "B", name: "Magnetische Flussdichte", defaultUnit: "T", unitCategory: .mass)
-            ]
-        ))
-
-        list.append(FormulaItem(
-            id: "phys_em_kondensatorenergie",
-            name: "Energie des Kondensatorfeldes",
-            category: "Physik",
-            subcategory: "Elektromagnetismus",
-            rawEquation: "W = C * U^2 / 2",
-            latex: "W = \\frac{1}{2} C \\cdot U^2",
-            description: "Gespeicherte elektrostatische Energie im elektrischen Feld eines Kondensators.",
-            variables: [
-                FormulaVariable(symbol: "W", name: "Gespeicherte Energie", defaultUnit: "J", unitCategory: .energy),
-                FormulaVariable(symbol: "C", name: "Kapazität", defaultUnit: "F", unitCategory: .electricVoltage),
-                FormulaVariable(symbol: "U", name: "Spannung", defaultUnit: "V", unitCategory: .electricVoltage)
-            ]
-        ))
-
-        // --- 1.9 Relativität & Moderne Physik ---
+        // Einstein Äquivalenz
         list.append(FormulaItem(
             id: "phys_rel_einstein",
-            name: "Masse-Energie-Äquivalenz",
+            name: "Masse-Energie-Äquivalenz (Einstein)",
             category: "Physik",
-            subcategory: "Relativität & Moderne Physik",
+            subcategory: "Relativität & Quantenphysik",
             rawEquation: "E = m * c^2",
-            latex: "E = m \\cdot c^2",
-            description: "Einsteins fundamentale Beziehung zwischen Ruhemasse und Ruheenergie.",
+            latex: "E = m \cdot c^2",
+            description: "Albert Einsteins berühmteste Gleichung der Speziellen Relativitätstheorie (c = 299.792.458 m/s).",
             variables: [
                 FormulaVariable(symbol: "E", name: "Ruheenergie", defaultUnit: "J", unitCategory: .energy),
-                FormulaVariable(symbol: "m", name: "Ruhemasse", defaultUnit: "kg", unitCategory: .mass),
+                FormulaVariable(symbol: "m", name: "Masse", defaultUnit: "kg", unitCategory: .mass),
                 FormulaVariable(symbol: "c", name: "Lichtgeschwindigkeit", defaultUnit: "m/s", unitCategory: .velocity)
             ]
         ))
 
+        // Lorentz-Faktor
         list.append(FormulaItem(
-            id: "phys_rel_photon",
-            name: "Photonenenergie (Planck-Einstein)",
+            id: "phys_rel_gamma",
+            name: "Lorentz-Faktor (Relativität)",
             category: "Physik",
-            subcategory: "Relativität & Moderne Physik",
-            rawEquation: "E = 6.62607e-34 * f",
-            latex: "E = h \\cdot f",
-            description: "Quantenenergie eines Lichtquants mit der Frequenz f und dem Planckschen Wirkungsquantum h.",
+            subcategory: "Relativität & Quantenphysik",
+            rawEquation: "gamma = 1 / sqrt(1 - (v^2 / c^2))",
+            latex: "\gamma = \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}}",
+            description: "Faktor für relativistische Zeitdilatation, Längenkontraktion und relativistische Masse.",
+            variables: [
+                FormulaVariable(symbol: "gamma", name: "Lorentz-Faktor", defaultUnit: "1", unitCategory: .dimensionless),
+                FormulaVariable(symbol: "v", name: "Geschwindigkeit", defaultUnit: "m/s", unitCategory: .velocity),
+                FormulaVariable(symbol: "c", name: "Lichtgeschwindigkeit", defaultUnit: "m/s", unitCategory: .velocity)
+            ]
+        ))
+
+        // De-Broglie-Wellenlänge
+        list.append(FormulaItem(
+            id: "phys_quant_debroglie",
+            name: "De-Broglie-Wellenlänge (Materiewellen)",
+            category: "Physik",
+            subcategory: "Relativität & Quantenphysik",
+            rawEquation: "lambda = h / p",
+            latex: "\lambda = \frac{h}{p}",
+            description: "Wellenlänge eines Teilchens mit Impuls p im Welle-Teilchen-Dualismus der Quantenmechanik.",
+            variables: [
+                FormulaVariable(symbol: "lambda", name: "Wellenlänge", defaultUnit: "m", unitCategory: .length),
+                FormulaVariable(symbol: "h", name: "Planck-Wirkungsquantum", defaultUnit: "J", unitCategory: .energy),
+                FormulaVariable(symbol: "p", name: "Impuls", defaultUnit: "N", unitCategory: .force)
+            ]
+        ))
+
+        // Planck-Einstein Photon
+        list.append(FormulaItem(
+            id: "phys_quant_photon",
+            name: "Planck-Einstein-Beziehung (Photonenenergie)",
+            category: "Physik",
+            subcategory: "Relativität & Quantenphysik",
+            rawEquation: "E = h * f",
+            latex: "E = h \cdot f",
+            description: "Energie eines Lichtquants (Photons) in Abhängigkeit von seiner Frequenz f.",
             variables: [
                 FormulaVariable(symbol: "E", name: "Photonenenergie", defaultUnit: "J", unitCategory: .energy),
-                FormulaVariable(symbol: "f", name: "Strahlungsfrequenz", defaultUnit: "Hz", unitCategory: .time)
+                FormulaVariable(symbol: "h", name: "Planck-Konstante", defaultUnit: "J", unitCategory: .energy),
+                FormulaVariable(symbol: "f", name: "Frequenz", defaultUnit: "s", unitCategory: .time)
             ]
         ))
 
-        // --- 1.10 Astrophysik & Kosmologie ---
+        // Mathematisches Pendel
         list.append(FormulaItem(
-            id: "phys_astro_escape",
-            name: "Fluchtgeschwindigkeit (2. kosmische Geschwindigkeit)",
+            id: "phys_osc_pendulum",
+            name: "Mathematisches Fadenpendel (Schwingungsdauer)",
             category: "Physik",
-            subcategory: "Astrophysik & Kosmologie",
-            rawEquation: "v = sqrt(1.3348e-10 * M / r)",
-            latex: "v_{\\text{esc}} = \\sqrt{\\frac{2 G M}{r}}",
-            description: "Notwendige Radialgeschwindigkeit zum vollständigen Verlassen des Schwerefelds einer Masse M.",
+            subcategory: "Schwingungen & Wellen",
+            rawEquation: "T = 2 * 3.14159265 * sqrt(l / g)",
+            latex: "T = 2\pi \sqrt{\frac{l}{g}}",
+            description: "Schwingungsdauer eines idealen Fadenpendels bei kleinen Auslenkungen.",
+            variables: [
+                FormulaVariable(symbol: "T", name: "Periodendauer", defaultUnit: "s", unitCategory: .time),
+                FormulaVariable(symbol: "l", name: "Pendellänge", defaultUnit: "m", unitCategory: .length),
+                FormulaVariable(symbol: "g", name: "Fallbeschleunigung", defaultUnit: "m/s²", unitCategory: .acceleration)
+            ]
+        ))
+
+        // Federpendel
+        list.append(FormulaItem(
+            id: "phys_osc_spring",
+            name: "Federpendel (Harmonischer Oszillator)",
+            category: "Physik",
+            subcategory: "Schwingungen & Wellen",
+            rawEquation: "T = 2 * 3.14159265 * sqrt(m / k)",
+            latex: "T = 2\pi \sqrt{\frac{m}{k}}",
+            description: "Schwingungsdauer einer an einer Schraubenfeder schwingenden Masse m.",
+            variables: [
+                FormulaVariable(symbol: "T", name: "Periodendauer", defaultUnit: "s", unitCategory: .time),
+                FormulaVariable(symbol: "m", name: "Schwingende Masse", defaultUnit: "kg", unitCategory: .mass),
+                FormulaVariable(symbol: "k", name: "Federkonstante", defaultUnit: "N", unitCategory: .force)
+            ]
+        ))
+
+        // ==========================================
+        // 3. ASTRONOMIE & ASTROPHYSIK
+        // ==========================================
+
+        // Newtons Gravitationsgesetz
+        list.append(FormulaItem(
+            id: "astro_grav_newton",
+            name: "Newtonsches Gravitationsgesetz",
+            category: "Astronomie & Astrophysik",
+            subcategory: "Gravitation & Bahnbewegung",
+            rawEquation: "F = G * (m1 * m2) / r^2",
+            latex: "F = G \cdot \frac{m_1 \cdot m_2}{r^2}",
+            description: "Gravitative Anziehungskraft zwischen zwei Massen m1 und m2 im Abstand r.",
+            variables: [
+                FormulaVariable(symbol: "F", name: "Gravitationskraft", defaultUnit: "N", unitCategory: .force),
+                FormulaVariable(symbol: "G", name: "Gravitationskonstante", defaultUnit: "N", unitCategory: .force),
+                FormulaVariable(symbol: "m1", name: "Masse 1", defaultUnit: "kg", unitCategory: .mass),
+                FormulaVariable(symbol: "m2", name: "Masse 2", defaultUnit: "kg", unitCategory: .mass),
+                FormulaVariable(symbol: "r", name: "Abstand", defaultUnit: "m", unitCategory: .length)
+            ]
+        ))
+
+        // Fluchtgeschwindigkeit
+        list.append(FormulaItem(
+            id: "astro_escape_vel",
+            name: "Zweite kosmische Geschwindigkeit (Fluchtgeschwindigkeit)",
+            category: "Astronomie & Astrophysik",
+            subcategory: "Gravitation & Bahnbewegung",
+            rawEquation: "v = sqrt((2 * G * M) / r)",
+            latex: "v_2 = \sqrt{\frac{2GM}{r}}",
+            description: "Mindestgeschwindigkeit, um dem Schwerefeld eines Himmelskörpers dauerhaft zu entkommen.",
             variables: [
                 FormulaVariable(symbol: "v", name: "Fluchtgeschwindigkeit", defaultUnit: "m/s", unitCategory: .velocity),
-                FormulaVariable(symbol: "M", name: "Zentralkörpermasse", defaultUnit: "kg", unitCategory: .mass),
-                FormulaVariable(symbol: "r", name: "Abstand vom Zentrum", defaultUnit: "m", unitCategory: .length)
+                FormulaVariable(symbol: "G", name: "Gravitationskonstante", defaultUnit: "N", unitCategory: .force),
+                FormulaVariable(symbol: "M", name: "Masse des Zentralkörpers", defaultUnit: "kg", unitCategory: .mass),
+                FormulaVariable(symbol: "r", name: "Radius / Abstand", defaultUnit: "m", unitCategory: .length)
             ]
         ))
 
+        // Schwarzschild-Radius
         list.append(FormulaItem(
-            id: "phys_astro_hubble",
-            name: "Hubble-Lemaître-Expansionsgesetz",
-            category: "Physik",
-            subcategory: "Astrophysik & Kosmologie",
+            id: "astro_schwarzschild",
+            name: "Schwarzschild-Radius (Ereignishorizont)",
+            category: "Astronomie & Astrophysik",
+            subcategory: "Hochenergie-Astrophysik",
+            rawEquation: "rs = (2 * G * M) / c^2",
+            latex: "r_s = \frac{2GM}{c^2}",
+            description: "Radius des Ereignishorizonts eines nicht rotierenden Schwarzen Lochs nach Karl Schwarzschild.",
+            variables: [
+                FormulaVariable(symbol: "rs", name: "Schwarzschild-Radius", defaultUnit: "m", unitCategory: .length),
+                FormulaVariable(symbol: "G", name: "Gravitationskonstante", defaultUnit: "N", unitCategory: .force),
+                FormulaVariable(symbol: "M", name: "Masse des Schwarzen Lochs", defaultUnit: "kg", unitCategory: .mass),
+                FormulaVariable(symbol: "c", name: "Lichtgeschwindigkeit", defaultUnit: "m/s", unitCategory: .velocity)
+            ]
+        ))
+
+        // Hubble-Lemaître-Gesetz
+        list.append(FormulaItem(
+            id: "astro_hubble",
+            name: "Hubble-Lemaître-Gesetz (Kosmische Expansion)",
+            category: "Astronomie & Astrophysik",
+            subcategory: "Kosmologie & Sterne",
             rawEquation: "v = H0 * d",
-            latex: "v = H_0 \\cdot d",
-            description: "Fluchtgeschwindigkeit ferner Galaxien proportional zu ihrer kosmologischen Entfernung d.",
+            latex: "v = H_0 \cdot d",
+            description: "Fluchtgeschwindigkeit entfernter Galaxien proportional zu ihrer kosmischen Entfernung.",
             variables: [
-                FormulaVariable(symbol: "v", name: "Fluchtgeschwindigkeit", defaultUnit: "km/s", unitCategory: .velocity),
-                FormulaVariable(symbol: "H0", name: "Hubble-Konstante", defaultUnit: "km/(s·Mpc)", unitCategory: .velocity),
-                FormulaVariable(symbol: "d", name: "Galaxienabstand", defaultUnit: "Mpc", unitCategory: .length)
+                FormulaVariable(symbol: "v", name: "Fluchtgeschwindigkeit", defaultUnit: "km", unitCategory: .length),
+                FormulaVariable(symbol: "H0", name: "Hubble-Konstante", defaultUnit: "1", unitCategory: .dimensionless),
+                FormulaVariable(symbol: "d", name: "Entfernung (Mpc)", defaultUnit: "km", unitCategory: .length)
+            ]
+        ))
+
+        // Stefan-Boltzmann-Gesetz
+        list.append(FormulaItem(
+            id: "astro_stefan_boltzmann",
+            name: "Stefan-Boltzmann-Gesetz (Schwarzer Strahler)",
+            category: "Astronomie & Astrophysik",
+            subcategory: "Kosmologie & Sterne",
+            rawEquation: "P = sigma * A * T^4",
+            latex: "P = \sigma \cdot A \cdot T^4",
+            description: "Gesamte Strahlungsleistung eines idealen Schwarzen Körpers in der vierten Potenz der Temperatur T.",
+            variables: [
+                FormulaVariable(symbol: "P", name: "Strahlungsleistung", defaultUnit: "W", unitCategory: .power),
+                FormulaVariable(symbol: "sigma", name: "Stefan-Boltzmann-Konstante", defaultUnit: "W", unitCategory: .power),
+                FormulaVariable(symbol: "A", name: "Oberfläche", defaultUnit: "m", unitCategory: .length),
+                FormulaVariable(symbol: "T", name: "Absolute Temperatur", defaultUnit: "K", unitCategory: .temperature)
             ]
         ))
 
         // ==========================================
-        // 2. MATHEMATIK
+        // 4. ELEKTROTECHNIK
         // ==========================================
 
-        // --- 2.1 Geometrie 2D ---
+        // Ohmsches Gesetz
         list.append(FormulaItem(
-            id: "math_geo_rect",
-            name: "Rechteckfläche",
-            category: "Mathematik",
-            subcategory: "Geometrie 2D (Flächen)",
-            rawEquation: "A = a * b",
-            latex: "A = a \\cdot b",
-            description: "Flächeninhalt eines Rechtecks mit den Kantenlängen a und b.",
-            variables: [
-                FormulaVariable(symbol: "A", name: "Fläche", defaultUnit: "m²", unitCategory: .length),
-                FormulaVariable(symbol: "a", name: "Länge", defaultUnit: "m", unitCategory: .length),
-                FormulaVariable(symbol: "b", name: "Breite", defaultUnit: "m", unitCategory: .length)
-            ]
-        ))
-
-        list.append(FormulaItem(
-            id: "math_geo_circle",
-            name: "Kreisfläche",
-            category: "Mathematik",
-            subcategory: "Geometrie 2D (Flächen)",
-            rawEquation: "A = 3.14159265 * r^2",
-            latex: "A = \\pi \\cdot r^2",
-            description: "Flächeninhalt eines Kreises mit dem Radius r.",
-            variables: [
-                FormulaVariable(symbol: "A", name: "Kreisfläche", defaultUnit: "m²", unitCategory: .length),
-                FormulaVariable(symbol: "r", name: "Radius", defaultUnit: "m", unitCategory: .length)
-            ]
-        ))
-
-        list.append(FormulaItem(
-            id: "math_geo_triangle",
-            name: "Dreiecksfläche",
-            category: "Mathematik",
-            subcategory: "Geometrie 2D (Flächen)",
-            rawEquation: "A = g * h / 2",
-            latex: "A = \\frac{1}{2} g \\cdot h",
-            description: "Flächeninhalt eines Dreiecks mit Grundseite g und Höhe h.",
-            variables: [
-                FormulaVariable(symbol: "A", name: "Dreiecksfläche", defaultUnit: "m²", unitCategory: .length),
-                FormulaVariable(symbol: "g", name: "Grundseite", defaultUnit: "m", unitCategory: .length),
-                FormulaVariable(symbol: "h", name: "Höhe", defaultUnit: "m", unitCategory: .length)
-            ]
-        ))
-
-        // --- 2.2 Geometrie 3D ---
-        list.append(FormulaItem(
-            id: "math_geo_sphere",
-            name: "Kugelvolumen",
-            category: "Mathematik",
-            subcategory: "Geometrie 3D (Körper)",
-            rawEquation: "V = 4.18879 * r^3",
-            latex: "V = \\frac{4}{3} \\pi r^3",
-            description: "Rauminhalt einer Kugel mit dem Radius r.",
-            variables: [
-                FormulaVariable(symbol: "V", name: "Kugelvolumen", defaultUnit: "m³", unitCategory: .length),
-                FormulaVariable(symbol: "r", name: "Radius", defaultUnit: "m", unitCategory: .length)
-            ]
-        ))
-
-        list.append(FormulaItem(
-            id: "math_geo_cylinder",
-            name: "Zylindervolumen",
-            category: "Mathematik",
-            subcategory: "Geometrie 3D (Körper)",
-            rawEquation: "V = 3.14159265 * r^2 * h",
-            latex: "V = \\pi r^2 \\cdot h",
-            description: "Volumen eines geraden Kreiszylinders mit Radius r und Höhe h.",
-            variables: [
-                FormulaVariable(symbol: "V", name: "Zylindervolumen", defaultUnit: "m³", unitCategory: .length),
-                FormulaVariable(symbol: "r", name: "Radius", defaultUnit: "m", unitCategory: .length),
-                FormulaVariable(symbol: "h", name: "Zylinderhöhe", defaultUnit: "m", unitCategory: .length)
-            ]
-        ))
-
-        // --- 2.3 Trigonometrie ---
-        list.append(FormulaItem(
-            id: "math_trig_pythagoras",
-            name: "Satz des Pythagoras",
-            category: "Mathematik",
-            subcategory: "Trigonometrie",
-            rawEquation: "c = sqrt(a^2 + b^2)",
-            latex: "c = \\sqrt{a^2 + b^2}",
-            description: "Hypotenuse c eines rechtwinkligen Dreiecks aus den Katheten a und b.",
-            variables: [
-                FormulaVariable(symbol: "c", name: "Hypotenuse", defaultUnit: "m", unitCategory: .length),
-                FormulaVariable(symbol: "a", name: "Kathete a", defaultUnit: "m", unitCategory: .length),
-                FormulaVariable(symbol: "b", name: "Kathete b", defaultUnit: "m", unitCategory: .length)
-            ]
-        ))
-
-        // --- 2.4 Algebra & Analysis ---
-        list.append(FormulaItem(
-            id: "math_alg_linear",
-            name: "Lineare Funktionsgleichung",
-            category: "Mathematik",
-            subcategory: "Algebra & Analysis",
-            rawEquation: "y = m * x + b",
-            latex: "y = m \\cdot x + b",
-            description: "Geradengleichung mit Steigung m und y-Achsenabschnitt b.",
-            variables: [
-                FormulaVariable(symbol: "y", name: "Funktionswert y", defaultUnit: "1", unitCategory: .mass),
-                FormulaVariable(symbol: "m", name: "Steigung", defaultUnit: "1", unitCategory: .mass),
-                FormulaVariable(symbol: "x", name: "Stelle x", defaultUnit: "1", unitCategory: .mass),
-                FormulaVariable(symbol: "b", name: "Achsenabschnitt", defaultUnit: "1", unitCategory: .mass)
-            ]
-        ))
-
-        // ==========================================
-        // 3. ELEKTROTECHNIK
-        // ==========================================
-
-        list.append(FormulaItem(
-            id: "ee_ohm",
+            id: "elec_ohm",
             name: "Ohmsches Gesetz",
             category: "Elektrotechnik",
-            subcategory: "Gleichstrom",
+            subcategory: "Gleichstrom & Netzwerke",
             rawEquation: "U = R * I",
-            latex: "U = R \\cdot I",
-            description: "Linearer Zusammenhang zwischen elektrischer Spannung U, Widerstand R und Stromstärke I.",
+            latex: "U = R \cdot I",
+            description: "Zusammenhang zwischen elektrischer Spannung U, Widerstand R und Stromstärke I.",
             variables: [
                 FormulaVariable(symbol: "U", name: "Spannung", defaultUnit: "V", unitCategory: .electricVoltage),
                 FormulaVariable(symbol: "R", name: "Widerstand", defaultUnit: "Ω", unitCategory: .electricResistance),
@@ -719,152 +561,223 @@ public struct FormulaCatalog: Sendable {
             ]
         ))
 
+        // Elektrische Leistung (P = U * I)
         list.append(FormulaItem(
-            id: "ee_power",
-            name: "Elektrische Gleichstromleistung",
+            id: "elec_power_ui",
+            name: "Elektrische Leistung (Gleichstrom)",
             category: "Elektrotechnik",
-            subcategory: "Gleichstrom",
+            subcategory: "Gleichstrom & Netzwerke",
             rawEquation: "P = U * I",
-            latex: "P = U \\cdot I",
-            description: "Momentane elektrische Wirkleistung bei Gleichspannung.",
+            latex: "P = U \cdot I",
+            description: "Momentane elektrische Gleichstromleistung in Watt.",
             variables: [
-                FormulaVariable(symbol: "P", name: "Elektrische Leistung", defaultUnit: "W", unitCategory: .power),
+                FormulaVariable(symbol: "P", name: "Leistung", defaultUnit: "W", unitCategory: .power),
                 FormulaVariable(symbol: "U", name: "Spannung", defaultUnit: "V", unitCategory: .electricVoltage),
                 FormulaVariable(symbol: "I", name: "Stromstärke", defaultUnit: "A", unitCategory: .electricCurrent)
             ]
         ))
 
+        // Leistung am Widerstand (P = I^2 * R)
         list.append(FormulaItem(
-            id: "ee_ac_thomson",
-            name: "Thomsonsche Schwingungsgleichung",
+            id: "elec_power_ri",
+            name: "Joulesche Wärme / Leistung am Widerstand",
             category: "Elektrotechnik",
-            subcategory: "Wechselstrom & Scheinleistung",
-            rawEquation: "f = 1 / (6.2831853 * sqrt(L * C))",
-            latex: "f_0 = \\frac{1}{2 \\pi \\sqrt{L \\cdot C}}",
-            description: "Resonanzfrequenz eines ungedämpften elektromagnetischen LC-Schwingkreises.",
+            subcategory: "Gleichstrom & Netzwerke",
+            rawEquation: "P = I^2 * R",
+            latex: "P = I^2 \cdot R",
+            description: "Verlustleistung (Wärmeentwicklung) an einem ohmschen Widerstand.",
             variables: [
-                FormulaVariable(symbol: "f", name: "Resonanzfrequenz", defaultUnit: "Hz", unitCategory: .time),
-                FormulaVariable(symbol: "L", name: "Induktivität", defaultUnit: "H", unitCategory: .electricVoltage),
-                FormulaVariable(symbol: "C", name: "Kapazität", defaultUnit: "F", unitCategory: .electricVoltage)
+                FormulaVariable(symbol: "P", name: "Verlustleistung", defaultUnit: "W", unitCategory: .power),
+                FormulaVariable(symbol: "I", name: "Stromstärke", defaultUnit: "A", unitCategory: .electricCurrent),
+                FormulaVariable(symbol: "R", name: "Widerstand", defaultUnit: "Ω", unitCategory: .electricResistance)
             ]
         ))
 
+        // Kapazitiver Blindwiderstand
         list.append(FormulaItem(
-            id: "ee_ac_kapazitiv",
-            name: "Kapazitiver Blindwiderstand",
+            id: "elec_ac_xc",
+            name: "Kapazitiver Blindwiderstand (Reaktanz Xc)",
             category: "Elektrotechnik",
-            subcategory: "Wechselstrom & Scheinleistung",
-            rawEquation: "XC = 1 / (6.2831853 * f * C)",
-            latex: "X_C = \\frac{1}{2 \\pi f \\cdot C}",
-            description: "Wechselstromwiderstand eines idealen Kondensators bei Frequenz f.",
+            subcategory: "Wechselstrom & Blindwiderstände",
+            rawEquation: "Xc = 1 / (2 * 3.14159265 * f * C)",
+            latex: "X_C = \frac{1}{2\pi f C}",
+            description: "Wechselstromwiderstand eines idealen Kondensators mit Kapazität C bei Frequenz f.",
             variables: [
-                FormulaVariable(symbol: "XC", name: "Blindwiderstand (Xc)", defaultUnit: "Ω", unitCategory: .electricResistance),
-                FormulaVariable(symbol: "f", name: "Frequenz", defaultUnit: "Hz", unitCategory: .time),
-                FormulaVariable(symbol: "C", name: "Kapazität", defaultUnit: "F", unitCategory: .electricVoltage)
+                FormulaVariable(symbol: "Xc", name: "Kapazitiver Blindwiderstand", defaultUnit: "Ω", unitCategory: .electricResistance),
+                FormulaVariable(symbol: "f", name: "Wechselstromfrequenz", defaultUnit: "s", unitCategory: .time),
+                FormulaVariable(symbol: "C", name: "Kapazität", defaultUnit: "1", unitCategory: .dimensionless)
+            ]
+        ))
+
+        // Induktiver Blindwiderstand
+        list.append(FormulaItem(
+            id: "elec_ac_xl",
+            name: "Induktiver Blindwiderstand (Reaktanz Xl)",
+            category: "Elektrotechnik",
+            subcategory: "Wechselstrom & Blindwiderstände",
+            rawEquation: "Xl = 2 * 3.14159265 * f * L",
+            latex: "X_L = 2\pi f L",
+            description: "Wechselstromwiderstand einer idealen Spule mit Induktivität L.",
+            variables: [
+                FormulaVariable(symbol: "Xl", name: "Induktiver Blindwiderstand", defaultUnit: "Ω", unitCategory: .electricResistance),
+                FormulaVariable(symbol: "f", name: "Frequenz", defaultUnit: "s", unitCategory: .time),
+                FormulaVariable(symbol: "L", name: "Induktivität", defaultUnit: "1", unitCategory: .dimensionless)
+            ]
+        ))
+
+        // Thomsonsche Schwingungsformel
+        list.append(FormulaItem(
+            id: "elec_ac_thomson",
+            name: "Thomsonsche Schwingungsgleichung (Resonanzfrequenz)",
+            category: "Elektrotechnik",
+            subcategory: "Wechselstrom & Blindwiderstände",
+            rawEquation: "f0 = 1 / (2 * 3.14159265 * sqrt(L * C))",
+            latex: "f_0 = \frac{1}{2\pi \sqrt{L C}}",
+            description: "Eigenfrequenz / Resonanzfrequenz eines ungedämpften elektromagnetischen LC-Schwingkreises.",
+            variables: [
+                FormulaVariable(symbol: "f0", name: "Resonanzfrequenz", defaultUnit: "s", unitCategory: .time),
+                FormulaVariable(symbol: "L", name: "Induktivität", defaultUnit: "1", unitCategory: .dimensionless),
+                FormulaVariable(symbol: "C", name: "Kapazität", defaultUnit: "1", unitCategory: .dimensionless)
             ]
         ))
 
         // ==========================================
-        // 4. CHEMIE
+        // 5. CHEMIE & THERMODYNAMIK
         // ==========================================
 
+        // Ideales Gasgesetz
         list.append(FormulaItem(
-            id: "chem_stoech_menge",
-            name: "Stoffmenge aus Masse & Molarer Masse",
+            id: "chem_gas_ideal",
+            name: "Ideales Gasgesetz (Zustandsgleichung)",
             category: "Chemie",
-            subcategory: "Stöchiometrie & Konzentration",
-            rawEquation: "n = m / M",
-            latex: "n = \\frac{m}{M}",
-            description: "Zusammenhang zwischen Stoffmenge n, Einwaage m und molarer Masse M.",
+            subcategory: "Gase & Thermodynamik",
+            rawEquation: "p * V = n * R * T",
+            latex: "p \cdot V = n \cdot R \cdot T",
+            description: "Thermodynamische Zustandsgleichung idealer Gase (Gaskonstante R = 8.31446 J/(mol·K)).",
             variables: [
-                FormulaVariable(symbol: "n", name: "Stoffmenge", defaultUnit: "mol", unitCategory: .mass),
-                FormulaVariable(symbol: "m", name: "Substanzmasse", defaultUnit: "g", unitCategory: .mass),
-                FormulaVariable(symbol: "M", name: "Molare Masse", defaultUnit: "g/mol", unitCategory: .mass)
+                FormulaVariable(symbol: "p", name: "Gasdruck", defaultUnit: "Pa", unitCategory: .pressure),
+                FormulaVariable(symbol: "V", name: "Volumen", defaultUnit: "m", unitCategory: .length),
+                FormulaVariable(symbol: "n", name: "Stoffmenge", defaultUnit: "1", unitCategory: .dimensionless),
+                FormulaVariable(symbol: "R", name: "Universelle Gaskonstante", defaultUnit: "J", unitCategory: .energy),
+                FormulaVariable(symbol: "T", name: "Temperatur", defaultUnit: "K", unitCategory: .temperature)
             ]
         ))
 
+        // Molare Masse
         list.append(FormulaItem(
-            id: "chem_stoech_molaritaet",
-            name: "Molare Konzentration (Molarität)",
+            id: "chem_stoich_molar_mass",
+            name: "Molare Masse",
             category: "Chemie",
-            subcategory: "Stöchiometrie & Konzentration",
-            rawEquation: "c = n / V",
-            latex: "c = \\frac{n}{V}",
-            description: "Konzentration eines gelösten Stoffes pro Lösungs-Volumen V.",
+            subcategory: "Lösungen & Kinetik",
+            rawEquation: "M = m / n",
+            latex: "M = \frac{m}{n}",
+            description: "Stoffspezifische molare Masse aus Masse m und Stoffmenge n.",
             variables: [
-                FormulaVariable(symbol: "c", name: "Molare Konzentration", defaultUnit: "mol/l", unitCategory: .mass),
-                FormulaVariable(symbol: "n", name: "Stoffmenge", defaultUnit: "mol", unitCategory: .mass),
-                FormulaVariable(symbol: "V", name: "Lösungsvolumen", defaultUnit: "l", unitCategory: .length)
+                FormulaVariable(symbol: "M", name: "Molare Masse", defaultUnit: "g", unitCategory: .mass),
+                FormulaVariable(symbol: "m", name: "Stoffmasse", defaultUnit: "g", unitCategory: .mass),
+                FormulaVariable(symbol: "n", name: "Stoffmenge", defaultUnit: "1", unitCategory: .dimensionless)
             ]
         ))
 
+        // Gibbs-Helmholtz
         list.append(FormulaItem(
             id: "chem_thermo_gibbs",
             name: "Gibbs-Helmholtz-Gleichung (Freie Enthalpie)",
             category: "Chemie",
-            subcategory: "Thermochemie & Kinetik",
+            subcategory: "Gase & Thermodynamik",
             rawEquation: "dG = dH - T * dS",
-            latex: "\\Delta G = \\Delta H - T \\cdot \\Delta S",
-            description: "Freie Reaktionsenthalpie zur Bestimmung der Spontaneität chemischer Reaktionen.",
+            latex: "\Delta G = \Delta H - T \cdot \Delta S",
+            description: "Kriterium für die thermodynamische Spontaneität einer chemischen Reaktion.",
             variables: [
-                FormulaVariable(symbol: "dG", name: "Freie Enthalpie (ΔG)", defaultUnit: "kJ/mol", unitCategory: .energy),
-                FormulaVariable(symbol: "dH", name: "Reaktionsenthalpie (ΔH)", defaultUnit: "kJ/mol", unitCategory: .energy),
-                FormulaVariable(symbol: "T", name: "Absolute Temperatur", defaultUnit: "K", unitCategory: .temperature),
-                FormulaVariable(symbol: "dS", name: "Reaktionsentropie (ΔS)", defaultUnit: "kJ/(mol·K)", unitCategory: .energy)
+                FormulaVariable(symbol: "dG", name: "Freie Reaktionsenthalpie ΔG", defaultUnit: "J", unitCategory: .energy),
+                FormulaVariable(symbol: "dH", name: "Reaktionsenthalpie ΔH", defaultUnit: "J", unitCategory: .energy),
+                FormulaVariable(symbol: "T", name: "Reaktionstemperatur", defaultUnit: "K", unitCategory: .temperature),
+                FormulaVariable(symbol: "dS", name: "Reaktionsentropie ΔS", defaultUnit: "J", unitCategory: .energy)
+            ]
+        ))
+
+        // Carnot-Wirkungsgrad
+        list.append(FormulaItem(
+            id: "thermo_carnot",
+            name: "Carnot-Wirkungsgrad",
+            category: "Chemie",
+            subcategory: "Gase & Thermodynamik",
+            rawEquation: "eta = 1 - (Tc / Th)",
+            latex: "\eta_{rev} = 1 - \frac{T_{kalt}}{T_{warm}}",
+            description: "Maximal erreichbarer theoretischer Wirkungsgrad einer Wärmekraftmaschine.",
+            variables: [
+                FormulaVariable(symbol: "eta", name: "Wirkungsgrad η", defaultUnit: "1", unitCategory: .dimensionless),
+                FormulaVariable(symbol: "Tc", name: "Kältereservoir Tc", defaultUnit: "K", unitCategory: .temperature),
+                FormulaVariable(symbol: "Th", name: "Wärmereservoir Th", defaultUnit: "K", unitCategory: .temperature)
             ]
         ))
 
         // ==========================================
-        // 5. MASCHINENBAU & STATIK
+        // 6. MASCHINENBAU & STATIK
         // ==========================================
 
+        // Hookesches Gesetz
         list.append(FormulaItem(
-            id: "eng_statik_spannung",
-            name: "Mechanische Normalspannung (Zug/Druck)",
-            category: "Maschinenbau & Statik",
-            subcategory: "Festigkeitslehre & Elastizität",
-            rawEquation: "sigma = F / A",
-            latex: "\\sigma = \\frac{F}{A}",
-            description: "Spannung in einem Querschnitt A unter axialer Lasteinwirkung F.",
-            variables: [
-                FormulaVariable(symbol: "sigma", name: "Normalspannung (σ)", defaultUnit: "Pa", unitCategory: .pressure),
-                FormulaVariable(symbol: "F", name: "Axiale Zug-/Druckkraft", defaultUnit: "N", unitCategory: .force),
-                FormulaVariable(symbol: "A", name: "Querschnittsfläche", defaultUnit: "m²", unitCategory: .length)
-            ]
-        ))
-
-        list.append(FormulaItem(
-            id: "eng_statik_dehnung",
-            name: "Hookesches Gesetz für lineare Dehnung",
+            id: "eng_mech_hooke",
+            name: "Hookesches Gesetz (Spannung-Dehnung)",
             category: "Maschinenbau & Statik",
             subcategory: "Festigkeitslehre & Elastizität",
             rawEquation: "sigma = E * eps",
-            latex: "\\sigma = E \\cdot \\varepsilon",
-            description: "Elastische Längsspannung über Elastizitätsmodul E und bezogene Dehnung ε.",
+            latex: "\sigma = E \cdot \varepsilon",
+            description: "Linearer Zusammenhang zwischen mechanischer Spannung σ und Dehnung ε im elastischen Bereich.",
             variables: [
-                FormulaVariable(symbol: "sigma", name: "Spannung (σ)", defaultUnit: "Pa", unitCategory: .pressure),
-                FormulaVariable(symbol: "E", name: "Elastizitätsmodul (E-Modul)", defaultUnit: "Pa", unitCategory: .pressure),
-                FormulaVariable(symbol: "eps", name: "Dehnung (ε)", defaultUnit: "1", unitCategory: .mass)
+                FormulaVariable(symbol: "sigma", name: "Spannung σ", defaultUnit: "Pa", unitCategory: .pressure),
+                FormulaVariable(symbol: "E", name: "Elastizitätsmodul E", defaultUnit: "Pa", unitCategory: .pressure),
+                FormulaVariable(symbol: "eps", name: "Dehnung ε", defaultUnit: "1", unitCategory: .dimensionless)
             ]
         ))
 
-        // ==========================================
-        // 6. FINANZMATHEMATIK
-        // ==========================================
-
+        // Mechanische Spannung
         list.append(FormulaItem(
-            id: "fin_zins_einfach",
-            name: "Einfache Zinsformel",
-            category: "Finanzmathematik",
-            subcategory: "Zinsrechnung & Barwert",
-            rawEquation: "Z = K * p * t / 100",
-            latex: "Z = \\frac{K \\cdot p \\cdot t}{100}",
-            description: "Einfacher Zinsertrag ohne Zinseszins über Laufzeit t.",
+            id: "eng_mech_stress",
+            name: "Mechanische Normalspannung",
+            category: "Maschinenbau & Statik",
+            subcategory: "Festigkeitslehre & Elastizität",
+            rawEquation: "sigma = F / A",
+            latex: "\sigma = \frac{F}{A}",
+            description: "Auf eine Querschnittsfläche A senkrecht einwirkende Zug- oder Druckkraft F.",
             variables: [
-                FormulaVariable(symbol: "Z", name: "Zinsertrag", defaultUnit: "€", unitCategory: .energy),
-                FormulaVariable(symbol: "K", name: "Anfangskapital", defaultUnit: "€", unitCategory: .energy),
-                FormulaVariable(symbol: "p", name: "Zinssatz (% p.a.)", defaultUnit: "%", unitCategory: .mass),
-                FormulaVariable(symbol: "t", name: "Laufzeit", defaultUnit: "Jahre", unitCategory: .time)
+                FormulaVariable(symbol: "sigma", name: "Normalspannung", defaultUnit: "Pa", unitCategory: .pressure),
+                FormulaVariable(symbol: "F", name: "Normalkraft", defaultUnit: "N", unitCategory: .force),
+                FormulaVariable(symbol: "A", name: "Querschnittsfläche", defaultUnit: "m", unitCategory: .length)
+            ]
+        ))
+
+        // Drehmoment
+        list.append(FormulaItem(
+            id: "eng_mech_torque",
+            name: "Drehmoment (Hebelgesetz)",
+            category: "Maschinenbau & Statik",
+            subcategory: "Statik & Antriebe",
+            rawEquation: "M = F * r",
+            latex: "M = F \cdot r",
+            description: "Drehwirkung einer Kraft F im Hebelarmabstand r zur Drehachse.",
+            variables: [
+                FormulaVariable(symbol: "M", name: "Drehmoment", defaultUnit: "N", unitCategory: .force),
+                FormulaVariable(symbol: "F", name: "Hebelkraft", defaultUnit: "N", unitCategory: .force),
+                FormulaVariable(symbol: "r", name: "Hebelarm", defaultUnit: "m", unitCategory: .length)
+            ]
+        ))
+
+        // Eulersche Knicklast
+        list.append(FormulaItem(
+            id: "eng_euler_buckling",
+            name: "Eulersche Knicklast (Stabilität)",
+            category: "Maschinenbau & Statik",
+            subcategory: "Festigkeitslehre & Elastizität",
+            rawEquation: "Fk = (3.14159265^2 * E * I) / Lk^2",
+            latex: "F_k = \frac{\pi^2 E I}{L_k^2}",
+            description: "Kritische Druckkraft, bei der ein schlanker Stab elastisch ausknickt.",
+            variables: [
+                FormulaVariable(symbol: "Fk", name: "Knicklast", defaultUnit: "N", unitCategory: .force),
+                FormulaVariable(symbol: "E", name: "E-Modul", defaultUnit: "Pa", unitCategory: .pressure),
+                FormulaVariable(symbol: "I", name: "Flächenträgheitsmoment", defaultUnit: "m", unitCategory: .length),
+                FormulaVariable(symbol: "Lk", name: "Knicklänge", defaultUnit: "m", unitCategory: .length)
             ]
         ))
 
@@ -872,18 +785,73 @@ public struct FormulaCatalog: Sendable {
         // 7. INFORMATIK & INFORMATION
         // ==========================================
 
+        // Amdahlsches Gesetz
         list.append(FormulaItem(
-            id: "cs_info_shannon",
+            id: "cs_amdahl",
+            name: "Amdahlsches Gesetz (Parallelisierung)",
+            category: "Informatik & Information",
+            subcategory: "Systemleistung & Skalierung",
+            rawEquation: "S = 1 / ((1 - p) + (p / s))",
+            latex: "S = \frac{1}{(1 - p) + \frac{p}{s}}",
+            description: "Theoretischer Geschwindigkeitszuwachs (Speedup) eines Algorithmus bei paralleler Ausführung.",
+            variables: [
+                FormulaVariable(symbol: "S", name: "Gesamtspeedup S", defaultUnit: "1", unitCategory: .dimensionless),
+                FormulaVariable(symbol: "p", name: "Paralleler Codeanteil p", defaultUnit: "1", unitCategory: .dimensionless),
+                FormulaVariable(symbol: "s", name: "Prozessoranzahl / Speedup s", defaultUnit: "1", unitCategory: .dimensionless)
+            ]
+        ))
+
+        // Shannon-Hartley
+        list.append(FormulaItem(
+            id: "cs_shannon",
             name: "Shannon-Hartley-Kanalkapazität",
             category: "Informatik & Information",
             subcategory: "Informationstheorie & Codierung",
             rawEquation: "C = B * 3.321928 * ln(1 + SNR)",
-            latex: "C = B \\cdot \\log_2(1 + \\text{SNR})",
+            latex: "C = B \cdot \log_2(1 + \text{SNR})",
             description: "Maximal erreichbare fehlerfreie Übertragungsrate über einen bandbreitenbegrenzten gestörten Kanal.",
             variables: [
-                FormulaVariable(symbol: "C", name: "Kanalkapazität", defaultUnit: "bit/s", unitCategory: .velocity),
-                FormulaVariable(symbol: "B", name: "Kanalbandbreite", defaultUnit: "Hz", unitCategory: .time),
-                FormulaVariable(symbol: "SNR", name: "Signal-Rausch-Verhältnis", defaultUnit: "1", unitCategory: .mass)
+                FormulaVariable(symbol: "C", name: "Kanalkapazität", defaultUnit: "m/s", unitCategory: .velocity),
+                FormulaVariable(symbol: "B", name: "Kanalbandbreite", defaultUnit: "s", unitCategory: .time),
+                FormulaVariable(symbol: "SNR", name: "Signal-Rausch-Verhältnis", defaultUnit: "1", unitCategory: .dimensionless)
+            ]
+        ))
+
+        // ==========================================
+        // 8. FINANZMATHEMATIK
+        // ==========================================
+
+        // Zinseszins
+        list.append(FormulaItem(
+            id: "fin_compound_interest",
+            name: "Zinseszinsrechnung",
+            category: "Finanzmathematik",
+            subcategory: "Zins & Zinseszins",
+            rawEquation: "Kn = K0 * (1 + p / 100)^n",
+            latex: "K_n = K_0 \left(1 + \frac{p}{100}\right)^n",
+            description: "Endkapital Kn nach n Zinsperioden bei einem periodischen Zinssatz von p %.",
+            variables: [
+                FormulaVariable(symbol: "Kn", name: "Endkapital Kn", defaultUnit: "1", unitCategory: .dimensionless),
+                FormulaVariable(symbol: "K0", name: "Anfangskapital K0", defaultUnit: "1", unitCategory: .dimensionless),
+                FormulaVariable(symbol: "p", name: "Zinssatz (%)", defaultUnit: "1", unitCategory: .dimensionless),
+                FormulaVariable(symbol: "n", name: "Laufzeit (Jahre)", defaultUnit: "1", unitCategory: .dimensionless)
+            ]
+        ))
+
+        // Barwert (Present Value)
+        list.append(FormulaItem(
+            id: "fin_present_value",
+            name: "Barwert / Diskontierung (Present Value)",
+            category: "Finanzmathematik",
+            subcategory: "Investitionsrechnung & Barwert",
+            rawEquation: "PV = FV / (1 + r)^n",
+            latex: "PV = \frac{FV}{(1 + r)^n}",
+            description: "Heutiger Gegenwert einer zukünftigen Zahlung FV bei Diskontierungszinssatz r.",
+            variables: [
+                FormulaVariable(symbol: "PV", name: "Barwert (PV)", defaultUnit: "1", unitCategory: .dimensionless),
+                FormulaVariable(symbol: "FV", name: "Zukünftiger Wert (FV)", defaultUnit: "1", unitCategory: .dimensionless),
+                FormulaVariable(symbol: "r", name: "Diskontierungssatz r", defaultUnit: "1", unitCategory: .dimensionless),
+                FormulaVariable(symbol: "n", name: "Periodenanzahl n", defaultUnit: "1", unitCategory: .dimensionless)
             ]
         ))
 
