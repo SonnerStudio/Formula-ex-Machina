@@ -52,30 +52,59 @@ public struct FormulaDetailView: View {
 
     @ViewBuilder
     private func headerView(formula: FormulaItem) -> some View {
-        VStack(alignment: .leading, spacing: Space.xs) {
-            HStack(spacing: Space.sm) {
-                Text(formula.category.uppercased())
-                    .font(.caption)
-                    .fontWeight(.bold)
-                    .foregroundStyle(.secondary)
+        HStack(alignment: .top) {
+            VStack(alignment: .leading, spacing: Space.xs) {
+                HStack(spacing: Space.sm) {
+                    Text(formula.category.uppercased())
+                        .font(.caption)
+                        .fontWeight(.bold)
+                        .foregroundStyle(.secondary)
 
-                Image(systemName: "chevron.right")
-                    .font(.caption2)
-                    .foregroundStyle(.tertiary)
+                    Image(systemName: "chevron.right")
+                        .font(.caption2)
+                        .foregroundStyle(.tertiary)
 
-                Text(formula.subcategory)
-                    .font(.caption)
+                    Text(formula.subcategory)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+
+                Text(formula.name)
+                    .font(.system(size: 26, weight: .bold, design: .rounded))
+                    .foregroundStyle(.primary)
+
+                Text(formula.description)
+                    .font(.body)
                     .foregroundStyle(.secondary)
+                    .lineLimit(3)
             }
 
-            Text(formula.name)
-                .font(.system(size: 26, weight: .bold, design: .rounded))
-                .foregroundStyle(.primary)
+            Spacer()
 
-            Text(formula.description)
-                .font(.body)
-                .foregroundStyle(.secondary)
-                .lineLimit(3)
+            // Prominente Nationalflaggen- & Sprachanzeige
+            HStack(spacing: 8) {
+                Text(model.currentLanguage.flag)
+                    .font(.system(size: 28))
+                VStack(alignment: .trailing, spacing: 2) {
+                    Text(model.currentLanguage.name)
+                        .font(.system(size: 13, weight: .bold))
+                        .foregroundStyle(.primary)
+                    Text(model.currentLanguage.nativeName)
+                        .font(.system(size: 11))
+                        .foregroundStyle(.secondary)
+                }
+            }
+            .padding(.horizontal, 10)
+            .padding(.vertical, 6)
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color(nsColor: .controlBackgroundColor))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.primary.opacity(0.12), lineWidth: 1)
+                    )
+            )
+            .help("Aktive Sprache: \(model.currentLanguage.name) (\(model.currentLanguage.nativeName))")
         }
     }
 

@@ -58,36 +58,35 @@ public struct MainSplitView: View {
             }
 
             ToolbarItemGroup(placement: .automatic) {
-                // Sprachauswahl-Dropdownmenü mit 130 Weltsprachen & Flaggen
-                Menu {
-                    ForEach(model.languages.languages) { lang in
-                        Button {
-                            model.selectedLanguageCode = lang.code
-                        } label: {
-                            HStack {
-                                Text(lang.displayName)
-                                if model.selectedLanguageCode == lang.code {
-                                    Spacer()
-                                    Image(systemName: "checkmark")
-                                }
-                            }
+                // Sprachauswahl-Dropdownmenü mit 130 Weltsprachen & Nationalflaggen
+                HStack(spacing: 6) {
+                    Text(model.currentLanguage.flag)
+                        .font(.system(size: 18))
+                        .help("Aktuelle Nationalflagge: \(model.currentLanguage.name)")
+
+                    Picker("", selection: Binding(
+                        get: { model.selectedLanguageCode },
+                        set: { model.selectedLanguageCode = $0 }
+                    )) {
+                        ForEach(model.languages.languages) { lang in
+                            Text("\(lang.flag)  \(lang.name) (\(lang.nativeName))")
+                                .tag(lang.code)
                         }
                     }
-                } label: {
-                    HStack(spacing: 5) {
-                        Text(model.currentLanguage.flag)
-                            .font(.system(size: 14))
-                        Text(model.currentLanguage.name)
-                            .font(.system(size: 12, weight: .medium))
-                    }
-                    .padding(.horizontal, 6)
-                    .padding(.vertical, 3)
-                    .background(
-                        RoundedRectangle(cornerRadius: 6)
-                            .fill(Color(nsColor: .controlBackgroundColor))
-                    )
+                    .pickerStyle(.menu)
+                    .frame(minWidth: 190)
+                    .help("Sprachauswahl: Wählen Sie aus den 130 meistgesprochenen Sprachen der Erde mit Flaggen")
                 }
-                .help("Sprachauswahl: Wählen Sie aus den 130 meistgesprochenen Sprachen der Erde")
+                .padding(.horizontal, 6)
+                .padding(.vertical, 2)
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(Color(nsColor: .controlBackgroundColor))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.primary.opacity(0.1), lineWidth: 1)
+                        )
+                )
 
                 // Update-Button (SternenMeister / Zeitmeister Methode)
                 Button {

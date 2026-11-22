@@ -1,4 +1,5 @@
 import SwiftUI
+import FormulaExMachinaKit
 
 public enum SettingsTab: String, CaseIterable, Identifiable {
     case general = "Allgemein"
@@ -16,6 +17,7 @@ public enum SettingsTab: String, CaseIterable, Identifiable {
 
 public struct SettingsView: View {
     @State private var selectedTab: SettingsTab = .general
+    @AppStorage("appLanguage") private var selectedLanguageCode: String = "de"
     @AppStorage("defaultUnitSystem") private var defaultUnitSystem: String = "SI"
     @AppStorage("autoRecalculate") private var autoRecalculate: Bool = true
     @AppStorage("decimalPrecision") private var decimalPrecision: Int = 4
@@ -36,7 +38,7 @@ public struct SettingsView: View {
                 }
                 .tag(SettingsTab.appearance)
         }
-        .frame(width: 480, height: 320)
+        .frame(width: 520, height: 380)
         .padding(Space.lg)
         .fitsContent()
     }
@@ -44,6 +46,16 @@ public struct SettingsView: View {
     @ViewBuilder
     private var generalTab: some View {
         Form {
+            Section("Sprachauswahl & Nationalflaggen") {
+                Picker("Sprache:", selection: $selectedLanguageCode) {
+                    ForEach(LanguageRegistry.shared.languages) { lang in
+                        Text("\(lang.flag)  \(lang.name) (\(lang.nativeName))")
+                            .tag(lang.code)
+                    }
+                }
+                .help("Wählen Sie aus den 130 meistgesprochenen Sprachen der Erde mit Nationalflaggen")
+            }
+
             Section("Berechnung & Einheiten") {
                 Picker("Standard-Einheitensystem:", selection: $defaultUnitSystem) {
                     Text("Internationales Einheitensystem (SI)").tag("SI")
