@@ -103,4 +103,40 @@ struct FormulaExMachinaKitTests {
             #expect(!val.isEmpty)
         }
     }
+
+    @Test("S-205: Goldener Schnitt & Fibonacci Binet-Formel")
+    func testGoldenRatioAndFibonacci() throws {
+        // 1. Goldener Schnitt Definition: Phi = (1 + sqrt(5)) / 2 approx 1.6180339887
+        let phiItem = catalog.find(id: "math_golden_ratio")
+        #expect(phiItem != nil)
+
+        // 2. Goldener Schnitt Proportion: a = b * 1.6180339887
+        guard let propItem = catalog.find(id: "math_golden_ratio_prop") else {
+            Issue.record("math_golden_ratio_prop nicht gefunden")
+            return
+        }
+        let outProp = try service.calculate(
+            formula: propItem,
+            targetVariable: "a",
+            rawInputs: ["b": 10.0],
+            inputUnits: ["b": "m"],
+            targetUnit: "m"
+        )
+        #expect(abs(outProp.resultValue - 16.180339887) < 1e-4)
+
+        // 3. Fibonacci Binet-Formel: F_10 = 55
+        guard let fibItem = catalog.find(id: "math_fibonacci_binet") else {
+            Issue.record("math_fibonacci_binet nicht gefunden")
+            return
+        }
+        let outFib = try service.calculate(
+            formula: fibItem,
+            targetVariable: "Fn",
+            rawInputs: ["n": 10.0],
+            inputUnits: ["n": "1"],
+            targetUnit: "1"
+        )
+        // 10-te Fibonacci Zahl ist genau 55
+        #expect(abs(outFib.resultValue - 55.0) < 1e-3)
+    }
 }

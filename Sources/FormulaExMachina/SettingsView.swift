@@ -72,7 +72,7 @@ public struct SettingsView: View {
             }
 
             Section("Über Formula ex Machina") {
-                LabeledContent("Version", value: "1.0.0 (SonnerStudio Build 2026.11)")
+                LabeledContent("Version", value: "1.1.0 (SonnerStudio Build 2026.11)")
                 LabeledContent("Entwickler", value: "SonnerStudio – Jan Friske")
             }
         }

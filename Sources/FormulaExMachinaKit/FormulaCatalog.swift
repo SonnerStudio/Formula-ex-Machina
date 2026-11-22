@@ -108,7 +108,7 @@ public struct FormulaCatalog: Sendable {
             category: "Mathematik",
             subcategory: "Goldener Schnitt & Folgen",
             rawEquation: "Phi = (1 + sqrt(5)) / 2",
-            latex: "\Phi = \frac{1 + \sqrt{5}}{2} \approx 1.6180339887",
+            latex: #"\Phi = \frac{1 + \sqrt{5}}{2} \approx 1.6180339887"#,
             description: "Die Zahl des Goldenen Schnitts (Divina Proportione). Mathematische Konstante der harmonischen Teilung.",
             variables: [
                 FormulaVariable(symbol: "Phi", name: "Goldene Zahl Phi", defaultUnit: "1", unitCategory: .dimensionless)
@@ -122,7 +122,7 @@ public struct FormulaCatalog: Sendable {
             category: "Mathematik",
             subcategory: "Goldener Schnitt & Folgen",
             rawEquation: "a = b * 1.6180339887",
-            latex: "\frac{a + b}{a} = \frac{a}{b} = \Phi \approx 1.618034",
+            latex: #"\frac{a + b}{a} = \frac{a}{b} = \Phi \approx 1.618034"#,
             description: "Berechnet den Major-Abschnitt 'a' aus dem Minor-Abschnitt 'b' im Verhältnis des Goldenen Schnitts.",
             variables: [
                 FormulaVariable(symbol: "a", name: "Major (großer Abschnitt)", defaultUnit: "m", unitCategory: .length),
@@ -137,7 +137,7 @@ public struct FormulaCatalog: Sendable {
             category: "Mathematik",
             subcategory: "Goldener Schnitt & Folgen",
             rawEquation: "Fn = (((1 + sqrt(5)) / 2)^n - ((1 - sqrt(5)) / 2)^n) / sqrt(5)",
-            latex: "F_n = \frac{1}{\sqrt{5}} \left[ \left(\frac{1+\sqrt{5}}{2}\right)^n - \left(\frac{1-\sqrt{5}}{2}\right)^n \right]",
+            latex: #"F_n = \frac{1}{\sqrt{5}} \left[ \left(\frac{1+\sqrt{5}}{2}\right)^n - \left(\frac{1-\sqrt{5}}{2}\right)^n \right]"#,
             description: "Geschlossene Formel von Jacques Philippe Marie Binet zur direkten exakten Berechnung der n-ten Fibonacci-Zahl ohne Rekursion.",
             variables: [
                 FormulaVariable(symbol: "Fn", name: "n-te Fibonacci-Zahl", defaultUnit: "1", unitCategory: .dimensionless),
@@ -152,7 +152,7 @@ public struct FormulaCatalog: Sendable {
             category: "Mathematik",
             subcategory: "Geometrie 2D (Flächen)",
             rawEquation: "c = sqrt(a^2 + b^2)",
-            latex: "c = \sqrt{a^2 + b^2}",
+            latex: #"c = \sqrt{a^2 + b^2}"#,
             description: "Berechnung der Hypotenuse c im rechtwinkligen Dreieck aus den Katheten a und b.",
             variables: [
                 FormulaVariable(symbol: "c", name: "Hypotenuse c", defaultUnit: "m", unitCategory: .length),
@@ -168,7 +168,7 @@ public struct FormulaCatalog: Sendable {
             category: "Mathematik",
             subcategory: "Geometrie 2D (Flächen)",
             rawEquation: "A = 3.1415926535 * r^2",
-            latex: "A = \pi \cdot r^2",
+            latex: #"A = \pi \cdot r^2"#,
             description: "Flächeninhalt eines Kreises mit dem Radius r.",
             variables: [
                 FormulaVariable(symbol: "A", name: "Kreisfläche", defaultUnit: "m", unitCategory: .length),
@@ -183,7 +183,7 @@ public struct FormulaCatalog: Sendable {
             category: "Mathematik",
             subcategory: "Geometrie 2D (Flächen)",
             rawEquation: "U = 2 * 3.1415926535 * r",
-            latex: "U = 2\pi \cdot r",
+            latex: #"U = 2\pi \cdot r"#,
             description: "Umfang eines Kreises in Abhängigkeit vom Radius r.",
             variables: [
                 FormulaVariable(symbol: "U", name: "Umfang", defaultUnit: "m", unitCategory: .length),
@@ -198,7 +198,7 @@ public struct FormulaCatalog: Sendable {
             category: "Mathematik",
             subcategory: "Geometrie 3D (Körper)",
             rawEquation: "V = (4 / 3) * 3.1415926535 * r^3",
-            latex: "V = \frac{4}{3}\pi \cdot r^3",
+            latex: #"V = \frac{4}{3}\pi \cdot r^3"#,
             description: "Volumen einer dreidimensionalen Kugel mit Radius r.",
             variables: [
                 FormulaVariable(symbol: "V", name: "Volumen", defaultUnit: "m", unitCategory: .length),
@@ -213,7 +213,7 @@ public struct FormulaCatalog: Sendable {
             category: "Mathematik",
             subcategory: "Geometrie 3D (Körper)",
             rawEquation: "A = 4 * 3.1415926535 * r^2",
-            latex: "A = 4\pi \cdot r^2",
+            latex: #"A = 4\pi \cdot r^2"#,
             description: "Oberflächeninhalt einer perfekten Kugel.",
             variables: [
                 FormulaVariable(symbol: "A", name: "Oberfläche", defaultUnit: "m", unitCategory: .length),
@@ -228,7 +228,7 @@ public struct FormulaCatalog: Sendable {
             category: "Mathematik",
             subcategory: "Algebra & Analysis",
             rawEquation: "x = (-b + sqrt(b^2 - 4 * a * c)) / (2 * a)",
-            latex: "x_{1} = \frac{-b + \sqrt{b^2 - 4ac}}{2a}",
+            latex: #"x_{1} = \frac{-b + \sqrt{b^2 - 4ac}}{2a}"#,
             description: "Analytische Nullstelle einer quadratischen Gleichung ax² + bx + c = 0.",
             variables: [
                 FormulaVariable(symbol: "x", name: "Nullstelle x", defaultUnit: "1", unitCategory: .dimensionless),
@@ -245,7 +245,7 @@ public struct FormulaCatalog: Sendable {
             category: "Mathematik",
             subcategory: "Statistik & Stochastik",
             rawEquation: "P_AB = (P_BA * P_A) / P_B",
-            latex: "P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}",
+            latex: #"P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}"#,
             description: "Fundamentales Theorem der Wahrscheinlichkeitstheorie zur Berechnung von A-posteriori-Wahrscheinlichkeiten.",
             variables: [
                 FormulaVariable(symbol: "P_AB", name: "P(A|B) A-posteriori", defaultUnit: "1", unitCategory: .dimensionless),
@@ -262,7 +262,7 @@ public struct FormulaCatalog: Sendable {
             category: "Mathematik",
             subcategory: "Algebra & Analysis",
             rawEquation: "n_fact = sqrt(2 * 3.14159265 * n) * (n / 2.7182818)^n",
-            latex: "n! \approx \sqrt{2\pi n} \left(\frac{n}{e}\right)^n",
+            latex: #"n! \approx \sqrt{2\pi n} \left(\frac{n}{e}\right)^n"#,
             description: "Asymptotische Entwicklung zur schnellen Auswertung sehr großer Fakultäten n!.",
             variables: [
                 FormulaVariable(symbol: "n_fact", name: "Approximiertes n!", defaultUnit: "1", unitCategory: .dimensionless),
@@ -274,14 +274,31 @@ public struct FormulaCatalog: Sendable {
         // 2. PHYSIK
         // ==========================================
 
+        // Gleichförmig beschleunigte Bewegung
+        list.append(FormulaItem(
+            id: "phys_kin_accel",
+            name: "Gleichförmig beschleunigte Bewegung (Geschwindigkeit)",
+            category: "Physik",
+            subcategory: "Kinematik",
+            rawEquation: "v = v0 + a * t",
+            latex: #"v = v_0 + a \cdot t"#,
+            description: "Endgeschwindigkeit bei konstanter Beschleunigung a nach Zeit t mit Anfangsgeschwindigkeit v0.",
+            variables: [
+                FormulaVariable(symbol: "v", name: "Endgeschwindigkeit", defaultUnit: "m/s", unitCategory: .velocity),
+                FormulaVariable(symbol: "v0", name: "Anfangsgeschwindigkeit", defaultUnit: "m/s", unitCategory: .velocity),
+                FormulaVariable(symbol: "a", name: "Beschleunigung", defaultUnit: "m/s²", unitCategory: .acceleration),
+                FormulaVariable(symbol: "t", name: "Zeit", defaultUnit: "s", unitCategory: .time)
+            ]
+        ))
+
         // Newton II
         list.append(FormulaItem(
             id: "phys_dyn_newton2",
-            name: "Zweites Newtonsches Axiom (Grundgesetz der Dynamik)",
+            name: "2. Newtonsches Axiom (Grundgesetz)",
             category: "Physik",
             subcategory: "Dynamik",
             rawEquation: "F = m * a",
-            latex: "F = m \cdot a",
+            latex: #"F = m \cdot a"#,
             description: "Kraft ist gleich Masse mal Beschleunigung. Fundamentales Gesetz der klassischen Mechanik.",
             variables: [
                 FormulaVariable(symbol: "F", name: "Kraft", defaultUnit: "N", unitCategory: .force),
@@ -297,7 +314,7 @@ public struct FormulaCatalog: Sendable {
             category: "Physik",
             subcategory: "Arbeit & Energie",
             rawEquation: "E = 0.5 * m * v^2",
-            latex: "E_{kin} = \frac{1}{2} m \cdot v^2",
+            latex: #"E_{kin} = \frac{1}{2} m \cdot v^2"#,
             description: "In der Bewegung eines Körpers mit Geschwindigkeit v gespeicherte kinetische Energie.",
             variables: [
                 FormulaVariable(symbol: "E", name: "Kinetische Energie", defaultUnit: "J", unitCategory: .energy),
@@ -313,7 +330,7 @@ public struct FormulaCatalog: Sendable {
             category: "Physik",
             subcategory: "Arbeit & Energie",
             rawEquation: "E = m * g * h",
-            latex: "E_{pot} = m \cdot g \cdot h",
+            latex: #"E_{pot} = m \cdot g \cdot h"#,
             description: "Höhenenergie im homogenen Gravitationsfeld der Erde (g = 9.81 m/s²).",
             variables: [
                 FormulaVariable(symbol: "E", name: "Lageenergie", defaultUnit: "J", unitCategory: .energy),
@@ -330,7 +347,7 @@ public struct FormulaCatalog: Sendable {
             category: "Physik",
             subcategory: "Dynamik",
             rawEquation: "rho = m / V",
-            latex: "\rho = \frac{m}{V}",
+            latex: #"\rho = \frac{m}{V}"#,
             description: "Verhältnis von Masse zu Volumen eines homogenen Körpers oder Mediums.",
             variables: [
                 FormulaVariable(symbol: "rho", name: "Dichte", defaultUnit: "kg", unitCategory: .mass),
@@ -346,7 +363,7 @@ public struct FormulaCatalog: Sendable {
             category: "Physik",
             subcategory: "Dynamik",
             rawEquation: "p = rho * g * h",
-            latex: "p = \rho \cdot g \cdot h",
+            latex: #"p = \rho \cdot g \cdot h"#,
             description: "Druck in einer ruhenden Flüssigkeitssäule in der Tiefe h.",
             variables: [
                 FormulaVariable(symbol: "p", name: "Druck", defaultUnit: "Pa", unitCategory: .pressure),
@@ -363,7 +380,7 @@ public struct FormulaCatalog: Sendable {
             category: "Physik",
             subcategory: "Relativität & Quantenphysik",
             rawEquation: "E = m * c^2",
-            latex: "E = m \cdot c^2",
+            latex: #"E = m \cdot c^2"#,
             description: "Albert Einsteins berühmteste Gleichung der Speziellen Relativitätstheorie (c = 299.792.458 m/s).",
             variables: [
                 FormulaVariable(symbol: "E", name: "Ruheenergie", defaultUnit: "J", unitCategory: .energy),
@@ -379,7 +396,7 @@ public struct FormulaCatalog: Sendable {
             category: "Physik",
             subcategory: "Relativität & Quantenphysik",
             rawEquation: "gamma = 1 / sqrt(1 - (v^2 / c^2))",
-            latex: "\gamma = \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}}",
+            latex: #"\gamma = \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}}"#,
             description: "Faktor für relativistische Zeitdilatation, Längenkontraktion und relativistische Masse.",
             variables: [
                 FormulaVariable(symbol: "gamma", name: "Lorentz-Faktor", defaultUnit: "1", unitCategory: .dimensionless),
@@ -395,7 +412,7 @@ public struct FormulaCatalog: Sendable {
             category: "Physik",
             subcategory: "Relativität & Quantenphysik",
             rawEquation: "lambda = h / p",
-            latex: "\lambda = \frac{h}{p}",
+            latex: #"\lambda = \frac{h}{p}"#,
             description: "Wellenlänge eines Teilchens mit Impuls p im Welle-Teilchen-Dualismus der Quantenmechanik.",
             variables: [
                 FormulaVariable(symbol: "lambda", name: "Wellenlänge", defaultUnit: "m", unitCategory: .length),
@@ -411,7 +428,7 @@ public struct FormulaCatalog: Sendable {
             category: "Physik",
             subcategory: "Relativität & Quantenphysik",
             rawEquation: "E = h * f",
-            latex: "E = h \cdot f",
+            latex: #"E = h \cdot f"#,
             description: "Energie eines Lichtquants (Photons) in Abhängigkeit von seiner Frequenz f.",
             variables: [
                 FormulaVariable(symbol: "E", name: "Photonenenergie", defaultUnit: "J", unitCategory: .energy),
@@ -427,7 +444,7 @@ public struct FormulaCatalog: Sendable {
             category: "Physik",
             subcategory: "Schwingungen & Wellen",
             rawEquation: "T = 2 * 3.14159265 * sqrt(l / g)",
-            latex: "T = 2\pi \sqrt{\frac{l}{g}}",
+            latex: #"T = 2\pi \sqrt{\frac{l}{g}}"#,
             description: "Schwingungsdauer eines idealen Fadenpendels bei kleinen Auslenkungen.",
             variables: [
                 FormulaVariable(symbol: "T", name: "Periodendauer", defaultUnit: "s", unitCategory: .time),
@@ -443,7 +460,7 @@ public struct FormulaCatalog: Sendable {
             category: "Physik",
             subcategory: "Schwingungen & Wellen",
             rawEquation: "T = 2 * 3.14159265 * sqrt(m / k)",
-            latex: "T = 2\pi \sqrt{\frac{m}{k}}",
+            latex: #"T = 2\pi \sqrt{\frac{m}{k}}"#,
             description: "Schwingungsdauer einer an einer Schraubenfeder schwingenden Masse m.",
             variables: [
                 FormulaVariable(symbol: "T", name: "Periodendauer", defaultUnit: "s", unitCategory: .time),
@@ -463,7 +480,7 @@ public struct FormulaCatalog: Sendable {
             category: "Astronomie & Astrophysik",
             subcategory: "Gravitation & Bahnbewegung",
             rawEquation: "F = G * (m1 * m2) / r^2",
-            latex: "F = G \cdot \frac{m_1 \cdot m_2}{r^2}",
+            latex: #"F = G \cdot \frac{m_1 \cdot m_2}{r^2}"#,
             description: "Gravitative Anziehungskraft zwischen zwei Massen m1 und m2 im Abstand r.",
             variables: [
                 FormulaVariable(symbol: "F", name: "Gravitationskraft", defaultUnit: "N", unitCategory: .force),
@@ -481,7 +498,7 @@ public struct FormulaCatalog: Sendable {
             category: "Astronomie & Astrophysik",
             subcategory: "Gravitation & Bahnbewegung",
             rawEquation: "v = sqrt((2 * G * M) / r)",
-            latex: "v_2 = \sqrt{\frac{2GM}{r}}",
+            latex: #"v_2 = \sqrt{\frac{2GM}{r}}"#,
             description: "Mindestgeschwindigkeit, um dem Schwerefeld eines Himmelskörpers dauerhaft zu entkommen.",
             variables: [
                 FormulaVariable(symbol: "v", name: "Fluchtgeschwindigkeit", defaultUnit: "m/s", unitCategory: .velocity),
@@ -498,7 +515,7 @@ public struct FormulaCatalog: Sendable {
             category: "Astronomie & Astrophysik",
             subcategory: "Hochenergie-Astrophysik",
             rawEquation: "rs = (2 * G * M) / c^2",
-            latex: "r_s = \frac{2GM}{c^2}",
+            latex: #"r_s = \frac{2GM}{c^2}"#,
             description: "Radius des Ereignishorizonts eines nicht rotierenden Schwarzen Lochs nach Karl Schwarzschild.",
             variables: [
                 FormulaVariable(symbol: "rs", name: "Schwarzschild-Radius", defaultUnit: "m", unitCategory: .length),
@@ -515,7 +532,7 @@ public struct FormulaCatalog: Sendable {
             category: "Astronomie & Astrophysik",
             subcategory: "Kosmologie & Sterne",
             rawEquation: "v = H0 * d",
-            latex: "v = H_0 \cdot d",
+            latex: #"v = H_0 \cdot d"#,
             description: "Fluchtgeschwindigkeit entfernter Galaxien proportional zu ihrer kosmischen Entfernung.",
             variables: [
                 FormulaVariable(symbol: "v", name: "Fluchtgeschwindigkeit", defaultUnit: "km", unitCategory: .length),
@@ -531,7 +548,7 @@ public struct FormulaCatalog: Sendable {
             category: "Astronomie & Astrophysik",
             subcategory: "Kosmologie & Sterne",
             rawEquation: "P = sigma * A * T^4",
-            latex: "P = \sigma \cdot A \cdot T^4",
+            latex: #"P = \sigma \cdot A \cdot T^4"#,
             description: "Gesamte Strahlungsleistung eines idealen Schwarzen Körpers in der vierten Potenz der Temperatur T.",
             variables: [
                 FormulaVariable(symbol: "P", name: "Strahlungsleistung", defaultUnit: "W", unitCategory: .power),
@@ -552,7 +569,7 @@ public struct FormulaCatalog: Sendable {
             category: "Elektrotechnik",
             subcategory: "Gleichstrom & Netzwerke",
             rawEquation: "U = R * I",
-            latex: "U = R \cdot I",
+            latex: #"U = R \cdot I"#,
             description: "Zusammenhang zwischen elektrischer Spannung U, Widerstand R und Stromstärke I.",
             variables: [
                 FormulaVariable(symbol: "U", name: "Spannung", defaultUnit: "V", unitCategory: .electricVoltage),
@@ -568,7 +585,7 @@ public struct FormulaCatalog: Sendable {
             category: "Elektrotechnik",
             subcategory: "Gleichstrom & Netzwerke",
             rawEquation: "P = U * I",
-            latex: "P = U \cdot I",
+            latex: #"P = U \cdot I"#,
             description: "Momentane elektrische Gleichstromleistung in Watt.",
             variables: [
                 FormulaVariable(symbol: "P", name: "Leistung", defaultUnit: "W", unitCategory: .power),
@@ -584,7 +601,7 @@ public struct FormulaCatalog: Sendable {
             category: "Elektrotechnik",
             subcategory: "Gleichstrom & Netzwerke",
             rawEquation: "P = I^2 * R",
-            latex: "P = I^2 \cdot R",
+            latex: #"P = I^2 \cdot R"#,
             description: "Verlustleistung (Wärmeentwicklung) an einem ohmschen Widerstand.",
             variables: [
                 FormulaVariable(symbol: "P", name: "Verlustleistung", defaultUnit: "W", unitCategory: .power),
@@ -600,7 +617,7 @@ public struct FormulaCatalog: Sendable {
             category: "Elektrotechnik",
             subcategory: "Wechselstrom & Blindwiderstände",
             rawEquation: "Xc = 1 / (2 * 3.14159265 * f * C)",
-            latex: "X_C = \frac{1}{2\pi f C}",
+            latex: #"X_C = \frac{1}{2\pi f C}"#,
             description: "Wechselstromwiderstand eines idealen Kondensators mit Kapazität C bei Frequenz f.",
             variables: [
                 FormulaVariable(symbol: "Xc", name: "Kapazitiver Blindwiderstand", defaultUnit: "Ω", unitCategory: .electricResistance),
@@ -616,7 +633,7 @@ public struct FormulaCatalog: Sendable {
             category: "Elektrotechnik",
             subcategory: "Wechselstrom & Blindwiderstände",
             rawEquation: "Xl = 2 * 3.14159265 * f * L",
-            latex: "X_L = 2\pi f L",
+            latex: #"X_L = 2\pi f L"#,
             description: "Wechselstromwiderstand einer idealen Spule mit Induktivität L.",
             variables: [
                 FormulaVariable(symbol: "Xl", name: "Induktiver Blindwiderstand", defaultUnit: "Ω", unitCategory: .electricResistance),
@@ -632,7 +649,7 @@ public struct FormulaCatalog: Sendable {
             category: "Elektrotechnik",
             subcategory: "Wechselstrom & Blindwiderstände",
             rawEquation: "f0 = 1 / (2 * 3.14159265 * sqrt(L * C))",
-            latex: "f_0 = \frac{1}{2\pi \sqrt{L C}}",
+            latex: #"f_0 = \frac{1}{2\pi \sqrt{L C}}"#,
             description: "Eigenfrequenz / Resonanzfrequenz eines ungedämpften elektromagnetischen LC-Schwingkreises.",
             variables: [
                 FormulaVariable(symbol: "f0", name: "Resonanzfrequenz", defaultUnit: "s", unitCategory: .time),
@@ -652,7 +669,7 @@ public struct FormulaCatalog: Sendable {
             category: "Chemie",
             subcategory: "Gase & Thermodynamik",
             rawEquation: "p * V = n * R * T",
-            latex: "p \cdot V = n \cdot R \cdot T",
+            latex: #"p \cdot V = n \cdot R \cdot T"#,
             description: "Thermodynamische Zustandsgleichung idealer Gase (Gaskonstante R = 8.31446 J/(mol·K)).",
             variables: [
                 FormulaVariable(symbol: "p", name: "Gasdruck", defaultUnit: "Pa", unitCategory: .pressure),
@@ -670,7 +687,7 @@ public struct FormulaCatalog: Sendable {
             category: "Chemie",
             subcategory: "Lösungen & Kinetik",
             rawEquation: "M = m / n",
-            latex: "M = \frac{m}{n}",
+            latex: #"M = \frac{m}{n}"#,
             description: "Stoffspezifische molare Masse aus Masse m und Stoffmenge n.",
             variables: [
                 FormulaVariable(symbol: "M", name: "Molare Masse", defaultUnit: "g", unitCategory: .mass),
@@ -686,7 +703,7 @@ public struct FormulaCatalog: Sendable {
             category: "Chemie",
             subcategory: "Gase & Thermodynamik",
             rawEquation: "dG = dH - T * dS",
-            latex: "\Delta G = \Delta H - T \cdot \Delta S",
+            latex: #"\Delta G = \Delta H - T \cdot \Delta S"#,
             description: "Kriterium für die thermodynamische Spontaneität einer chemischen Reaktion.",
             variables: [
                 FormulaVariable(symbol: "dG", name: "Freie Reaktionsenthalpie ΔG", defaultUnit: "J", unitCategory: .energy),
@@ -703,7 +720,7 @@ public struct FormulaCatalog: Sendable {
             category: "Chemie",
             subcategory: "Gase & Thermodynamik",
             rawEquation: "eta = 1 - (Tc / Th)",
-            latex: "\eta_{rev} = 1 - \frac{T_{kalt}}{T_{warm}}",
+            latex: #"\eta_{rev} = 1 - \frac{T_{kalt}}{T_{warm}}"#,
             description: "Maximal erreichbarer theoretischer Wirkungsgrad einer Wärmekraftmaschine.",
             variables: [
                 FormulaVariable(symbol: "eta", name: "Wirkungsgrad η", defaultUnit: "1", unitCategory: .dimensionless),
@@ -723,7 +740,7 @@ public struct FormulaCatalog: Sendable {
             category: "Maschinenbau & Statik",
             subcategory: "Festigkeitslehre & Elastizität",
             rawEquation: "sigma = E * eps",
-            latex: "\sigma = E \cdot \varepsilon",
+            latex: #"\sigma = E \cdot \varepsilon"#,
             description: "Linearer Zusammenhang zwischen mechanischer Spannung σ und Dehnung ε im elastischen Bereich.",
             variables: [
                 FormulaVariable(symbol: "sigma", name: "Spannung σ", defaultUnit: "Pa", unitCategory: .pressure),
@@ -739,7 +756,7 @@ public struct FormulaCatalog: Sendable {
             category: "Maschinenbau & Statik",
             subcategory: "Festigkeitslehre & Elastizität",
             rawEquation: "sigma = F / A",
-            latex: "\sigma = \frac{F}{A}",
+            latex: #"\sigma = \frac{F}{A}"#,
             description: "Auf eine Querschnittsfläche A senkrecht einwirkende Zug- oder Druckkraft F.",
             variables: [
                 FormulaVariable(symbol: "sigma", name: "Normalspannung", defaultUnit: "Pa", unitCategory: .pressure),
@@ -755,7 +772,7 @@ public struct FormulaCatalog: Sendable {
             category: "Maschinenbau & Statik",
             subcategory: "Statik & Antriebe",
             rawEquation: "M = F * r",
-            latex: "M = F \cdot r",
+            latex: #"M = F \cdot r"#,
             description: "Drehwirkung einer Kraft F im Hebelarmabstand r zur Drehachse.",
             variables: [
                 FormulaVariable(symbol: "M", name: "Drehmoment", defaultUnit: "N", unitCategory: .force),
@@ -771,7 +788,7 @@ public struct FormulaCatalog: Sendable {
             category: "Maschinenbau & Statik",
             subcategory: "Festigkeitslehre & Elastizität",
             rawEquation: "Fk = (3.14159265^2 * E * I) / Lk^2",
-            latex: "F_k = \frac{\pi^2 E I}{L_k^2}",
+            latex: #"F_k = \frac{\pi^2 E I}{L_k^2}"#,
             description: "Kritische Druckkraft, bei der ein schlanker Stab elastisch ausknickt.",
             variables: [
                 FormulaVariable(symbol: "Fk", name: "Knicklast", defaultUnit: "N", unitCategory: .force),
@@ -792,7 +809,7 @@ public struct FormulaCatalog: Sendable {
             category: "Informatik & Information",
             subcategory: "Systemleistung & Skalierung",
             rawEquation: "S = 1 / ((1 - p) + (p / s))",
-            latex: "S = \frac{1}{(1 - p) + \frac{p}{s}}",
+            latex: #"S = \frac{1}{(1 - p) + \frac{p}{s}}"#,
             description: "Theoretischer Geschwindigkeitszuwachs (Speedup) eines Algorithmus bei paralleler Ausführung.",
             variables: [
                 FormulaVariable(symbol: "S", name: "Gesamtspeedup S", defaultUnit: "1", unitCategory: .dimensionless),
@@ -808,7 +825,7 @@ public struct FormulaCatalog: Sendable {
             category: "Informatik & Information",
             subcategory: "Informationstheorie & Codierung",
             rawEquation: "C = B * 3.321928 * ln(1 + SNR)",
-            latex: "C = B \cdot \log_2(1 + \text{SNR})",
+            latex: #"C = B \cdot \log_2(1 + \text{SNR})"#,
             description: "Maximal erreichbare fehlerfreie Übertragungsrate über einen bandbreitenbegrenzten gestörten Kanal.",
             variables: [
                 FormulaVariable(symbol: "C", name: "Kanalkapazität", defaultUnit: "m/s", unitCategory: .velocity),
@@ -828,7 +845,7 @@ public struct FormulaCatalog: Sendable {
             category: "Finanzmathematik",
             subcategory: "Zins & Zinseszins",
             rawEquation: "Kn = K0 * (1 + p / 100)^n",
-            latex: "K_n = K_0 \left(1 + \frac{p}{100}\right)^n",
+            latex: #"K_n = K_0 \left(1 + \frac{p}{100}\right)^n"#,
             description: "Endkapital Kn nach n Zinsperioden bei einem periodischen Zinssatz von p %.",
             variables: [
                 FormulaVariable(symbol: "Kn", name: "Endkapital Kn", defaultUnit: "1", unitCategory: .dimensionless),
@@ -845,7 +862,7 @@ public struct FormulaCatalog: Sendable {
             category: "Finanzmathematik",
             subcategory: "Investitionsrechnung & Barwert",
             rawEquation: "PV = FV / (1 + r)^n",
-            latex: "PV = \frac{FV}{(1 + r)^n}",
+            latex: #"PV = \frac{FV}{(1 + r)^n}"#,
             description: "Heutiger Gegenwert einer zukünftigen Zahlung FV bei Diskontierungszinssatz r.",
             variables: [
                 FormulaVariable(symbol: "PV", name: "Barwert (PV)", defaultUnit: "1", unitCategory: .dimensionless),

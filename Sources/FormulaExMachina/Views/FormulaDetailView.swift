@@ -371,7 +371,7 @@ public struct FormulaDetailView: View {
                         .cornerRadius(3)
                 }
 
-                Text("Entwickelt von SonnerStudio • Jan Friske • 100% Offline • Lokale symbolische Algebra • 130 Sprachen")
+                Text(model.localized(.footerDevelopedBy))
                     .font(.caption2)
                     .foregroundStyle(.secondary)
             }
@@ -379,11 +379,11 @@ public struct FormulaDetailView: View {
             Spacer()
 
             HStack(spacing: Space.sm) {
-                Label("Offline", systemImage: "bolt.horizontal.circle.fill")
+                Label(model.localized(.offlineBadge), systemImage: "bolt.horizontal.circle.fill")
                     .font(.caption2)
                     .foregroundStyle(.green)
 
-                Label("Liquid Glass", systemImage: "sparkles")
+                Label(model.localized(.liquidGlassBadge), systemImage: "sparkles")
                     .font(.caption2)
                     .foregroundStyle(Palette.accent)
             }
