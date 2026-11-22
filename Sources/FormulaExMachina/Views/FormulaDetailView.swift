@@ -353,11 +353,16 @@ public struct FormulaDetailView: View {
         HStack(spacing: Space.md) {
             Image(systemName: "atom")
                 .font(.system(size: 20))
-                .foregroundStyle(Palette.accent)
+                .foregroundStyle(Palette.sonnerStudioAtomBlue) // Atom-Modell in BLAU belassen
 
             VStack(alignment: .leading, spacing: 2) {
                 HStack(spacing: Space.xs) {
-                    Text("SONNERSTUDIO FORMULA EX MACHINA")
+                    Text("SONNERSTUDIO")
+                        .font(.system(size: 11, weight: .black, design: .rounded))
+                        .tracking(1.0)
+                        .foregroundStyle(Palette.sonnerStudioGold) // SonnerStudio-Schriftzug in GELB (#FFD700)
+
+                    Text("FORMULA EX MACHINA")
                         .font(.system(size: 11, weight: .black, design: .rounded))
                         .tracking(1.0)
                         .foregroundStyle(.primary)
@@ -366,8 +371,8 @@ public struct FormulaDetailView: View {
                         .font(.system(size: 9, weight: .bold))
                         .padding(.horizontal, 4)
                         .padding(.vertical, 1.5)
-                        .background(Palette.accent.opacity(0.15))
-                        .foregroundStyle(Palette.accent)
+                        .background(Color(hex: 0x020617)) // SonnerStudio Schwarz
+                        .foregroundStyle(Palette.sonnerStudioGold) // Gelb
                         .cornerRadius(3)
 
                     Text("v1.1.0")

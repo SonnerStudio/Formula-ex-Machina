@@ -22,16 +22,16 @@ public struct MainSplitView: View {
         .toolbar {
             ToolbarItem(placement: .navigation) {
                 HStack(spacing: Space.sm) {
-                    // SonnerStudio Branding Badge
+                    // SonnerStudio Branding Badge (Gelb-Schwarz Markenfarben, Atom-Modell in Blau)
                     HStack(spacing: 6) {
                         Image(systemName: "atom")
                             .font(.system(size: 14, weight: .bold))
-                            .foregroundStyle(Palette.accent)
+                            .foregroundStyle(Palette.sonnerStudioAtomBlue) // Atom-Modell in BLAU belassen
 
                         Text("SONNERSTUDIO")
                             .font(.system(size: 11, weight: .black, design: .rounded))
                             .tracking(1.2)
-                            .foregroundStyle(.primary)
+                            .foregroundStyle(Palette.sonnerStudioGold) // Schriftzug in GELB (#FFD700)
 
                         Text("PRO")
                             .font(.system(size: 9, weight: .heavy))
@@ -39,9 +39,9 @@ public struct MainSplitView: View {
                             .padding(.vertical, 2)
                             .background(
                                 Capsule()
-                                    .fill(Palette.accent)
+                                    .fill(Color(hex: 0x020617)) // SonnerStudio Schwarz
                             )
-                            .foregroundStyle(Palette.onAccent)
+                            .foregroundStyle(Palette.sonnerStudioGold) // Gelb
 
                         Text("v1.1.0")
                             .font(.system(size: 10, weight: .bold, design: .monospaced))
@@ -60,7 +60,7 @@ public struct MainSplitView: View {
                             .fill(Color.primary.opacity(0.04))
                             .overlay(
                                 Capsule()
-                                    .stroke(Palette.accent.opacity(0.2), lineWidth: 1)
+                                    .stroke(Palette.sonnerStudioGold.opacity(0.35), lineWidth: 1)
                             )
                     )
                     .help("SonnerStudio Formula ex Machina – Universalwissenschaftliches Formelsystem")
@@ -117,7 +117,7 @@ public struct MainSplitView: View {
             HStack(spacing: Space.sm) {
                 Image(systemName: "atom")
                     .font(.system(size: 14, weight: .bold))
-                    .foregroundStyle(Palette.accent)
+                    .foregroundStyle(Palette.sonnerStudioAtomBlue) // Atom-Modell in BLAU belassen
 
                 Text("Formula ex Machina")
                     .font(.system(size: 13, weight: .bold, design: .rounded))

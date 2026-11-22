@@ -96,6 +96,14 @@ enum Palette {
     static var accent: Color { ThemeStore.shared.theme.accent }
     static var accentText: Color { ThemeStore.shared.theme.accentText }
     static var onAccent: Color { ThemeStore.shared.theme.onAccent }
+
+    /// Offizielle SonnerStudio Markenfarben (ermittelt von www.sonnerstudio.net):
+    /// SonnerStudio-Schriftzug in Gelb/Gold (#FFD700 / #FDE047, im Light Mode optimiert auf warmes #C68A00 für Kontrast)
+    static let sonnerStudioGold = Color(light: 0xC68A00, dark: 0xFFD700)
+    static let sonnerStudioYellowHex = Color(hex: 0xFFD700)
+
+    /// Atom-Modell Abbildung in Blau belassen
+    static let sonnerStudioAtomBlue = Color(light: 0x0064D2, dark: 0x38BDF8)
 }
 
 extension View {
